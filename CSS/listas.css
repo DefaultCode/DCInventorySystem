@@ -25,7 +25,7 @@ p{
 }
 
 .Contabla{
-	margin-top: 10px;
+	margin-top: 40px;
 	display: block;
 	align-items: center;
 	overflow-y: scroll;
@@ -156,23 +156,25 @@ button:hover{
 	background-color: #FF9600;
 }
 
-#scroll_table2 {
+.scroll_table2 {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	border-collapse: collapse;
 	max-height:30vh;
+	
 }
-#scroll_table2 thead{
+
+.scroll_table2 thead{
 	display:flex;
 }
             
-#scroll_table2 tbody{
+.scroll_table2 tbody{
 
 	display:block;
 }
             
-#scroll_table2 td,th {
+.scroll_table2 td,th {
 	max-width: 150px;
 	text-align: center;
 }
