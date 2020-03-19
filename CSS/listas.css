@@ -33,7 +33,7 @@ p{
 
 }
 
-#scroll_table {
+.scroll_table {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -42,18 +42,17 @@ p{
 	
 }
 
-#scroll_table thead{
+.scroll_table thead{
 	display: flex;
 }
             
-
-#scroll_table1{
+.scroll_table1{
 	position: relative ;
 }
             
-#scroll_table td,th {
+.scroll_table td,th {
 	max-width: 150px;
-	text-align: center;
+	
 }
 
 thead{
@@ -89,15 +88,17 @@ td{
 	border-bottom:1px solid #fff;
 	border-right:1px solid #fff;
 	padding:1px 1px 0;
-	color:black;
+	color: #0B0B3B;
 	cursor:pointer;
 }
 
 tr:nth-child(odd) {
-	background-color: gainsboro;
+	background-color: #81BEF7;
+	color: white;
 }
 tr:nth-child(even) {
-	background-color:#f2f2f2;
+	background-color:#A9D0F5;
+	color:#0B0B3B;
 }
 
 tr:hover{
@@ -105,27 +106,32 @@ tr:hover{
 }
 
 tr:hover td{
-	color: white;
+	color:blue;
 }
 
 .thid{
 	min-width: 100px;
+	text-align: center;
 }
 
 .thCant{
 	min-width: 80px;
+	text-align: center;
 }
 
 .thText{
 	min-width: 150px;
+	text-align: center;
 }
 
 .thFecha{
 	min-width: 100px;
+	text-align: center;
 }
 
 .thDin{
 	min-width: 120px;
+	text-align: center;
 }
 
 
@@ -176,5 +182,10 @@ button:hover{
             
 .scroll_table2 td,th {
 	max-width: 150px;
-	text-align: center;
+	
+}
+
+.tdDin{
+	min-width: 120px;
+	text-align: right;
 }

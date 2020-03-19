@@ -1,5 +1,17 @@
 var rIndex;
 
+var parseFloatWithCommas = function(val) {
+
+	if (typeof val === 'number') {
+		val = val.toString();
+	}
+	
+	var numberWithCommas = function(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	};
+
+	return numberWithCommas(parseFloat(val.replace(',', '')).toFixed(2));
+};
 
 function checkValuesEmpty(){
 
@@ -72,16 +84,29 @@ function chargeall(){
                             
                             ID.innerHTML = item.codigo;
                             NOMBRE.innerHTML = item.nombre;
-                            CANTIDAD.innerHTML = item.cantidad;
-                            COSTOU.innerHTML = item.precio_compra;
-                            PRECIOV.innerHTML = item.precio_venta;
+							CANTIDAD.innerHTML = item.cantidad;
+							  
+							var i = new Intl.NumberFormat('en-IN', { 
+								style: 'currency', 
+								currency: 'USD' 
+							}).format(item.precio_compra); 
+							COSTOU.innerHTML = i.substring(2)	;
+							var i = new Intl.NumberFormat('en-IN', { 
+								style: 'currency', 
+								currency: 'USD' 
+							}).format(item.precio_compra); 
+							var i = new Intl.NumberFormat('en-IN', { 
+								style: 'currency', 
+								currency: 'USD' 
+							}).format(item.precio_venta); 
+                            PRECIOV.innerHTML = i.substring(2); ;
                             
         
                             ID.className += "thid";
                             NOMBRE.className += "thText";
                             CANTIDAD.className += "thCant";
-                            COSTOU.className += "thDin"; 
-                            PRECIOV.className += "thDin";    
+                            COSTOU.className += "tdDin"; 
+                            PRECIOV.className += "tdDin";    
                             selectedRowToInput();
                         }
 						
@@ -134,13 +159,25 @@ function Cotizar(){
                         ID.innerHTML = document.getElementById("IdProducto").value;
                         CANTIDAD.innerHTML = document.getElementById("CantidadC").value ;
                         NOMBRE.innerHTML = item.nombre;
-						COSTO.innerHTML =  item.precio_compra * parseInt(document.getElementById("CantidadC").value) ;
-						UTILIDAD.innerHTML = parseInt(document.getElementById("CantidadC").value) * (item.precio_venta - item.precio_compra);
+						var monetary_value = item.precio_compra * parseInt(document.getElementById("CantidadC").value) ; 
+						var i = new Intl.NumberFormat('en-IN', { 
+							style: 'currency', 
+							currency: 'USD' 
+						}).format(monetary_value); 
+						COSTO.innerHTML=i.substring(2);
+						var monetary_value = parseInt(document.getElementById("CantidadC").value) * (item.precio_venta - item.precio_compra); 
+						var i = new Intl.NumberFormat('en-IN', { 
+							style: 'currency', 
+							currency: 'USD' 
+						}).format(monetary_value);
+						UTILIDAD.innerHTML = i.substring(2);
                         ID.className += "thid";
 						NOMBRE.className += "thText";
 						CANTIDAD.className += "thCant";
-						COSTO.className += "thDin";
-						UTILIDAD.className += "thDin";
+						COSTO.className += "tdDin";
+						
+						
+						UTILIDAD.className += "tdDin";
                         selectedRowToInput();
                         
 
@@ -152,23 +189,25 @@ function Cotizar(){
                     var tables = document.getElementById("scroll_table3"); 
                     if (tables.rows.length >1) {
                         for (var i = 1; i <= tables.rows.length-1; i++) {
-                            suma = suma + parseFloat(tables.rows[i].cells[3].innerText); 
+                            suma = suma + parseFloat(tables.rows[i].cells[3].innerText.substring(1).replace(',','').replace('.',',')); 
                             console.log(suma);
                         }
                     }else{
                         var tables = document.getElementById("scroll_table3"); 
-                        suma = parseFloat(tables.rows[1].cells[3].innerText) ;
+						suma = parseFloat(tables.rows[1].cells[3].innerText.substring(1).replace(',','').replace('.',',')) ;
+						console.log(parseFloat(tables.rows[1].cells[3].innerText.substring(1).substring(1).replace(',','').replace('.',',')));
 					}
+					
 					Utilidad = 0;
 					var tables = document.getElementById("scroll_table3"); 
                     if (tables.rows.length >1) {
                         for (var i = 1; i <= tables.rows.length-1; i++) {
-                            Utilidad = Utilidad + parseFloat(tables.rows[i].cells[4].innerText); 
+                            Utilidad = Utilidad + parseFloat(  tables.rows[i].cells[4].innerText.substring(1).replace(',','').replace('.',',') ); 
                             console.log(Utilidad);
                         }
                     }else{
                         var tables = document.getElementById("scroll_table3"); 
-                        Utilidad = parseFloat(tables.rows[1].cells[4].innerText) ;
+                        Utilidad = parseFloat(tables.rows[1].cells[4].innerText.substring(1)) ;
                     }
 					
                     document.getElementById("PrecioD").value = suma; 
@@ -177,7 +216,7 @@ function Cotizar(){
                         style: 'currency', 
                         currency: 'USD' 
                     }).format(monetary_value); 
-                    document.getElementById("PrecioD").value = i; 
+                    document.getElementById("PrecioD").value = i.substring(2); 
 
                     document.getElementById("UtilidadD").value = Utilidad; 
                     var monetary_value = document.getElementById("UtilidadD").value; 
@@ -185,7 +224,7 @@ function Cotizar(){
                         style: 'currency', 
                         currency: 'USD' 
                     }).format(monetary_value); 
-                    document.getElementById("UtilidadD").value = i; 
+                    document.getElementById("UtilidadD").value = i.substring(2); 
 
                     document.getElementById("PrecioB").value = suma*75000 ;
                     var monetary_value = document.getElementById("PrecioB").value; 
@@ -193,7 +232,7 @@ function Cotizar(){
                         style: 'currency', 
                         currency: 'BSF' 
                     }).format(monetary_value); 
-                    document.getElementById("PrecioB").value = i;
+                    document.getElementById("PrecioB").value = i.substring(0, i.length-1) ;
 
                     document.getElementById("UtilidadB").value = Utilidad*75000 ;
                     var monetary_value = document.getElementById("UtilidadB").value; 
@@ -201,7 +240,7 @@ function Cotizar(){
                         style: 'currency', 
                         currency: 'BSF' 
                     }).format(monetary_value); 
-                    document.getElementById("UtilidadB").value = i;
+                    document.getElementById("UtilidadB").value = i.substring(0, i.length-1);
 
  
                         
