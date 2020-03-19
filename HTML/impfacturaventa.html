@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../CSS/impresion.css"> 
+        
+    </head>
+    <body >
+
+        <div class="ticket">
+            <table id="productos">
+                <thead>
+                    <tr>
+                        <th class="cantidad">CANT</th>
+                        <th class="producto">PRODUCTO</th>
+                        <th class="precio">$$</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+            <p id="total" class="centrado"></p>
+        </div>
+    </body>
+    <script type="text/javascript" src="../JS/jquery.js" ></script>
+    <script>     
+
+        var qs = decodeURIComponent(window.location.search),
+        qs = qs.substring(1);
+        var datos = qs.split("&"),
+        id =  datos[0],
+        cliente = datos[2],
+        jso = JSON.parse(datos[1]),
+        ci = datos [3];
+        var t=0;
+        console.log(datos);
+
+        var tables = document.getElementById("productos");
+        jso.map( function(articulo, i)  {
+            var newRow = tables.insertRow(tables.length);
+            var Can= newRow.insertCell(0);
+            var Prod= newRow.insertCell(1);
+            var Pre= newRow.insertCell(2);
+            Prod.innerHTML = articulo.nombre;
+            Can.innerHTML = articulo.cantidad;
+            var n1 =  parseInt(articulo.precio_unitario);
+            var n2 = parseInt(articulo.cantidad); 
+            var TRUEn = n1 * n2;
+            t = t + TRUEn;
+            Pre.innerHTML = TRUEn.toString();
+            Prod.className = "producto";
+            Can.className = "cantidad";
+            Pre.className = "precio";
+            
+        });
+        console.log(t);
+        document.getElementById("total").innerHTML = "TOTAL: "+t.toString(); 
+    </script>
+    
+</html>

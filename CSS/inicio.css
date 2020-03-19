@@ -1,0 +1,214 @@
+*{
+	padding: 0;
+	margin: 0;
+	
+}
+
+::-webkit-scrollbar {
+  height: 4px;              
+  width: 4px;              
+  border: 1px solid #d5d5d5;
+
+}
+
+.userdata{
+	display: flex;
+	flex-direction: column;
+	margin-top: 2vh;
+}
+
+.userdata p {
+	margin-top: 10px; 
+	min-width: 150px; 
+	display: flex; 
+	position: relative; 
+	color: white;
+	font-size: 1.1em;
+}
+.block{
+	border: black;
+}
+#prin {
+	display: flex;
+  	flex-direction: column;
+  	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #F0F0F0;
+}
+
+button{
+	font-family: Helvetica, 'sans-serif';
+	position: relative;
+	background-color: #FFB317;
+	border:none;
+	margin-left: 22px;
+	color:white;
+}
+
+button:hover{
+	background-color: gray;
+}
+
+
+#bandiv{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+}
+
+#banner{
+	height: 100px;
+	width: 100%;
+	flex-direction: row;
+	display: flex;
+	background-color: #131A22;
+}
+
+#central{
+	height: 100%;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	background-color:silver;
+}
+
+object {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#buscador{
+	display: flex;
+	flex-direction: row;
+	min-width: 300px;
+	max-width: 300px;
+	height: 111px;
+}
+
+
+
+button.bbuscar{
+	height: 37px;
+	width: 40px;
+	background-color: gray;
+	color: white;
+	position: relative;
+	align-items: center;
+	margin-top: 32px;
+	border-radius: 0px;
+	font-size: 20px;
+	cursor: pointer;
+	border-bottom: 2px solid white;
+  
+}
+
+
+button.bbuscar:focus{
+	outline: none;
+	border: none;
+	background-color:gray;
+	color:black;
+	border-bottom: 2px solid white;
+}
+
+.dropdown-content input.buscar{
+	position: relative;
+	min-width:  200px;
+	max-width:  250px;
+	min-height: 35px;
+	max-height: 35px;
+	border-style: none;
+	font-size: 20px;
+	border: none;
+	border-bottom: 2px solid gray;
+	font-family: "Font Awesome 5 Free", "";
+}
+input:focus {
+	outline: none;
+	border: none;
+	background-color: gray;
+	color: white;
+	border-bottom: 2px solid white;
+	
+  }
+
+.dropdown-content {
+	display: flex;
+	flex-direction: column ;
+	position: absolute;
+	background-color: #f6f6f6;
+	min-width: 200px;
+	max-width: 300px;
+	max-height: 200px;
+	margin-left: 62px;
+	align-items: center;
+	margin-top: 32px;
+	overflow-y: scroll;
+	overflow-x: none;
+	z-index: 1;
+}
+
+
+.dropdown-content .Aelemente {
+	color: black;
+	display: flex;
+	width: 90%;
+	text-decoration: none;
+	position: relative;
+	font-size: 18px;
+	margin-top: 4px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #FF9900;
+}
+
+.dropdown-content .Aelemente:hover {
+	background-color: #FF9900;
+	border-bottom: 1px solid gray;
+	color: white ;
+}
+
+.dropdown-content a .dato2 {
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 12px;
+}
+.Cantidad{
+	position: relative;
+	min-width:  100px;
+	max-width:  200px;
+	min-height: 25px;
+	max-height: 25px;
+	border-style: none;
+	font-size: 20px;
+	border: none;
+	border-bottom: 2px solid gray;
+	font-family: "Font Awesome 5 Free", "";
+}
+
+.save {
+	border: 2px solid white; 
+	background-color: grey; 
+	border-radius: 24px; 
+	min-width: 48px;
+	max-width: 48px;
+	min-height: 48px;
+	max-height: 48px;
+	cursor: pointer;
+	outline: none;
+}
+
+.save:active {
+	outline: none;
+	border: none;
+}
+.Cantidad:disabled {
+	background-color: white;
+}

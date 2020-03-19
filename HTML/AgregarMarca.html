@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> </title>
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">	
+	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+		
+</head>
+<body>
+	<section class="gen">
+    <section class="content">
+		<section class="data" >	
+			<section  class="data2" style="width:33%;">  	
+				<section style="display: flex;">
+					<p style="width: 100%; align-items: center;font-size: 28px;">Datos</p>
+				</section>	
+				<div style="display: inline;">
+					ID: <input style="margin-left:90px;" type="text" id="IDMarca" class="Dato">
+				</div>
+				<div style="display: inline;">
+					Nombre:<input style="margin-left:50px;margin-top: 15px;" type="text" id="NombreMarca" class="Dato">
+				</div>
+				
+            </section>
+            <section  class="data2" style="width:43%; align-items: center; margin-top: 10px; ">
+                <section class="titulo">
+                    <p style="font-size: 28px;">Productos asociados</p>
+                </section>
+                <section class="Contabla" style="width: 340px" > 
+                        <table   id="scroll_table"    >
+                            <thead>
+                                <tr>
+                                    <th class="thid">Nombre</th>
+                                    <th class="thText">Cant</th>
+                                    <th class="thCant">Precio</th>
+                                </tr>
+                            </thead>	
+                            <tbody>
+                                <tr></tr>
+                            </tbody>
+                                                    
+                        </table>
+                </section>	
+		</section>
+			<section class="data2">
+				<button id="EditP" onclick="editHtmlTableSelectedRow()" class="edit">Save Edit</button>
+				<button id="DeleteP" onclick="removeHtmlTableSelectedReow()" class="cancelar">Delete</button>
+           </section>
+           
+		</section>
+
+    </section>
+</section>
+
+	<script type="text/javascript" src="../JS/jquery.js" ></script>
+	
+	<script  type="text/javascript">
+        chargeallaso();
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Producto</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+</head>
+<body>
+	<section class="content">
+		<section class="data" >	
+			<section  class="data2" style="width:40%;">  		
+				<section style="display: flex;">
+					<p style="width: 100%; text-align: center; font-size: 28px;">Datos del Producto</p>
+				</section>
+				<div style="display: inline;margin-left: 10px;">
+					ID: <input style="margin-left:90px;" type="text" id="IDProducto" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Nombre:<input style="margin-left:50px;margin-top: 15px;" type="text" id="NombreProducto" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Cantidad:<input style="margin-left:42px;margin-top: 15px;"type="text" id="CantidadP" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Presentacion:<input style="margin-left:10px;margin-top: 15px;"type="text" id="PresentacionP" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Marca:<input style="margin-left:65px;margin-top: 15px;"type="text" id="MarcaP" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;" id="selectboxF">
+					Tipo:<select id="TipoP">
+					<option value="Telefono">Telefono</option>
+					<option value="Otros">Otros</option>
+				</select>
+				</div>
+				
+			</section>
+			<section  class="data2" style="width:40%;align-items: center;">
+				<section style="display: flex;">
+					<p style="font-size: 28px;">Finansas</p>
+				</section>
+				<div style="display: inline;margin-left: 10px;">
+					Precio V:<input style="margin-left:32px;"type="text" id="PrecioV" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Precio C:<input style="margin-left:30px;margin-top: 15px;"type="text" id="PrecioC" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Dolar:<input style="margin-left:55px;margin-top: 15px;"type="text" id="DolarD" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Porcentaje:<input style="margin-left:12px;margin-top: 15px;"type="text" id="PorcentajeD" class="Dato"><br>
+				</div>
+			</section>
+			<section class="data2">
+				<button id="guardarP" class="guardar">Guardar</button>
+				<button id="CancelarP" class="cancelar">Cancelar</button>
+		   </section>
+		</section>
+
+	</section>
+	<script src="../CSS/jquery-3.4.1.js"></script>
+	<script >
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var c = url.searchParams.get("id");
+		console.log(c);
+		try {
+            $.ajax({
+                type: "GET",
+                url: "../PHP/consultasVentas.php?select=buscar&articulo="+c,
+                data: {},
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',                    
+                cache: false,         
+                success: function(response) {                 
+                    $.each(response, function (i, item) {
+                        try {
+							document.getElementById("IDProducto").value  = item.codigo;
+							document.getElementById("NombreProducto").value  = item.nombre;
+							document.getElementById("CantidadP").value  = item.cantidad;
+							document.getElementById("PresentacionP").value  = item.presentacion;
+							document.getElementById("PrecioV").value  = item.precio_venta;
+							document.getElementById("PrecioC").value  = item.precio_compra;
+							document.getElementById("MarcaP").value  = item.idmarca;
+							document.getElementById("selectboxF").value  = item.tipo;
+                        } catch (error) {
+                            console.log(error);
+                        }
+                
+                        });
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                }); 
+        } catch (error) {
+            console.log(error);
+        }
+	</script>
+
+</body>
+
+
+</html>

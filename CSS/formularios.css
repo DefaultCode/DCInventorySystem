@@ -1,0 +1,224 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: Helvetica, 'sans-serif';
+  background-color:silver;
+
+}
+.titulo {
+	height: 5vh;
+}
+
+.titulo p{
+	font-family: Helvetica, 'sans-serif';
+	color: black;
+	font-size: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+section.data {
+	
+	margin-top: 3vh;
+	height: 45vh;
+	width:  100vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+section.data2 {
+	
+	margin-left: 1vh;
+	height: 45vh;
+	display: flex;
+	flex-direction: column;
+}
+
+section label {
+
+	color: black;
+	margin-right: 50px;
+	font-size: 20px;
+	text-align: center;
+}
+
+input{
+	width: 50% !important;
+	background-color:white;
+	border-style: none;
+	font-size: 20px;
+	color: black;
+	text-align: center;
+	margin-top: 10px;
+	border: none;
+  	border-bottom: 2px solid #FF9900;
+}
+input:focus {
+	outline: none;
+	border: none;
+	color: white;
+	background-color: #FF9900;
+	border-bottom: 4px solid gray;
+  }
+
+.Descripcion{
+	max-width: 90% !important;
+	min-width: 90% !important;
+	height: 200px;
+	max-height: 200px;
+	margin-top: 10px;
+	min-height: 100px;
+	border-style: none;
+	font-size: 20px;
+	text-align:start;
+	
+}
+.Descripcion:focus{
+	outline: none;
+	border: none;
+	background-color: #FF9900;
+	border-bottom: 4px solid gray;
+}
+
+#selectboxF{
+	margin-top: 15px ;
+	font-family: Arial;
+	border-style: none;
+	font-size: 20px;
+
+	
+}
+
+#selectboxF select{
+	--radius: 0;
+	margin-left: 75px;
+	--baseFg: black;
+	--baseBg: white;
+	--accentFg: black;
+	--accentBg: #FF9900;
+	width: 50% !important;
+}
+
+#selectboxF select {
+	font-family: Arial;
+	-webkit-appearance: none;
+	appearance: none;
+	color: var(--baseFg);
+	border: none;
+	border-bottom: 2px solid #FF9900;
+	outline: 0;
+	height: 30px;
+	background-color: var(--baseBg);
+	background-image: linear-gradient(var(--baseFg), var(--baseFg)),
+	  linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
+	  linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
+	  linear-gradient(var(--accentBg) 42%, white 42%);
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+	background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+	background-position: right 20px center, right bottom, right bottom, right bottom;   
+  }
+  
+  #selectboxF select:hover {
+	background-color: #FF9900; 
+	color: white;
+	background-image: linear-gradient(#FF9900, #FF9900),
+	  linear-gradient(-135deg, transparent 50%, white 50%),
+	  linear-gradient(-225deg, transparent 50%,white 50%),
+	  linear-gradient(white 42%, #FF9900 42%);
+	
+  }
+  
+  #selectboxF select:active {
+	background-image: linear-gradient(#FF9900, #FF9900),
+	  linear-gradient(-135deg, transparent 50%, white 50%),
+	  linear-gradient(-225deg, transparent 50%, white 50%),
+	  linear-gradient(white 42%, #FF9900 42%);
+	color: white;
+	border-color: gray;
+  }
+
+#selectboxF select option {
+	
+	background-color: #FF9900;
+	color: white;
+}
+
+#selectboxF select option:hover {
+	background-color:  black;
+	color: white;
+}
+
+
+
+
+
+button.guardar{
+	min-width: 77px;
+	min-height: 77px;
+	max-height: 77px;
+	max-width: 77px;
+	background-color: rgb(61, 180, 50);
+	color: white;
+	font-weight: bolder;
+	font-size: 18px;
+	border: none;
+	border-radius: 50px;
+}
+
+button.edit{
+	min-width: 77px;
+	min-height: 77px;
+	max-height: 77px;
+	max-width: 77px;
+	background-color: rgb(50, 111, 180);
+	color: white;
+	font-weight: bolder;
+	font-size: 18px;
+	border: none;
+	border-radius: 50px;
+}
+
+button.cancelar{
+	min-width: 77px;
+	min-height: 77px;
+	max-height: 77px;
+	max-width: 77px;
+	background-color: red;
+	color: white;
+	font-weight: bolder;
+	margin-top: 5px;
+	border: none;
+	border-radius: 44px;
+}
+
+button:focus {
+	outline: none;
+	border: none;
+	border-bottom: 4px solid gray;
+  }
+
+    input::-webkit-calendar-picker-indicator {
+	opacity:0;
+  }
+  
+  input {
+	position:relative;  
+  }
+  
+  input:before {
+	content: "\f073";
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	position:absolute;
+	right:0;
+	top:50%;
+	transform:translateY(-50%);
+  }

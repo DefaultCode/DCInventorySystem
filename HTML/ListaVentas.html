@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- colocar una segunda lista que solo se vea cuando clickeas un row de facturacion
+	que despliege todos los productos asociados a esa factura -->
+	<title> </title>
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+</head>
+<body>
+	<section class="gen"> 
+		<section class="titulo"> 
+			<p>Facturas De Ventas</p>
+		</section>
+		<section  class="Contabla" style="width: 890px"> 
+			<table id="scroll_table"  >
+				<thead>
+					<tr>
+						<th class="thid" >ID</th>
+						<th class="thid" >CLIENTE</th>
+						<th class="thid">USER</th>
+						<th class="thDin">TOTAL</th>
+						<th class="thText">FECHA</th>
+						<th class="thText">HORA</th>
+						<th class="thCant">TIPO</th>
+						<th class="thCant">ESTADO</th>
+					</tr>
+				</thead>	
+				<tbody>
+					<tr>
+					</tr>
+				</tbody>					
+			</table>
+		</section>
+		<section class="titulo"> 
+			<p style="font-size: 28px;">Productos Asociados</p>
+		</section>
+		<section  class="Contabla" style="width:470px;"> 
+			<table id="scroll_table2"  >
+				<thead>
+					<tr>
+						<th class="thid" >PRODUCTO</th>
+						<th class="thDin" >CANT</th>
+						<th class="thDin">PRECIO</th>
+						<th class="thDin">SUB TOTAL</th>
+					</tr>
+				</thead>	
+				<tbody>
+					<tr></tr>
+				</tbody>					
+			</table>
+		</section>
+		<section class="botonera"> 
+			<button id="FacturarV">Facturar</button>
+		</section>
+	</section>
+	<script type="text/javascript" src="../JS/jquery.js" ></script>
+	<script  type="text/javascript" src="../JS/ListControlVentas.js"></script>
+	<script  type="text/javascript">
+		chargeall();
+	</script>
+</body>
+</html>

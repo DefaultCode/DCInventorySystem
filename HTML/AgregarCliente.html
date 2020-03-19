@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> </title>
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+</head>
+<body>
+	<section  class="gen">
+        <section class="content">
+            <section class="data" >	
+                <section class="data2" style="width:33%;" >
+                    <section style="display: flex;">
+                        <p style="width: 100%; align-items: center;font-size: 28px;">Datos</p>
+                    </section>
+                    <div style="display: inline;margin-left: 10px;">
+                        ID: <input style="margin-left:65px;" type="text" id="IDCliente" class="Dato">
+                    </div>
+    
+                    <div style="display: inline;margin-left: 10px;">
+                        Nombre: <input style="margin-left:20px;margin-top: 15px;" type="text" id="NombreCliente" class="Dato">
+                    </div>
+                    <div style="display: inline;margin-left: 10px;">
+                        Apellido: <input style="margin-left:20px;margin-top: 15px;" type="text" id="ApellidoCliente" class="Dato">
+                    </div>
+                    <div style="display: inline;margin-left: 10px;">
+                        Telefono: <input style="margin-left:17px;margin-top: 15px;" type="text" id="TelefonoCliente" class="Dato">
+                    </div>
+                    <div style="display: inline;margin-left: 10px;">
+                        Direccion: <input style="margin-left:10px;margin-top: 15px;" type="text" id="DireccionCliente" class="Dato">
+                    </div>
+    
+                </section>
+                <section class="data2"  style="width:50%;align-items: center;"  >
+                    <section class="titulo" > 
+                        <p style="font-size: 28px;">Ultimas Transacciones</p>
+                    </section>
+                    <section  class="Contabla" style="width:470px;"> 
+                        <table id="scroll_table2"  >
+                            <thead>
+                                <tr>
+                                    <th class="thid" >Factura</th>
+                                    <th class="thDin">Costo</th>
+                                    <th class="thDin">Fecha</th>
+                                    <th class="thDin">Productos</th>
+                                </tr>
+                            </thead>	
+                            <tbody>
+                                <tr>
+                                    <td class="thid">XXXXX</td>
+                                    <td class="thDin">1000000</td>
+                                    <td class="thDin">/xx/xx/xxxx</td> 
+                                    <td class="thDin">
+                                        <div style="display: inline;">
+                                            <select style="width: 110px;font-size: 14px;" id="Productos">
+                                                <option style="font-size: 14px;" value=""> No:Harina|Ca:100</option>
+                                                <option style="font-size: 14px;" value=""> No:PAN|Ca:80 </option>
+                                                <option style="font-size: 14px;" value=""> No:Galleta|Ca:40</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>					
+                        </table>
+                    </section>
+               </section>
+                <section class="data2"  style="width:10%;margin-left: 10px;"  >
+                    <button id="EditP" onclick="editHtmlTableSelectedRow()" class="edit">Save Edit</button>
+                    <button id="DeleteP" onclick="removeHtmlTableSelectedReow()" class="cancelar">Delete</button>
+               </section>
+            </section>        
+		</section>
+
+	</section  >
+	<script type="text/javascript" src="../JS/jquery.js" ></script>
+	<script  type="text/javascript" src="../JS/ListControlComprador.js"></script>
+	<script  type="text/javascript">
+    chargeall();
+	</script>
+</body>
+</html>

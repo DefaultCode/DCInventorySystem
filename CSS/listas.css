@@ -1,0 +1,178 @@
+
+::-webkit-scrollbar {
+	height: 4px;              
+	width: 4px;              
+	border: 1px solid black;
+	background-color: white;
+		
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+.gen{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+
+}
+
+p{
+	font-size: 1.8em;
+	text-align: center;
+}
+
+.Contabla{
+	margin-top: 10px;
+	display: block;
+	align-items: center;
+	overflow-y: scroll;
+	overflow-x: scroll;
+
+}
+
+#scroll_table {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	max-height:30vh;
+	
+}
+
+#scroll_table thead{
+	display: flex;
+}
+            
+
+#scroll_table1{
+	position: relative ;
+}
+            
+#scroll_table td,th {
+	max-width: 150px;
+	text-align: center;
+}
+
+thead{
+	position: fixed;
+	margin-top: -30px;
+
+}
+
+tbody{
+	margin-top: 10px;
+}
+th{
+	position: relative;
+	font-family:Times; 
+	color:black; 
+	height: 25px;
+	font-size:12pt;
+	text-align: center;
+	border-bottom:1px solid #fff;
+	border-right:1px solid #fff;
+	border-left:1px solid #fff;
+	color:#fff;
+	padding:1px 1px 0;
+	background-color:#2F354D; 
+	
+}
+td{	
+	
+	display: table-cell;
+	font-family:Times;
+	color:black; 
+	font-size:11pt;
+	border-bottom:1px solid #fff;
+	border-right:1px solid #fff;
+	padding:1px 1px 0;
+	color:black;
+	cursor:pointer;
+}
+
+tr:nth-child(odd) {
+	background-color: gainsboro;
+}
+tr:nth-child(even) {
+	background-color:#f2f2f2;
+}
+
+tr:hover{
+	background-color: #ACD5F6;	
+}
+
+tr:hover td{
+	color: white;
+}
+
+.thid{
+	min-width: 100px;
+}
+
+.thCant{
+	min-width: 80px;
+}
+
+.thText{
+	min-width: 150px;
+}
+
+.thFecha{
+	min-width: 100px;
+}
+
+.thDin{
+	min-width: 120px;
+}
+
+
+
+
+section.botonera{
+	height: 10vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+button{
+	float: right;
+	font-family: Helvetica, 'sans-serif';
+	position: relative;
+	margin-top: 5px;
+	margin-right: 10px;
+	padding: 3px;
+	background-color: #FFB346;
+	border:none;
+	color:white;
+	font-size: 1.2em;
+}
+
+button:hover{
+	background-color: #FF9600;
+}
+
+#scroll_table2 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	max-height:30vh;
+}
+#scroll_table2 thead{
+	display:flex;
+}
+            
+#scroll_table2 tbody{
+
+	display:block;
+}
+            
+#scroll_table2 td,th {
+	max-width: 150px;
+	text-align: center;
+}

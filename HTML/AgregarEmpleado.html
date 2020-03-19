@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> </title>
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+</head>
+<body>
+	<section  class="gen"> 
+		<section class="content">
+			<section class="data" >	
+				<section class="data2" style="width:35%;" >
+					<section style="display: flex;">
+						<p style="width: 50%; align-items: center;font-size: 28px;">Datos</p>
+					</section>
+					<div style="display: inline;">
+						Cedula: <input style="margin-left:22px;" type="text" id="IDEmpleado" class="Dato">
+					</div>
+					<div style="display: inline;">
+						Nombre:<input style="margin-left:20px;margin-top: 15px;" type="text" id="NombreEmpleado" class="Dato">
+					</div>
+					<div style="display: inline;">
+						Password:<input style="margin-left:5px;margin-top: 15px;" type="text" id="PasswordEmpleado" class="Dato">
+					</div>
+					<div style="display: inline;">
+						Rol:<input style="margin-left:57px;margin-top: 15px;" type="text" id="RolEmpleado" class="Dato">
+					</div>
+				</section>
+				<section class="data2" style="width:50%;align-items: center;" >
+				<section class="titulo"> 
+					<p style="font-size: 28px;" >Acciones</p>
+				</section>
+				<section class="Contabla" style="width: 450px" > 
+					<table   id="scroll_table2"    >
+						<thead>
+							<tr>
+								<th class="thText">Fecha</th>
+								<th class="thText">Hora</th>
+								<th class="thText">Tipo Accion</th>	
+							</tr>
+						</thead>	
+						<tbody>
+							<tr>
+								<td class="thText" >XX/XX/XXXX</td>
+								<td class="thText" >00:00:00 </td>
+								<td class="thText" >Loged</td>
+							</tr>
+							<tr>
+								<td class="thText" >XX/XX/XXXX</td>
+								<td class="thText" >00:00:00 </td>
+								<td class="thText" >Venta</td>
+							</tr>							
+							<tr>
+								<td class="thText" >XX/XX/XXXX</td>
+								<td class="thText" >00:00:00 </td>
+								<td class="thText" >Compra</td>
+							</tr>
+							<tr>
+								<td class="thText" >XX/XX/XXXX</td>
+								<td class="thText" >00:00:00 </td>
+								<td class="thText" >Traslado</td>
+							</tr>
+						</tbody>
+												
+					</table>
+			</section>	
+			</section>
+			<section class="data2" style="margin-left: 10px;align-items: center;"> 
+				
+				<button id="EditP" onclick="editHtmlTableSelectedRow()" class="edit">Save Edit</button>
+				<button id="DeleteP" onclick="removeHtmlTableSelectedReow()" class="cancelar">Delete</button>
+			</section>
+		</section>
+		</section>
+
+	</section>
+	<script type="text/javascript" src="../JS/jquery.js" ></script>
+	<script  type="text/javascript">
+    chargeall();
+	</script>
+</body>
+</html>

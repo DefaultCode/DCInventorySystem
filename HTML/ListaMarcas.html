@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> </title>
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">	
+	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+		
+</head>
+<body>
+	<section class="gen">
+	<section class="titulo"> 
+		<p>Marcas</p>
+	</section>
+	<section class="Contabla" style="width: 360px" > 
+			<table   id="scroll_table"    >
+				<thead>
+					<tr>
+						<th class="thid">ID</th>
+						<th class="thText">Nombre</th>
+						<th class="thid">Estado</th>
+					</tr>
+				</thead>	
+				<tbody id="scroll_table1">
+					<tr></tr>
+				</tbody>
+										
+			</table>
+	</section>	
+	<section class="content">
+		<section class="data" >	
+			<section  class="data2" style="width:33%;">  	
+				<section style="display: flex;">
+					<p style="width: 100%; align-items: center;font-size: 28px;">Datos</p>
+				</section>	
+				<div style="display: inline;margin-left: 10px;">
+					ID: <input style="margin-left:90px;" type="text" id="IDMarca" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Nombre:<input style="margin-left:50px;margin-top: 15px;" type="text" id="NombreMarca" class="Dato">
+				</div>
+			</select>		
+			</section>
+			<section  class="data2" style="width:43%; align-items: center; ">
+                <section class="titulo">
+                    <p style="font-size: 28px;">Productos asociados</p>
+                </section>
+                <section class="Contabla" style="width: 340px" > 
+                        <table   id="scroll_table"    >
+                            <thead>
+                                <tr>
+                                    <th class="thid">Nombre</th>
+                                    <th class="thText">Cant</th>
+                                    <th class="thCant">Precio</th>
+                                </tr>
+                            </thead>	
+                            <tbody>
+                                <tr></tr>
+                            </tbody>
+                                                    
+                        </table>
+                </section>	
+			</section>
+			<section class="data2">
+				<button id="guardarP" onclick="addHTMLTableRow()" class="guardar">Guardar</button>
+				<button id="EditP" onclick="editHtmlTableSelectedRow()" class="edit">Save Edit</button>
+				<button id="DeleteP" onclick="removeHtmlTableSelectedReow()" class="cancelar">Delete</button>
+		   </section>
+		</section>
+
+	</section>
+</section>
+	<script type="text/javascript" src="../JS/jquery.js" ></script>
+	<script  type="text/javascript" src="../JS/ListControlMarca.js"></script>
+	<script  type="text/javascript">
+    chargeall();
+	</script>
+
+</body>
+</html>
