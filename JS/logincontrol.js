@@ -13,7 +13,7 @@ function login(){
             cache: false,                       
             success: function(response) {                        
                 $.each(response, function (i, item) {
-                
+                    
                     window.location="../HTML/inicio.html";                    
                 
                 });

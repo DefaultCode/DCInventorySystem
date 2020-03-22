@@ -32,7 +32,7 @@
     function select_marca(){
         include 'dbconection.php';
         $search= $_GET['marca'];
-        $sql = "SELECT * FROM tblmarca WHERE estado = 1 AND ( nombre LIKE ('%$search%'))";
+        $sql = "SELECT * FROM tblmarca WHERE estado = 1 AND ( id LIKE ('%$search%')  OR nombre LIKE ('%$search%'))";
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) > 0) {
                 $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;

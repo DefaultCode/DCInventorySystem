@@ -53,14 +53,14 @@ input{
 	text-align: center;
 	margin-top: 10px;
 	border: none;
-  	border-bottom: 2px solid #FF9900;
+  	border-bottom: 2px solid #2F354D;
 }
 input:focus {
 	outline: none;
 	border: none;
-	color: white;
-	background-color: #FF9900;
-	border-bottom: 4px solid gray;
+	color: #2F354D;
+	background-color: #A9D0F5;
+	border-bottom: 3px solid #2F354D;
   }
 
 .Descripcion{
@@ -73,13 +73,14 @@ input:focus {
 	border-style: none;
 	font-size: 20px;
 	text-align:start;
+	border-bottom: 2px solid #2F354D;
 	
 }
 .Descripcion:focus{
 	outline: none;
 	border: none;
-	background-color: #FF9900;
-	border-bottom: 4px solid gray;
+	background-color: #A9D0F5;
+	border-bottom: 3px solid #2F354D;
 }
 
 #selectboxF{
@@ -97,7 +98,7 @@ input:focus {
 	--baseFg: black;
 	--baseBg: white;
 	--accentFg: black;
-	--accentBg: #FF9900;
+	--accentBg: #2F354D;
 	width: 50% !important;
 }
 
@@ -107,7 +108,7 @@ input:focus {
 	appearance: none;
 	color: var(--baseFg);
 	border: none;
-	border-bottom: 2px solid #FF9900;
+	border-bottom: 2px solid #2F354D;
 	outline: 0;
 	height: 30px;
 	background-color: var(--baseBg);
@@ -121,28 +122,28 @@ input:focus {
   }
   
   #selectboxF select:hover {
-	background-color: #FF9900; 
+	background-color: #A9D0F5; 
 	color: white;
-	background-image: linear-gradient(#FF9900, #FF9900),
+	background-image: linear-gradient(#A9D0F5, #A9D0F5),
 	  linear-gradient(-135deg, transparent 50%, white 50%),
 	  linear-gradient(-225deg, transparent 50%,white 50%),
-	  linear-gradient(white 42%, #FF9900 42%);
+	  linear-gradient(white 42%, #A9D0F5 42%);
 	
   }
   
   #selectboxF select:active {
-	background-image: linear-gradient(#FF9900, #FF9900),
+	background-image: linear-gradient(#A9D0F5, #A9D0F5),
 	  linear-gradient(-135deg, transparent 50%, white 50%),
 	  linear-gradient(-225deg, transparent 50%, white 50%),
-	  linear-gradient(white 42%, #FF9900 42%);
+	  linear-gradient(white 42%, #A9D0F5 42%);
 	color: white;
 	border-color: gray;
   }
 
 #selectboxF select option {
 	
-	background-color: #FF9900;
-	color: white;
+	background-color: #A9D0F5;
+	color:black;
 }
 
 #selectboxF select option:hover {
@@ -150,56 +151,67 @@ input:focus {
 	color: white;
 }
 
-
-
-
-
 button.guardar{
-	min-width: 77px;
-	min-height: 77px;
-	max-height: 77px;
-	max-width: 77px;
+	min-width: 47px;
+	min-height: 47px;
+	max-height: 47px;
+	max-width: 47px;
+	cursor: pointer;
 	background-color: rgb(61, 180, 50);
 	color: white;
 	font-weight: bolder;
 	font-size: 18px;
-	border: none;
+	border: 2px solid #2F354D;
 	border-radius: 50px;
 }
-
+button.guardar:hover{
+	background-color: silver;
+	color: #2F354D;
+}
 button.edit{
-	min-width: 77px;
-	min-height: 77px;
-	max-height: 77px;
-	max-width: 77px;
+	min-width: 47px;
+	min-height: 47px;
+	max-height: 47px;
+	max-width: 47px;
+	cursor: pointer;
 	background-color: rgb(50, 111, 180);
 	color: white;
 	font-weight: bolder;
 	font-size: 18px;
-	border: none;
+	border: 2px solid #2F354D;
 	border-radius: 50px;
+}
+button.edit:hover{
+	background-color: silver;
+	color: #2F354D;
 }
 
 button.cancelar{
-	min-width: 77px;
-	min-height: 77px;
-	max-height: 77px;
-	max-width: 77px;
+	min-width: 47px;
+	min-height: 47px;
+	max-height: 47px;
+	max-width: 47px;
+	cursor: pointer;
 	background-color: red;
 	color: white;
 	font-weight: bolder;
 	margin-top: 5px;
-	border: none;
 	border-radius: 44px;
+	border: 2px solid #2F354D;
+	
+}
+button.cancelar:hover{
+	background-color: silver;
+	color: #2F354D;
 }
 
 button:focus {
 	outline: none;
 	border: none;
-	border-bottom: 4px solid gray;
+	border-bottom: 2px solid #2F354D;
   }
 
-    input::-webkit-calendar-picker-indicator {
+input::-webkit-calendar-picker-indicator {
 	opacity:0;
   }
   

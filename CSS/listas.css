@@ -90,7 +90,7 @@ td{
 	padding:1px 1px 0;
 	color: #0B0B3B;
 	cursor:pointer;
-}
+}	
 
 tr:nth-child(odd) {
 	background-color: #81BEF7;
@@ -134,9 +134,6 @@ tr:hover td{
 	text-align: center;
 }
 
-
-
-
 section.botonera{
 	height: 10vh;
 	display: flex;
@@ -158,9 +155,7 @@ button{
 	font-size: 1.2em;
 }
 
-button:hover{
-	background-color: #FF9600;
-}
+
 
 .scroll_table2 {
 	display: block;

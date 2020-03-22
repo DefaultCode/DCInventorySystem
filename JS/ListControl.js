@@ -17,12 +17,13 @@ function checkValuesEmpty(){
 		alert("ID Cannot be empty");
 		empty=true;
 	}
-	if (NOMBREF==="") {
+	if (NOMBREF=== "") {
 		alert("Nombre Producto Cannot be empty");
 		empty=true;
 	}
-	if (CANTIDADF==="") {
-		alert("Cantidad Cannot be empty");
+	if (parseInt(CANTIDADF)<=1) {
+		alert("Porfavor inserte almenos 1 producto");
+		document.getElementById("CantidadP").style.backgroundColor = "red";
 		empty=true;
 	}
 	if (PRESENTACIONF==="") {
@@ -78,9 +79,34 @@ function chargeall(){
 						CANTIDAD.innerHTML = item.cantidad;
 						PRESENTACION.innerHTML = item.presentacion;
 						PRECIOV.innerHTML = item.precio_venta;
-						PRECIOC.innerHTML = item.precio_compra;
-						MARCA.innerHTML = item.idmarca ;
-						TIPO.innerHTML =item.tipo;
+						PRECIOC.innerHTML = item.precio_compra;	
+							try {
+								$.ajax({
+									type: "GET",
+									url: "../PHP/consultasmarca.php?select=select_marca",
+									data: {
+										marca : item.idmarca,
+									},
+									contentType: "application/json; charset=utf-8",
+									dataType: 'json',                    
+									cache: false,                       
+									success: function(response) {                        
+										$.each(response, function (i, item) {
+											MARCA.innerHTML = item.nombre ;						
+										});
+									},
+									error: function (e) {
+										 
+									}
+								}); 
+							} catch (error) {
+								console.log(error);
+							}
+						if (item.tipo==1) {
+							TIPO.innerHTML ="Telefono";
+						} else {
+							TIPO.innerHTML	="Otros";
+						}
 						
 	
 						ID.className += "thid";
@@ -132,7 +158,7 @@ function addHTMLTableRow(){
 	MARCAF = document.getElementById("MarcaP").value,
 	TIPOF = document.getElementById("TipoP").value;
 	if (TIPOF == "Telefono") {
-	TIPOF = 1;
+		TIPOF = 1;
 	} 
 	else{
 		TIPOF = 0;	
@@ -193,6 +219,13 @@ function selectedRowToInput(){
 			document.getElementById("PrecioC").value= this.cells[5].innerHTML;
 			document.getElementById("MarcaP").value= this.cells[6].innerHTML;
 			document.getElementById("TipoP").value= this.cells[7].innerHTML;
+			document.getElementById("Dolar").style.visibility = "visible"  ;
+			document.getElementById("DolarD").value= parseInt(this.cells[4].innerHTML)*75000;
+			document.getElementById("Porcentaje").style.visibility = "visible"  ;
+			document.getElementById("PorcentajeD").value= ((parseFloat(this.cells[4].innerHTML) - parseFloat(this.cells[5].innerHTML))/parseFloat(this.cells[5].innerHTML))*100;
+			// para verificar que el porcentaje esta correcta console.log( (((parseFloat(this.cells[4].innerHTML) - parseFloat(this.cells[5].innerHTML))/parseFloat(this.cells[5].innerHTML))) * parseFloat(this.cells[5].innerHTML )			
+			document.getElementById("Aumento").style.visibility = "visible"  ;
+			document.getElementById("AumentoN").value = (((parseFloat(this.cells[4].innerHTML) - parseFloat(this.cells[5].innerHTML))/parseFloat(this.cells[5].innerHTML)) * parseFloat(this.cells[5].innerHTML) );
 			document.getElementById("guardarP").disabled = true;
 		};
 	}
@@ -212,12 +245,12 @@ function editHtmlTableSelectedRow(){
 		PRECIOCF = document.getElementById("PrecioC").value,
 		MARCAF = document.getElementById("MarcaP").value,
 		TIPOF = document.getElementById("TipoP").value;
-	if (TIPOF == "Telefono") {
-	TIPOF = 1;
-	} 
-	else{
-		TIPOF = 0;	
-	}
+		if (TIPOF == "Telefono") {
+			TIPOF = 1;
+		} 
+		else{
+			TIPOF = 0;	
+		}
 		DESCRIPCIONF = document.getElementById("DescripcionP").value;
 		try {
 			$.ajax({

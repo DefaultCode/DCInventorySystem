@@ -11,6 +11,7 @@
 	<title>Bienvenido a Virus System</title>
 </head>
 <body>
+
 	<section id="prin">
 		<section id="bandiv">
 			<section id="banner" class="banner" >
@@ -18,8 +19,8 @@
 				<img style=" margin-left: 0.5vw; display: flex;position: relative;height: 100px; width: 200px; "  src="../IMG/LogoVirusSystem.png" alt="">				
 				
 				<section class="userdata" >
-					<p>User: Rada</p>
-					<p style="margin-left: 2px;" >Roll: Administrador</p>
+					<p id="UserName">User: Rada</p>
+					<p id="UserRole" style="margin-left: 2px;" >Roll: Administrador</p>
 				</section>
 				
 				<section id="buscador">
@@ -62,7 +63,7 @@
 							<li id="liPago"><a href="javascript:mostrarPa()"><i class="fas fa-file-invoice-dollar" style="margin-top: 10px; margin-left: 25px; font-size:2.0em;"></i><p style="font-size:0.7em;">Pagos</p></a></li>
 							<li id="liVen"><a href="javascript:mostrarV()"><i class="fas fa-dollar-sign" style="margin-top: 10px; margin-left: 25px; font-size:2.0em;" ></i><p style="font-size:0.7em;">Ventas</p> </a></li>
 							<li id="liEmp"><a href="javascript:mostrarEm()"> <i class="fas fa-id-card-alt" style="margin-top: 10px; margin-left: 18px; font-size:2.0em;" ></i> <p style="font-size:0.7em;">Empleado</p></a></li>
-							<li><a id="salir" href="#"><i class="fas fa-door-open" style="margin-top: 10px; margin-left: 15px; font-size:2.0em;" ></i><p style="font-size:0.7em;">Salir</p></a></li>
+							<li><a id="salir" href="javascript:CerrarSession()"><i class="fas fa-door-open" style="margin-top: 10px; margin-left: 15px; font-size:2.0em;" ></i><p style="font-size:0.7em;">Salir</p></a></li>
 						</ul>
 
 					</nav>
@@ -175,7 +176,7 @@
 							</section>
 							<section style="width: 100%;  display: flex; flex-direction: row; margin-top: 10px; ">
 								<button onclick="" class="save" style="margin-left: 30px;" ><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-save"></i></button>
-								<button onclick="" class="save" ><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-broom"></i></button>	
+								<button onclick="" class="save" ><i  style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-broom"></i></button>	
 								<button onclick="" class="save" ><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-print"></i></button>
 							</section>
 						</section>
@@ -194,12 +195,14 @@
 	<script defer src="../CSS/all.js"></script>
 	<script src="../JS/controlsearchdrop.js"></script>
 	<script src="../JS/ControlCotiza.js"></script>
+	<script src="../JS/sessionscontrol.js"></script>
 	<script  type="text/javascript">
 		chargeall();
-	
-             
-	</script>
+		
+		VerificarSession();
 
+		         
+	</script>
 	
 </body>
 
