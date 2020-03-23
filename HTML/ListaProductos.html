@@ -4,7 +4,7 @@
 	<title> </title>
 	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">	
 	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		
 </head>
 <body>
@@ -52,11 +52,12 @@
 				<div style="display: inline;margin-left: 10px;">
 					Presentacion:<input style="margin-left:10px;margin-top: 15px;"type="text" id="PresentacionP" class="Dato">
 				</div>
-				<div style="display: inline;margin-left: 10px;">
-					Marca:<input style="margin-left:65px;margin-top: 15px;"type="text" id="MarcaP" class="Dato">
+				<div style="display: inline;margin-left: 10px;" class="selectboxF">
+					Marca: <select style="margin-left: 53px;" id="MarcaP">
+					</select>
 				</div>
-				<div style="display: inline;margin-left: 10px;" id="selectboxF">
-					Tipo:<select id="TipoP">
+				<div style="display: inline;margin-left: 10px;" class="selectboxF">
+					Tipo:<select style="margin-left: 75px;" id="TipoP">
 					<option value="Telefono">Telefono</option>
 					<option value="Otros">Otros</option>
 				</select>
@@ -65,27 +66,27 @@
 			</section>
 			<section  class="data2" style="width:33%;align-items: center;">
 				<section style="display: flex;">
-					<p style="font-size: 28px;">Finansas</p>
+					<p style="font-size: 28px;">Finanzas</p>
 				</section>
 				<div style="display: inline;margin-left: 10px;">
-					Precio V:<input min="0.01" step="0.01" style="margin-left:32px;"type="number" id="PrecioV" class="Dato">
+					Precio V:<input min="0.01" step="0.01" style="margin-left:52px;"type="number" id="PrecioV" class="Dato">
 				</div>
 				<div style="display: inline;margin-left: 10px;">	
-					Precio C:<input  min="0.01" step="0.01" style="margin-left:30px;margin-top: 15px;"type="number" id="PrecioC" class="Dato">
+					Precio C:<input  min="0.01" step="0.01" style="margin-left:52px;margin-top: 15px;"type="number" id="PrecioC" class="Dato">
 				</div>
 				<div id="Dolar" style="visibility:hidden; display: inline ;margin-left: 10px;">
-					Bolivares:<input style="margin-left:55px;margin-top: 15px;"type="number"  id="DolarD" class="Dato" disabled>
+					Bolivares:<input style="margin-left:46px;margin-top: 15px;"type="number"  id="DolarD" class="Dato" disabled>
 				</div>
 				<div id="Porcentaje" style="visibility:hidden;display: inline;margin-left: 10px;">
-					% Aumento:<input style="margin-left:12px;margin-top: 15px;" type="number" id="PorcentajeD" class="Dato"  disabled><br>
+					% Aumento:<input style="margin-left:28px;margin-top: 15px;" type="number" id="PorcentajeD" class="Dato"  disabled><br>
 				</div>
 				<div id="Aumento" style="visibility:hidden;display: inline;margin-left: 10px;">
-					Aumento Neto:<input style="margin-left:2px;margin-top: 15px;" type="number" id="AumentoN" class="Dato"  disabled><br>
+					Aumento Neto:<input style="margin-left:5px;margin-top: 15px;" type="number" id="AumentoN" class="Dato"  disabled><br>
 				</div>
 			</section>
 			<section class="data2"  style="width:33%;align-items: center;">
 				<section style="display: flex; ">
-					<p style="font-size: 28px;">Descripcion</p>
+					<p style="font-size: 28px;">Descripción</p>
 				</section>
 				<textarea type="text" id="DescripcionP" class="Descripcion"></textarea>
 			</section>
@@ -100,10 +101,14 @@
 </section>
 	<script type="text/javascript" src="../JS/jquery.js" ></script>
 	<script  type="text/javascript" src="../JS/ListControl.js"></script>
+	<script src="../JS/sessionscontrol.js"></script>
+	<script defer src="../CSS/all.js"></script>
 	<script  type="text/javascript">
+		VerificarSessionOtherViews()
 		chargeall();
 	</script>
-	<script defer src="../CSS/all.js"></script>
+	
+	
 
 </body>
 </html>

@@ -146,6 +146,82 @@ function selectedRowToInput(){
 			document.getElementById("DireccionCliente").value= this.cells[3].innerHTML;
 			document.getElementById("TelefonoCliente").value= this.cells[4].innerHTML;
 			document.getElementById("guardarP").disabled = true;
+			var tables2 = document.getElementById("scroll_table3");
+			while(tables2.rows.length > 2) {
+				tables2.deleteRow(2);
+			}
+			try {
+				$.ajax({
+					type: "GET",
+					url: "../PHP/consultasfacturaventa.php?select=getallfvC",
+					data: {
+						idCliente : this.cells[0].innerHTML ,
+					},
+					contentType: "application/json; charset=utf-8",
+					dataType: 'json',                    
+					cache: false,                       
+					success: function(response) {                        
+						$.each(response, function (i, item) {
+							try {
+								
+								var tables = document.getElementById("scroll_table3");
+								var newRow = tables.insertRow(tables.length);
+								var ID= newRow.insertCell(0);
+								var TOTAL= newRow.insertCell(1);
+								var FECHA= newRow.insertCell(2);
+								var PRODUCTOS= newRow.insertCell(3);			
+								
+								ID.innerHTML = item.id;
+								TOTAL.innerHTML = item.total;
+								FECHA.innerHTML = item.fechaemision;
+								try {
+									$.ajax({
+										type: "GET",
+										url: "../PHP/consultasfacturaventa.php?select=getallav",
+										data: {
+											idfacturaventa: item.id,
+										},
+										contentType: "application/json; charset=utf-8",
+										dataType: 'json',                    
+										cache: false,                       
+										success: function(response) {
+											var opciones ="";					
+											$.each(response, function (i, item) {
+												opciones = opciones + "<option style='font-size: 14px;'> Cant: "+item.cantidad+" | "+item.nombre+"</option>";
+											});
+											PRODUCTOS.innerHTML = "<div class='selectboxT'><select style='width: 120px;font-size: 14px;' >"+opciones+"</select></div>" ;
+										},
+										error: function (e) {
+											PRODUCTOS.innerHTML ="no tiene productos";			 
+										}
+									}); 
+								} catch (error) {
+									console.log(error);
+								}
+								
+								
+								ID.className += "thid";
+								TOTAL.className += "thDin";
+								FECHA.className += "thText";
+								PRODUCTOS.className += "tdselec";
+								
+								
+								selectedRowToInput();
+							} catch (error) {
+								console.log(error);
+							}
+					
+							});
+						},
+						error: function (e) {
+							console.log(e);
+						}
+					}); 
+			} catch (error) {
+				console.log(error);
+			}
+		
+
 		};
 	}
 

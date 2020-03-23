@@ -9,6 +9,9 @@ switch ($consultaG) {
         case "buscar":
             select_art();
             break;
+        case "get_art_marca":
+            select_art_marca();
+            break;    
         case "getall":
             get_all();
             break;  
@@ -36,6 +39,19 @@ switch ($consultaG) {
         }
             
     } 
+    
+    function select_art_marca(){
+        include 'dbconection.php';
+        $search= $_GET['idmarca'];
+        $sql = "SELECT * FROM tblinventario WHERE estado = 1 AND (idmarca LIKE ('%$search%') )";
+        $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+                $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
+                echo json_encode($data);
+        }
+            
+    } 
+
     function get_all(){
         include 'dbconection.php';
         $sql = "SELECT * FROM tblinventario WHERE estado = 1";

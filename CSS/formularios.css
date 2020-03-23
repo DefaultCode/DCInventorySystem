@@ -83,7 +83,7 @@ input:focus {
 	border-bottom: 3px solid #2F354D;
 }
 
-#selectboxF{
+.selectboxF{
 	margin-top: 15px ;
 	font-family: Arial;
 	border-style: none;
@@ -92,9 +92,9 @@ input:focus {
 	
 }
 
-#selectboxF select{
+.selectboxF select{
 	--radius: 0;
-	margin-left: 75px;
+	
 	--baseFg: black;
 	--baseBg: white;
 	--accentFg: black;
@@ -102,7 +102,7 @@ input:focus {
 	width: 50% !important;
 }
 
-#selectboxF select {
+.selectboxF select {
 	font-family: Arial;
 	-webkit-appearance: none;
 	appearance: none;
@@ -121,7 +121,7 @@ input:focus {
 	background-position: right 20px center, right bottom, right bottom, right bottom;   
   }
   
-  #selectboxF select:hover {
+.selectboxF select:hover {
 	background-color: #A9D0F5; 
 	color: white;
 	background-image: linear-gradient(#A9D0F5, #A9D0F5),
@@ -131,7 +131,7 @@ input:focus {
 	
   }
   
-  #selectboxF select:active {
+.selectboxF select:active {
 	background-image: linear-gradient(#A9D0F5, #A9D0F5),
 	  linear-gradient(-135deg, transparent 50%, white 50%),
 	  linear-gradient(-225deg, transparent 50%, white 50%),
@@ -140,7 +140,7 @@ input:focus {
 	border-color: gray;
   }
 
-#selectboxF select option {
+.selectboxF select option {
 	
 	background-color: #A9D0F5;
 	color:black;

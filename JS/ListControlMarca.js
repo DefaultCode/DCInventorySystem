@@ -39,7 +39,12 @@ function chargeall(){
 						
 						ID.innerHTML = item.id;
 						NOMBRE.innerHTML = item.nombre;
-						ESTADO.innerHTML = item.estado;
+						if (item.estado == 1 ) {
+							ESTADO.innerHTML = "Activo" ;	
+						} else {
+							ESTADO.innerHTML = "DesActivo"
+						}
+						
 												
 	
 						ID.className += "thid";
@@ -109,9 +114,59 @@ function selectedRowToInput(){
 	for (var i = 0; i <= tables.rows.length-1; i++) {
 		tables.rows[i].onclick = function(){
 			rIndex=this.rowIndex;
+			IDM = this.cells[0].innerHTML;
 			document.getElementById("IDMarca").value= this.cells[0].innerHTML;
 			document.getElementById("NombreMarca").value= this.cells[1].innerHTML;
 			document.getElementById("guardarP").disabled = true;
+			var tables2 = document.getElementById("scroll_table3");
+			while(tables2.rows.length > 1) {
+				tables2.deleteRow(1);
+			}
+			try {
+				$.ajax({
+					type: "GET",
+					url: "../PHP/consultasVentas.php?select=get_art_marca&idmarca="+IDM,
+					data: {},
+					contentType: "application/json; charset=utf-8",
+					dataType: 'json',                    
+					cache: false,                       
+					success: function(response) { 
+						$.each(response, function (i, item) {
+							try {
+								
+								var tables = document.getElementById("scroll_table3");
+								var newRow = tables.insertRow(tables.length);
+								var ID= newRow.insertCell(0);
+								var CANT= newRow.insertCell(1);
+								var PRECIOV= newRow.insertCell(2);
+													
+								
+								ID.innerHTML = item.nombre;
+								CANT.innerHTML = item.cantidad;
+								PRECIOV.innerHTML = item.precio_venta;
+														
+			
+								ID.className += "thid";
+								CANT.className += "thCant";
+								PRECIOV.className += "thDin";
+								
+								selectedRowToInput();
+							} catch (error) {
+								console.log(error);
+							}
+					
+							});
+					},
+					error: function (e) {
+						console.log(e);
+							
+						
+					}
+					
+				}); 
+			} catch (error) {
+				console.log(error);
+			}
 		};
 	}
 

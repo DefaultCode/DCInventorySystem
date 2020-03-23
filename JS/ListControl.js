@@ -133,6 +133,37 @@ function chargeall(){
 		console.log(error);
 	}
 
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasmarca.php?select=getall",
+			data: {
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {
+				                        
+				$.each(response, function (i, item) {
+					var select = document.getElementById("MarcaP");	
+					var opciones = document.createElement("option");
+					opciones.text =  item.nombre;
+					opciones.value = item.nombre;
+					opciones.title = item.id; 
+					select.add(opciones);
+					
+				});
+
+			},
+			error: function (e) {
+								 
+			}
+		}); 
+	} catch (error) {
+		console.log(error);
+	}
+						
+
 }
 
 
@@ -179,6 +210,7 @@ function addHTMLTableRow(){
 			error: function (e) {
 				console.log(e);
 				if (e.status==200) {
+					
 					ID.innerHTML = IDF;
 					NOMBRE.innerHTML = NOMBREF;
 					CANTIDAD.innerHTML = CANTIDADF;
@@ -187,6 +219,16 @@ function addHTMLTableRow(){
 					PRECIOC.innerHTML = PRECIOCF;
 					MARCA.innerHTML = MARCAF;
 					TIPO.innerHTML = TIPOF;
+
+					ID.className += "thid";
+					NOMBRE.className += "thText";
+					CANTIDAD.className += "thCant";
+					PRESENTACION.className += "thText";
+					PRECIOV.className += "thDin";
+					PRECIOC.className += "thDin";
+					MARCA.className += "thDin";
+					TIPO.className += "thCant";
+
 					alert("producto agregado");	   
 				} else if (e.status==201) {
 					alert("producto error");
@@ -218,6 +260,7 @@ function selectedRowToInput(){
 			document.getElementById("PrecioV").value= this.cells[4].innerHTML;
 			document.getElementById("PrecioC").value= this.cells[5].innerHTML;
 			document.getElementById("MarcaP").value= this.cells[6].innerHTML;
+			console.log(this.cells[6].innerHTML);
 			document.getElementById("TipoP").value= this.cells[7].innerHTML;
 			document.getElementById("Dolar").style.visibility = "visible"  ;
 			document.getElementById("DolarD").value= parseInt(this.cells[4].innerHTML)*75000;
@@ -285,6 +328,7 @@ function editHtmlTableSelectedRow(){
 						tables.rows[rIndex].cells[5].innerHTML = PRECIOCF;
 						tables.rows[rIndex].cells[6].innerHTML = MARCAF;
 						tables.rows[rIndex].cells[7].innerHTML = TIPOF;
+
 
 						document.getElementById("IDProducto").value="";
 						document.getElementById("NombreProducto").value="";

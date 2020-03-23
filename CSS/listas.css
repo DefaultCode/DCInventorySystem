@@ -184,3 +184,79 @@ button{
 	min-width: 120px;
 	text-align: right;
 }
+
+.selectboxT{
+	margin-top: 2px ;
+	margin-bottom: 2px ;
+	margin-left: 2px ;
+	font-family: Arial;
+	border-style: none;
+	font-size: 20px;
+
+	
+}
+
+.selectboxT select{
+	--radius: 0;
+	
+	--baseFg: black;
+	--baseBg: white;
+	--accentFg: black;
+	--accentBg: #2F354D;
+	width: 95% !important;
+}
+
+.selectboxT select {
+	font-family: Arial;
+	-webkit-appearance: none;
+	appearance: none;
+	color: var(--baseFg);
+	border: none;
+	border-bottom: 2px solid #2F354D;
+	outline: 0;
+	height: 30px;
+	background-color: var(--baseBg);
+	background-image: linear-gradient(var(--baseFg), var(--baseFg)),
+	  linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
+	  linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
+	  linear-gradient(var(--accentBg) 42%, white 42%);
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+	background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+	background-position: right 20px center, right bottom, right bottom, right bottom;   
+  }
+  
+.selectboxT select:hover {
+	background-color: rgb(78, 166, 248); 
+	color: white;
+	background-image: linear-gradient(rgb(78, 166, 248), rgb(78, 166, 248)),
+	  linear-gradient(-135deg, transparent 50%, white 50%),
+	  linear-gradient(-225deg, transparent 50%,white 50%),
+	  linear-gradient(white 42%, rgb(78, 166, 248) 42%);
+	
+  }
+  
+.selectboxT select:active {
+	background-image: linear-gradient(rgb(78, 166, 248), rgb(78, 166, 248)),
+	  linear-gradient(-135deg, transparent 50%, white 50%),
+	  linear-gradient(-225deg, transparent 50%, white 50%),
+	  linear-gradient(white 42%, rgb(78, 166, 248) 42%);
+	color: white;
+	border-color: gray;
+  }
+
+.selectboxT select option {
+	
+	background-color: rgb(78, 166, 248);
+	color:black;
+}
+
+.selectboxT select option:hover {
+	background-color:  black;
+	color: white;
+}
+
+.tdselec {
+	align-items: center;
+	min-width: 200px;
+	max-width: 200px;
+}

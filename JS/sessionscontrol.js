@@ -1,3 +1,38 @@
+function VerificarSessionOtherViews() {
+    try {
+        $.ajax({
+            type: "POST",
+            url: "../PHP/abrir.php",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',                    
+            cache: false,                       
+            success: function(response) {                        
+                $.each(response, function (i, item) {                         
+                });
+            },
+            error: function (e) {
+                console.log(e);
+                if (e.responseText=='error') {
+                    alert("Debe iniciar la Session Antes");	
+                    window.location="../Login.html";
+                } else {
+                    URLactual = window.parent.location.href;
+                    if (URLactual.indexOf("HTML/inicio.html") > -1 ) {
+                        console.log(URLactual)    
+                    }else{
+                        window.location="inicio.html";
+                        alert("Ingrese utilice las funciones de la aplicacion para navegar por esta");
+                    }
+                    
+                } 
+            }
+        }); 
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 function VerificarSession(){
     try {
         $.ajax({

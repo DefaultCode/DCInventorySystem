@@ -5,6 +5,9 @@
         case "getallfv":
             get_all_facturav();
             break;  
+        case "getallfvC":
+            get_all_facturav_cliente();
+            break;              
         case "insertfv":
            // ultimafactura();
             insert_facturav();
@@ -28,6 +31,18 @@
             echo json_encode($data);
         } 
     } 
+
+    function get_all_facturav_cliente(){
+        include 'dbconection.php';
+        $idcliente = $_GET['idCliente']; ;
+        $sql = "SELECT * FROM tblfacturaventa WHERE idcomprador = $idcliente";
+        $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+            $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
+            echo json_encode($data);
+        } 
+    } 
+
     function ultimafactura(){
         include 'dbconection.php';
         $sql = "UPDATE tblfacturaventa SET ultimafactura = 0 WHERE ultimafactura = 1";

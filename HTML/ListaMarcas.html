@@ -4,6 +4,7 @@
 	<title> </title>
 	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">	
 	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		
 </head>
 <body>
@@ -44,16 +45,16 @@
                 <section class="titulo">
                     <p style="font-size: 28px;">Productos asociados</p>
                 </section>
-                <section class="Contabla" style="width: 340px" > 
-                        <table   id="scroll_table"  class="scroll_table"  >
+                <section class="Contabla" style="width: 305px" > 
+                        <table   id="scroll_table2"  class="scroll_table"  >
                             <thead>
                                 <tr>
                                     <th class="thid">Nombre</th>
-                                    <th class="thText">Cant</th>
-                                    <th class="thCant">Precio</th>
+                                    <th class="thCant">Cant</th>
+                                    <th class="thDin">Precio V</th>
                                 </tr>
                             </thead>	
-                            <tbody>
+                            <tbody id="scroll_table3" class="scroll_table">
                                 <tr></tr>
                             </tbody>
                                                     
@@ -61,9 +62,9 @@
                 </section>	
 			</section>
 			<section class="data2">
-				<button id="guardarP" onclick="addHTMLTableRow()" class="guardar">Guardar</button>
-				<button id="EditP" onclick="editHtmlTableSelectedRow()" class="edit">Save Edit</button>
-				<button id="DeleteP" onclick="removeHtmlTableSelectedReow()" class="cancelar">Delete</button>
+				<button id="guardarP" onclick="addHTMLTableRow()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-save"></i> </button>
+				<button id="EditP" onclick="editHtmlTableSelectedRow()" class="edit"> <i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-edit" ></i> </button>
+				<button id="DeleteP" onclick="removeHtmlTableSelectedRow()" class="cancelar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-broom" ></i> </button>
 		   </section>
 		</section>
 
@@ -71,9 +72,12 @@
 </section>
 	<script type="text/javascript" src="../JS/jquery.js" ></script>
 	<script  type="text/javascript" src="../JS/ListControlMarca.js"></script>
+	<script src="../JS/sessionscontrol.js"></script>
+	<script defer src="../CSS/all.js"></script>
 	<script  type="text/javascript">
-    chargeall();
+		VerificarSessionOtherViews()
+    	chargeall();
 	</script>
-
+	
 </body>
 </html>
