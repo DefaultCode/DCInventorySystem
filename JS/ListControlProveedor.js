@@ -162,7 +162,8 @@ function selectedRowToInput(){
 								opciones = opciones + "<option value='"+item.telefono2+"' style='font-size: 18px;'>"+item.telefono2+"</option>";
 							}
 						});
-					    document.getElementById("TelefonoProvedor").innerHTML = opciones ;
+						document.getElementById("TelefonoProvedor").innerHTML = opciones ;
+						
 					},
 					error: function (e) {
 						PRODUCTOS.innerHTML ="no tiene productos";			 
@@ -175,6 +176,8 @@ function selectedRowToInput(){
 			//document.getElementById("TelefonoProvedor").value= this.cells[3].innerHTML;
 			//document.getElementById("Telefono2Provedor").value= this.cells[4].innerHTML;
 			
+			document.getElementById("EditNSP").style.display = "" ;
+			document.getElementById("DeleteNSP").style.display = "" ;
 			document.getElementById("CorreoProveedor").value= this.cells[4].innerHTML;
 			
 			var tables2 = document.getElementById("scroll_table3");
@@ -335,4 +338,88 @@ function editHtmlTableSelectedRow(){
 	
 	}
 
+}
+
+function editNumber(){
+	document.getElementById("texto").innerText = "Edit Telefono" ;
+	document.getElementById("AddNSP").style.display="none";
+	document.getElementById("DeleteNSP").style.display="none";
+	document.getElementById("EditNSP").style.display="none";
+	document.getElementById("saveNSP").style.display="";
+	document.getElementById("CancelarNSP").style.display="";
+	document.getElementById("numeroSelect").style.display="flex";
+	document.getElementById("numeroSelect").value=document.getElementById("TelefonoProvedor").value;
+}
+
+function addNumber(){
+	document.getElementById("texto").innerText = "Add Telefono" ;
+	if (document.getElementById("numeroSelect").style.display == "flex") {
+		if (document.getElementById("numeroSelect").value !="") {
+			var opt = document.createElement('option');
+			opt.value = document.getElementById("numeroSelect").value;
+			opt.innerHTML = document.getElementById("numeroSelect").value;
+			document.getElementById("TelefonoProvedor").appendChild(opt);
+			document.getElementById("numeroSelect").style.display = "none";
+			document.getElementById("EditNSP").style.display="";
+			document.getElementById("DeleteNSP").style.display="";
+			document.getElementById("numeroSelect").value ="";	
+		} else {
+			alert("Por favor no intente insertar un numero en blanco");
+		}
+		
+	} else {
+		document.getElementById("numeroSelect").style.display="flex";
+		document.getElementById("EditNSP").style.display="none";
+		document.getElementById("DeleteNSP").style.display="none";
+		document.getElementById("saveNSP").style.display="none";
+	} 
+}
+function saveNumber(){
+	
+	var ant = document.getElementById("TelefonoProvedor").value;
+	var i=0;
+	while ( i < document.getElementById("TelefonoProvedor").length) {
+		if (document.getElementById("TelefonoProvedor").options[i].value == ant ) {
+			if (ant == document.getElementById("numeroSelect").value) {
+				alert("Por favor cambie el numero seleccionado o cancele la operacion");
+			} else {
+				document.getElementById("TelefonoProvedor").options[i].text = document.getElementById("numeroSelect").value;
+				document.getElementById("TelefonoProvedor").options[i].value = document.getElementById("numeroSelect").value;
+				document.getElementById("TelefonoProvedor").selectedIndex = i;
+				document.getElementById("AddNSP").style.display="";
+				document.getElementById("EditNSP").style.display="";
+				document.getElementById("DeleteNSP").style.display="";
+				document.getElementById("saveNSP").style.display="none";
+				document.getElementById("numeroSelect").style.display="none";
+				document.getElementById("texto").innerText = "Telefono" ;
+				break;
+			}
+		}
+		i=i+1;	
+	}
+	
+
+}
+
+function deleteNumber(){
+	var opcion = confirm("Esta Usted Segur@?");
+	if (opcion) {
+		$("#TelefonoProvedor option[value='" + document.getElementById("TelefonoProvedor").value + "']").remove();
+		alert("El numero telefonico fue retirado de la lista Recuerde guardar los datos del Proveedor");
+	} else {
+		alert("Operacion cancelada");
+	}
+}
+
+function cancelarNumber(){
+	
+	document.getElementById("texto").innerText = "Telefonos" ;
+	document.getElementById("AddNSP").style.display="";
+	document.getElementById("DeleteNSP").style.display="";
+	document.getElementById("EditNSP").style.display="";
+	document.getElementById("saveNSP").style.display="none";
+	document.getElementById("CancelarNSP").style.display="none";
+	document.getElementById("numeroSelect").style.display="none";
+	document.getElementById("numeroSelect").value="";
+	alert("Operacion cancelada");
 }
