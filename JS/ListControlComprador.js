@@ -187,9 +187,14 @@ function selectedRowToInput(){
 										success: function(response) {
 											var opciones ="";					
 											$.each(response, function (i, item) {
-												opciones = opciones + "<option style='font-size: 14px;'> Cant: "+item.cantidad+" | "+item.nombre+"</option>";
+												opciones = opciones + '<a class="Aelemente" > <i class="fas fa-cubes" style="float: left; font-size: 18px; margin-left:2px;margin-right:2px ;" ></i> <p class="nombre"  >'+item.nombre+'</p> <p class="cantidadP"  > '+item.cantidad+' </p> <p class="precioP" >'+ (item.preciounitario * item.cantidad) +'</p> </a>';
 											});
-											PRODUCTOS.innerHTML = "<div class='selectboxT'><select style='width: 120px;font-size: 14px;' >"+opciones+"</select></div>" ;
+											
+											var scrip = "<script type='text/javascript' >function abrir"+i+"(){ if (document.getElementById('dropdownP"+i+"').style.display == 'flex'  ){ document.getElementById('dropdownP"+i+"').style.display = 'none'; document.getElementById('icon"+i+"').className ='fas fa-expand-arrows-alt';  } else {document.getElementById('dropdownP"+i+"').style.display = 'flex'; document.getElementById('icon"+i+"').className = 'fas fa-compress-arrows-alt'; }}</script>"
+											$(PRODUCTOS).html(scrip);
+											PRODUCTOS.innerHTML = "<div class='Cproductos'><button class='Abrir' onclick='abrir"+i+"()' ><i id='icon"+i+"' class='fas fa-stream'  ></i></button><section id='dropdownP"+i+"' class='dropdown-contentP'>"+opciones+"</section></div>" ;
+											
+											
 										},
 										error: function (e) {
 											PRODUCTOS.innerHTML ="no tiene productos";			 

@@ -4,7 +4,10 @@
     switch ($consulta) {
         case "getallfc":
             get_all_facturac();
-            break;  
+            break;
+        case "getallfCP":
+            get_all_facturac_pro();
+            break;     
         case "insertfv":
            // ultimafactura();
             insert_facturac();
@@ -26,6 +29,18 @@
         if (mysqli_num_rows($result) > 0) {
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
             echo json_encode($data);
+        } 
+    } 
+    function get_all_facturac_pro(){
+        include 'dbconection.php';
+        $idproveedor = $_GET['idproveedor'];
+        $sql = "SELECT * FROM tblfacturacompra WHERE idproveedor = '$idproveedor'";
+        $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+            $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
+            echo json_encode($data);
+        }else{
+            echo ("No results");
         } 
     } 
     function ultimafactura(){
@@ -65,7 +80,7 @@
     function get_all_articuloc(){
         include 'dbconection.php';
         $idfacturacompra = $_GET['idfacturacompra'];
-        $sql = "SELECT tblarticulocompra.idfacturacompra AS idfacturacompra, tblinventario.codigo AS codigo, tblinventario.nombre AS nombre, tblinventario.presentacion AS presentacion, tblarticulocompra.preciocompra AS preciocompra, tblarticulocompra.precioventa AS precioventa, tblarticulocompra.cantidad AS cantidad  FROM tblarticulocompra JOIN tblinventario ON tblarticulocompra.idproducto = tblinventario.codigo WHERE tblfacturacompra.idfacturacompra = '$idfacturacompra'";
+        $sql = "SELECT tblarticulocompra.idfacturacompra AS idfacturacompra, tblinventario.codigo AS codigo, tblinventario.nombre AS nombre, tblinventario.presentacion AS presentacion, tblarticulocompra.preciocompra AS preciocompra, tblarticulocompra.precioventa AS precioventa, tblarticulocompra.cantidad AS cantidad  FROM tblarticulocompra JOIN tblinventario ON tblarticulocompra.idproducto = tblinventario.codigo WHERE tblarticulocompra.idfacturacompra  = '$idfacturacompra'";
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) > 0) {
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;

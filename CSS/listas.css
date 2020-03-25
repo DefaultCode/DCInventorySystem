@@ -257,6 +257,110 @@ button{
 
 .tdselec {
 	align-items: center;
+	min-width: 120px;
+	max-width: 120px;
+	max-height: 40px;
+}
+
+.tdCorreo{
+	text-align: center;
 	min-width: 200px;
 	max-width: 200px;
+}
+
+.Cproductos{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	min-width: 100px;
+	max-width: 100px;
+	margin-left: 10px;
+}
+button.Abrir{
+	height: 28px;
+	width: 28px;
+	background-color:  rgb(78, 166, 248);
+	color: white;
+	position: relative;
+	align-items: center;
+	margin-top: 2px;
+	margin-left: 30px;
+	border-radius: 0px;
+	font-size: 20px;
+	cursor: pointer;
+	border-bottom: 2px solid white;
+  
+}
+
+button.Abrir:focus{
+	outline: none;
+	border: none;
+	background-color: #ACD5F6;
+	color:black;
+	border-bottom: 2px solid white;
+}
+button.Abrir:hover{
+	outline: none;
+	border: none;
+	background-color: #ACD5F6;
+	color:black;
+	border-bottom: 2px solid white;
+}
+
+.dropdown-contentP {
+	display: none;
+	flex-direction: column ;
+	position: absolute;
+	background-color: #f6f6f6;
+	min-width: 270px;
+	max-width: 270px;
+	max-height: 150px;
+	margin-left: 60px;
+	align-items: center;
+	margin-top: 2px;
+	overflow-y: scroll;
+	overflow-x: none;
+	z-index: 1;
+}
+
+
+.dropdown-contentP .Aelemente {
+	color: black;
+	display: flex;
+	flex-direction: row;
+	width: 98%;
+	text-decoration: none;
+	position: relative;
+	font-size: 18px;
+	margin-top: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #FF9900;
+}
+
+.dropdown-contentP .Aelemente:hover {
+	background-color:  rgb(78, 166, 248);
+	border-bottom: 1px solid gray;
+	color: white ;
+}
+
+.nombre {
+	width: 120px ; 
+	text-align: center; 
+	font-size: 16px; 
+	margin-top: 2px;
+}
+.cantidadP {
+	width: 40px ; 
+	text-align: right; 
+	font-size: 16px;
+	border-left: 2px solid black;
+	margin-top: 2px;
+}
+.precioP{
+	width: 80px ; 
+	text-align: right; 
+	font-size: 16px;
+	border-left: 2px solid black;
+	margin-top: 2px;
 }
