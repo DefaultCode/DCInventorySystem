@@ -88,8 +88,7 @@ input:focus {
 	font-family: Arial;
 	border-style: none;
 	font-size: 20px;
-
-	
+	width:90%;	
 }
 
 .selectboxF select{
@@ -99,7 +98,7 @@ input:focus {
 	--baseBg: white;
 	--accentFg: black;
 	--accentBg: #2F354D;
-	width: 50% !important;
+	width: 55% !important;
 }
 
 .selectboxF select {
@@ -111,6 +110,7 @@ input:focus {
 	border-bottom: 2px solid #2F354D;
 	outline: 0;
 	height: 30px;
+	
 	background-color: var(--baseBg);
 	background-image: linear-gradient(var(--baseFg), var(--baseFg)),
 	  linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
@@ -232,3 +232,58 @@ input::-webkit-calendar-picker-indicator {
 	top:50%;
 	transform:translateY(-50%);
   }
+
+button.editSelect{
+	min-width: 37px;
+	min-height: 37px;
+	max-height: 37px;
+	max-width: 37px;
+	cursor: pointer;
+	background-color: rgb(50, 111, 180);
+	color: white;
+	font-weight: bolder;
+	font-size: 16px;
+	border: 2px solid #2F354D;
+	border-radius: 50px;
+}
+button.editSelect:hover{
+	background-color: silver;
+	color: #2F354D;
+}
+
+button.SaveSelect{
+	min-width: 37px;
+	min-height: 37px;
+	max-height: 37px;
+	max-width: 37px;
+	cursor: pointer;
+	background-color: rgb(50, 111, 180);
+	color: white;
+	font-weight: bolder;
+	font-size: 16px;
+	border: 2px solid #2F354D;
+	border-radius: 50px;
+}
+button.SaveSelect:hover{
+	background-color: silver;
+	color: #2F354D;
+}
+
+
+button.addSelect{
+	min-width: 37px;
+	min-height: 37px;
+	max-height: 37px;
+	max-width: 37px;
+	cursor: pointer;
+	background-color: rgb(50, 111, 180);
+	color: white;
+	font-weight: bolder;
+	font-size: 16px;
+	border: 2px solid #2F354D;
+	border-radius: 50px;
+}
+button.addSelect:hover{
+	background-color: silver;
+	color: #2F354D;
+}

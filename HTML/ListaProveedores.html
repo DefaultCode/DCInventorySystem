@@ -41,11 +41,16 @@
 					<div style="display: inline;margin-left: 10px;">
 						Nombre:<input style="margin-left:40px;margin-top: 15px;" type="text" id="NombreProvedor" class="Dato">
 					</div>
-					<div style="display: inline;margin-left: 10px;" class="selectboxF">
-						Telefono:<select style="margin-left:33px;" type="text" id="TelefonoProvedor">
-							
-						</select>
-					</div>
+					<section style=" display: flex; flex-direction: row;">
+						<div style="display: inline;margin-left:10px;" class="selectboxF">
+							Telefono:<select style="margin-left:33px;" type="text" id="TelefonoProvedor"> 
+								
+							</select>
+							<input style="display:none; margin-left:111px;margin-top: 15px;" placeholder="New Number" type="text" id="numeroSelect" class="Dato">
+						</div>
+
+					</section>
+
 					
 					<div style="display: inline;margin-left: 10px;">
 						Direccion:<input style="margin-left:31px;margin-top: 15px;" type="text" id="DireccionProvedor" class="Dato">
@@ -56,6 +61,14 @@
 					<div style="display: inline;margin-left: 10px;">
 						Nro Cuenta:<input style="margin-left:16px;margin-top: 15px;" type="text" id="CuentaProvedor" class="Dato">
 					</div>
+				</section>
+				<section style=" align-items: center; display: flex; flex-direction: column;width:8%;margin-top:-45px;margin-left:-19px ;">
+					<p id="texto" style="margin-left:-12px; font-size: 11px; text-align: center;">telefono</p>
+					<button id="AddNSP"  style="" onclick="addNumber()" class="addSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-plus" ></i> </button>
+					<button id="EditNSP" style="display:none;" onclick="editNumber()" class="editSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-edit" ></i> </button>
+					<button id="saveNSP" style="display:none;" onclick="saveNumber()" class="SaveSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-save" ></i> </button>
+					<button id="DeleteNSP" style="display:none;" onclick="deleteNumber()" class="SaveSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-trash-alt" ></i> </button>		
+					<button id="CancelarNSP"  style="display:none;" onclick="cancelarNumber()" class="addSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-reply" ></i> </button>
 				</section>
 				<section>  
 					<section class="titulo" style="margin-top: -120px;"> 
