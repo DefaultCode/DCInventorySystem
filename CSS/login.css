@@ -9,48 +9,56 @@
 section#bar {
 	display: flex;
   	flex-direction: row;
-  	justify-content: flex-start;
-	background-color: #FF9855;
+	background-color: #131A22;
 	align-items: center;
-	color: black;
-	height: 15vh;
+	color: white;
+	height: 120px;
 	width: 100vw;
 }
 
 section#bar #logo {
 	border-radius: 50px;
+	width: 10vw;
 }
 
 section#bar p {
 	margin-top: 20px;
 	margin-left: 20px;
-	font-size: 60px;
-	color: black;
+	font-size: 50px;
+	width: 30vw;
+	color: white;
+}
+
+
+section#formulario {
+	height: 80px;
+	width: 40vw;
+	margin-left: 10px;
+	background-color: #232F3E ;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	
+	border-top-right-radius: 36px;
+	
+	border-bottom-right-radius: 36px;
+	border: white 1.5px solid;
+	float: left;
 }
 
 section#center {
-	height: 75vh;/*
+	background-color: #ECEDED;
+	height: 73.55vh;/*´
+
 	background-image: url(../IMG/fondo.jpg) ;
 	background-repeat: no-repeat;
 	background-size: cover;*/
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	flex-direction: row;
 }
 
-section#formulario {
-	height: 62vh;
-	width:  30vw;
-	background-color: #4489F4 ;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	border-radius: 300px;
-	margin: 0 auto;
-	border: #4489F9 50px ridge;
-}
 
 label {
 	color: white;
@@ -59,32 +67,57 @@ label {
 }
 
 .Dato {
-  width: 50% !important;
-  background-color: ;
-  padding: 5px;
-  border-radius: 8px;
-  border-style: none;
-  margin-top: 10px;
-  text-align: center;
-
-}
-button {
-
-	width: 50%;
-	padding: 5px;
-	background-color: #4267b2;
-	color: white;
-	font-weight: bolder;
-	margin-top: 20px;
+	width: 40% !important;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color:white;
+	border-style: none;
+	font-size: 20px;
+	margin-left: 7px;
+	color: black;
+	text-align: center;
+	margin-top: 2px;
 	border: none;
-	border-radius: 8px;
+  	border-bottom: 2px solid #2F354D;
 }
+
+input:focus {
+	outline: none;
+	border: none;
+	color: #2F354D;
+	background-color: white;
+	border-bottom: 3px solid cornflowerblue;
+}
+
+button.login{
+	margin-left: 8px;
+	min-width: 37px;
+	min-height: 37px;
+	max-height: 37px;
+	max-width: 37px;
+	cursor: pointer;
+	background-color: cornflowerblue;
+	color: #2F354D;
+	font-weight: bolder;
+	font-size: 18px;
+	border: 2px solid white;
+	border-radius: 50px;
+}
+button.login:hover{
+	background-color: cornflowerblue;
+	color: white;
+	min-width: 42px;
+	min-height: 42px;
+	max-height: 42px;
+	max-width: 42px;
+}
+
 section#Footer {
-	height: 10vh;
+	height: 80px;
 	display: flex;
   	flex-direction: row;
   	justify-content: flex-start;
-	background-color: #FF9855;
+	background-color: #131A22;
 	align-items: center;
 	color: black;
 }
