@@ -17,19 +17,19 @@
 					<tr>
 						<th class="thid" >ID</th>
 						<th class="thid" >RIF</th>
-						<th class="thText">NOMBRE</th>
-						<th class="thText">EMISION</th>
-						<th class="thText">RECEPCION</th>
-						<th class="thText">HORA RECEPCION</th>
-						<th class="thDin">TOTAL</th>
-						<th class="thid">TIPO</th>
-						<th class="thDin">ACOTACION $</th>
+						<th class="thText">Nombre</th>
+						<th class="thid">Emision</th>
+						<th class="thid">Recepcion</th>
+						<th class="thid">Hora</th>
+						<th class="thDin">Total</th>
+						<th class="thid">Tipo</th>
+						<th class="thid">Estado</th>
+						<th class="thDin">Acotacion $</th>
 					</tr>
 				</thead>	
-				<tbody id="scroll_table1">
+				<tbody id="scroll_table1"  class="scroll_table2">
 					<tr></tr>
-				</tbody>
-										
+				</tbody>				
 			</table>
 		</section>
 		<section class="content">
@@ -53,22 +53,21 @@
 					<div style="display: inline;margin-left: 10px;">
 						Tipo:<input style="margin-left:95px;margin-top: 15px;" type="text" id="TipoPago" class="Dato">
 					</div>
-
-
 				</section>
-				<section class="data2" style="width:50%;align-items: center;">  
+				<section class="data2" style=" width:50%;align-items: center;">  
 					<section class="titulo">
 						<p style="font-size: 28px;"> Productos Asociados</p>
 					</section>
-					<section  class="Contabla" style="width:245px;"> 
+					<section  class="Contabla" style="width:355px;"> 
 						<table id="scroll_table2"  class="scroll_table" >
 							<thead>
 								<tr>
-									<th class="thDin">Nombre</th>
+									<th class="thText">Nombre</th>
+									<th class="thCant">Cantidad</th>
 									<th class="thDin">Costo</th>
 								</tr>
-							</thead>	
-							<tbody>
+							</thead>
+							<tbody id="scroll_table3" >
 								<tr>
 								</tr>
 							</tbody>					
@@ -90,7 +89,8 @@
 	<script defer src="../CSS/all.js"></script>
 	<script  type="text/javascript">
 		VerificarSessionOtherViews()
-    	chargeall();
+		chargeall();
+		chargeP()
 	</script>
 </body>
 </html>

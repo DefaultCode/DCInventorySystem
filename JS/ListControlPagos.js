@@ -54,29 +54,75 @@ function chargeall(){
 						var RECEPCION= newRow.insertCell(4);
 						var HORA= newRow.insertCell(5);
                         var TOTAL= newRow.insertCell(6);
-                        var TIPO= newRow.insertCell(7);
-                        var ACOTACION= newRow.insertCell(8);
+						var TIPO= newRow.insertCell(7);
+						var ESTADO= newRow.insertCell(8);
+                        var ACOTACION= newRow.insertCell(9);
 
 											
 						
                         ID.innerHTML = item.id;
-                        RIF.innerHTML = item.idproveedor;
-                        NOMBRE.innerHTML = "Inserte Nombre Aqui";
+						RIF.innerHTML = item.idproveedor;
+						try {
+							$.ajax({
+								type: "GET",
+								url: "../PHP/consultasproveedor.php",
+								data: {
+									select:"search_prov",
+									proveedor:item.idproveedor
+								},
+								contentType: "application/json; charset=utf-8",
+								dataType: 'json',                    
+								cache: false,                       
+								success: function(response) {                        
+									$.each(response, function (i, item) {
+										NOMBRE.innerHTML=item.nombre;	
+									});
+								},
+								error: function (e) {
+									console.log(e);
+								}
+							}); 
+						} catch (error) {
+								console.log(error);
+						} 
+                        
                         EMISION.innerHTML = item.fechaemision;
 						RECEPCION.innerHTML = item.fecharecepcion;
 						HORA.innerHTML = item.horarecepcion;
-                        TOTAL.innerHTML = item.total;
-                        TIPO.innerHTML = item.tipopago;		
+						TOTAL.innerHTML = item.total;
+						switch (item.tipopago) {
+							case "0":
+								TIPO.innerHTML = "Debito";			
+								break;
+							case "1":
+								TIPO.innerHTML = "Credito";			
+								break;
+							case "2":
+								TIPO.innerHTML = "Efectivo";			
+								break;
+						}
+						switch (item.estado) {
+							case "0":
+								ESTADO.innerHTML = "Por Pagar";			
+								break;
+							case "1":
+								ESTADO.innerHTML = "Pagada";			
+								break;
+							case "2":
+								ESTADO.innerHTML = "Cancelada";			
+								break;
+						}
                         ACOTACION.innerHTML = item.acotaciondolar;													
 	
                         ID.className += "thid";
                         RIF.className += "thid";
 						NOMBRE.className += "thText";
-                        EMISION.className += "thText";
-						RECEPCION.className += "thText";
-						HORA.className += "thText";
+                        EMISION.className += "thid";
+						RECEPCION.className += "thid";
+						HORA.className += "thid";
                         TOTAL.className += "thDin";
-                        TIPO.className += "thid";	
+						TIPO.className += "thid";
+						ESTADO.className += "thid";	
                         ACOTACION.className += "thDin";
 						
 						selectedRowToInput();
@@ -95,6 +141,54 @@ function chargeall(){
 	}
 
 }
+
+function chargeP(){
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasVentas.php?select=getall",
+			data: {},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {                        
+				$.each(response, function (i, item) {
+					try {
+						
+						var tables = document.getElementById("scroll_table5");
+						var newRow = tables.insertRow(tables.length);
+						var ID= newRow.insertCell(0);
+						var NOMBRE= newRow.insertCell(1);
+						var PRECIOC = newRow.insertCell(2);
+						var CANTIDAD= newRow.insertCell(3);
+						
+						ID.innerHTML = item.codigo;
+						NOMBRE.innerHTML = item.nombre;
+						CANTIDAD.innerHTML = item.cantidad;
+						PRECIOC.innerHTML = item.precio_compra;	
+	
+						ID.className += "thid";
+						NOMBRE.className += "thText";
+						CANTIDAD.className += "thCant";
+						PRECIOC.className += "thDin";
+						
+						selectedRowToInput();
+					} catch (error) {
+						console.log(error);
+					}
+			
+					});
+				},
+				error: function (e) {
+					console.log(e);
+				}
+			}); 
+	} catch (error) {
+		console.log(error);
+	}
+
+}
+
 function addHTMLTableRow(){
 	checkValuesEmpty()
 	var tables = document.getElementById("scroll_table1"),
@@ -166,6 +260,56 @@ function selectedRowToInput(){
 			document.getElementById("MontoPagar").value= this.cells[6].innerHTML;
 			document.getElementById("TipoPago").value= this.cells[7].innerHTML;
 			document.getElementById("guardarP").disabled = true;
+			var tables2 = document.getElementById("scroll_table3");
+			while(tables2.rows.length > 1) {
+				tables2.deleteRow(1);
+			}
+			try {
+				$.ajax({
+					type: "GET",
+					url: "../PHP/consultasfacturacompra.php",
+					data: {
+						select:"getallac",
+						idfacturacompra : this.cells[0].innerHTML ,
+					},
+					contentType: "application/json; charset=utf-8",
+					dataType: 'json',                    
+					cache: false,                       
+					success: function(response) {                        
+						$.each(response, function (i, item) {
+							try {
+								
+								var tables = document.getElementById("scroll_table3");
+								var newRow = tables.insertRow(tables.length);
+								var NOMBRE= newRow.insertCell(0);
+								var CANTIDAD= newRow.insertCell(1);
+								var PRECIO= newRow.insertCell(2);			
+								
+								NOMBRE.innerHTML = item.nombre;
+								CANTIDAD.innerHTML = item.cantidad;
+								PRECIO.innerHTML = item.preciocompra;
+								NOMBRE.className += "thText";
+								CANTIDAD.className += "thCant";
+								PRECIO.className += "thDin";
+								
+								
+								
+								selectedRowToInput();
+							} catch (error) {
+								console.log(error);
+							}
+					
+							});
+						},
+						error: function (e) {
+							console.log(e);
+						}
+					}); 
+			} catch (error) {
+				console.log(error);
+			}
+		
+
 		};
 	}
 
