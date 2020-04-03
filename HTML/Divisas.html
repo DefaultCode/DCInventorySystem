@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    
+<body>
+    <section  class="gen"> 
+		<section class="titulo"> 
+			<p>Divisas</p>
+		</section>
+		<section class="Contabla" style="width: 330px"> 
+			<table  id="scroll_table" class="scroll_table" >
+				<thead>
+					<tr>
+						<th class="thid" >Nombre</th>
+						<th class="thFecha">Fecha</th>
+						<th class="thDin">Valor</th>
+					</tr>
+				</thead>	
+				<tbody id="scroll_table1" class="scroll_table2" >
+					<tr>
+						
+					</tr>
+				</tbody>
+										
+			</table>
+
+		</section>
+		<section class="content">
+			<section class="data" >	
+
+				<section class="data2" style="width:25%;" >
+					<section style="display: flex;">
+						<p style="width: 50%; align-items: center;font-size: 28px;">Datos</p>
+                    </section>
+                    <div id="NombreS" class="selectboxF" style="display: inline;" >
+						Nombre:<select style="margin-left: 13px;" id="NombresDivisas">
+                        </select>
+					</div>
+					<div id="NombreI" style="display: none;">
+						Nombre:<input style="margin-left:20px;margin-top: 15px;" type="text" id="NombreDivisa" class="Dato">
+					</div>
+					<div style="display: inline;">
+						Cambio:<input style="margin-left:22px;margin-top: 15px;" type="number" id="ValorDivisa" class="Dato">
+					</div>
+					<div style="display: none;">
+						Fecha:<input style="margin-left:34px;margin-top: 15px;" type="date"  id="Fecha" class="Dato">
+					</div>
+                </section>
+                
+				<section class="data2" style="width:40%;align-items: center;" >
+				<section class="titulo"> 
+					<p style="font-size: 28px;" >Historial</p>
+				</section>
+				<section class="Contabla" style="width: 280px" > 
+					<table   id="scroll_table2"  class="scroll_table" >
+						<thead>
+							<tr>
+								<th class="thText">Fecha</th>
+								<th class="thDin">Valor</th>	
+							</tr>
+						</thead>	
+						<tbody id="scroll_table3" class="scroll_table" >
+                            <tr>
+								
+							</tr>
+							
+						</tbody>
+												
+					</table>
+			</section>	
+			</section>
+		</section>
+		</section>
+		<section class="botonera"> 
+            <button id="guardarP" onclick="addHTMLTableRow()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-save"></i> </button>
+            <button id="NewD" onclick="newDivisa()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-plus"></i> </button>
+		</section>
+	</section>
+	<script type="text/javascript" src="../JS/jquery.js" ></script>
+	<script  type="text/javascript" src="../JS/ListControlDivisas.js"></script>
+    <script src="../JS/sessionscontrol.js"></script>
+    <script defer src="../CSS/all.js"></script>
+	<script  type="text/javascript">
+		VerificarSessionOtherViews()
+    	chargeall();
+	</script>
+</body>
+</html>

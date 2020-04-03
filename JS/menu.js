@@ -88,6 +88,12 @@ function mostrarEm(){
   return false;
 }
 
+function Divisas(){
+  $("#datos").html('<object type="text/html" data="../HTML/Divisas.html" > </object>');
+  document.getElementById('datos').style.width = "100%";
+  return false;
+}
+
 function VentaRapida(){
   $("#rapido").html('<object type="text/html" data="../HTML/FacturaVenta.html" > </object>');
   if (rapido==true) {

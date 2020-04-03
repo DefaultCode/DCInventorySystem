@@ -255,7 +255,7 @@ function selectedRowToInput(){
 						},
 						error: function (e) {
 							console.log(e.responseText);
-							if (e.responseText = "No Results") {
+							if (e.responseText == "No Results") {
 								alert("No se poseen transacciones asociadas a este proveedor");
 							} else {
 								alert("Error cargando los datoss");
