@@ -10,26 +10,51 @@
             break;
         case "insert_Divisa":
             insert_Divisa();
+            break;   
+        case "insert_Valor_Divisa":
+            insert_Valor_Divisa();
             break;         
+        case "Divisa_Cambio":
+            Divisa_Cambio();
+            break;  
+        case "Search_Divisa":
+            search_Divisa();
+            break;      
         case "update_Divisa":
             update_Divisa();
-            break;                
+            break;                 
     }
 
     function get_all(){
         include 'dbconection.php';
-        $sql = "SELECT * FROM tbldivisadia WHERE estado = 1";
+        $sql = "SELECT tbldivisa.id AS ID, tbldivisa.nombre AS nombre, tbldivisadia.fecha AS fecha, tbldivisadia.valor AS valor FROM tbldivisa LEFT JOIN tbldivisadia ON tbldivisadia.ultimadivisa = 1  AND tbldivisadia.iddivisa = ID";
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) > 0) {
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
             echo json_encode($data);
+        }else{
+            echo("No Results");
         } 
     } 
 
     function get_all_history(){
         include 'dbconection.php';
+        $id = $_GET['iddivisa']; 
+        $sql = "SELECT * FROM tbldivisadia WHERE (iddivisa = '$id' AND ultimadivisa = 0)";
+        $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+            $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
+            echo json_encode($data);
+        }else{
+            echo("No Results");
+        }
+
+    } 
+
+    function search_Divisa(){
+        include 'dbconection.php';
         $nombre = $_GET['nombre']; 
-        $sql = "SELECT * FROM tbldivisadia WHERE (nombre = '$nombre' AND estado = 0)";
+        $sql = "SELECT * FROM tbldivisa WHERE nombre = '$nombre'";
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) > 0) {
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
@@ -43,21 +68,29 @@
     function insert_Divisa(){
         include 'dbconection.php';
         $nombre = $_GET['nombre'];
-        $valor= $_GET['valor'];
-        $sql = "INSERT INTO tbldivisadia (fecha, nombre, valor, estado) VALUES (now(), '$nombre', '$valor', 1)";
+        $sql = "INSERT INTO tbldivisa (nombre, estado) VALUES ('$nombre' , 1)";
         $result = mysqli_query($conn,$sql);
         $afectados = mysqli_affected_rows($conn);
         echo $afectados;
-            
     }
+
+    function insert_Valor_Divisa(){
+        include 'dbconection.php';
+        $id = $_GET['ids'];
+        $valor= $_GET['valor'];
+        $sql = "INSERT INTO tbldivisadia (fecha, iddivisa, valor, ultimadivisa) VALUES (now(), '$id', $valor, 1)";
+        $result = mysqli_query($conn,$sql);
+        $afectados = mysqli_affected_rows($conn);
+        echo $afectados;
+    }
+
 
     function update_Divisa(){
         include 'dbconection.php';
-        $nombre= $_GET['nombre'];
+        $id= $_GET['id'];
         $valor= $_GET['valor'];
         $fecha= $_GET['fecha'];
-        echo($nombre." ".$valor);
-        $sql = "UPDATE tbldivisadia SET  valor = $valor WHERE  (fecha = '$fecha' AND nombre = '$nombre' AND estado = 1)";
+        $sql = "UPDATE tbldivisadia SET  valor = $valor, ultimadivisa = 1 WHERE  (fecha = $fecha AND iddivisa = '$id')";
         $result = mysqli_query($conn,$sql);
         $afectados = mysqli_affected_rows($conn);
         if ($afectados > 0) {
@@ -67,4 +100,20 @@
             
         }     
     }
+
+    function Divisa_Cambio(){
+        include 'dbconection.php';
+        $id= $_GET['id'];
+        $sql = "UPDATE tbldivisadia SET  ultimadivisa = 0 WHERE  ( iddivisa = '$id' AND ultimadivisa = 1)";
+        $result = mysqli_query($conn,$sql);
+        $afectados = mysqli_affected_rows($conn);
+        if ($afectados > 0) {
+            echo ($afectados);
+        }else{
+            echo("No Results");
+            
+        }     
+    }
+
+
 ?>

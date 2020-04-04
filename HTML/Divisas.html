@@ -14,10 +14,11 @@
 		<section class="titulo"> 
 			<p>Divisas</p>
 		</section>
-		<section class="Contabla" style="width: 330px"> 
+		<section class="Contabla" style="width: 430px"> 
 			<table  id="scroll_table" class="scroll_table" >
 				<thead>
 					<tr>
+						<th class="thid" >ID</th>
 						<th class="thid" >Nombre</th>
 						<th class="thFecha">Fecha</th>
 						<th class="thDin">Valor</th>
@@ -39,18 +40,18 @@
 					<section style="display: flex;">
 						<p style="width: 50%; align-items: center;font-size: 28px;">Datos</p>
                     </section>
-                    <div id="NombreS" class="selectboxF" style="display: inline;" >
+                    <div id="NombreS" class="selectboxF" style="display:inline;" >
 						Nombre:<select style="margin-left: 13px;" id="NombresDivisas">
                         </select>
 					</div>
-					<div id="NombreI" style="display: none;">
+					<div id="NombreI" style="display:none;">
 						Nombre:<input style="margin-left:20px;margin-top: 15px;" type="text" id="NombreDivisa" class="Dato">
 					</div>
 					<div style="display: inline;">
 						Cambio:<input style="margin-left:22px;margin-top: 15px;" type="number" id="ValorDivisa" class="Dato">
 					</div>
-					<div style="display: none;">
-						Fecha:<input style="margin-left:34px;margin-top: 15px;" type="date"  id="Fecha" class="Dato">
+					<div id="divFecha" style="display: none;">
+						Fecha:<input style="margin-left:34px;margin-top: 15px;" type="date" disabled id="Fecha" class="Dato">
 					</div>
                 </section>
                 
