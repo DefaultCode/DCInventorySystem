@@ -94,6 +94,12 @@ function Divisas(){
   return false;
 }
 
+function Traslado(){
+  $("#datos").html('<object type="text/html" data="../HTML/inventariotraslado.html" > </object>');
+  document.getElementById('datos').style.width = "100%";
+  return false;
+}
+
 function VentaRapida(){
   $("#rapido").html('<object type="text/html" data="../HTML/FacturaVenta.html" > </object>');
   if (rapido==true) {

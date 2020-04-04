@@ -41,7 +41,6 @@
 							<li id="Venta"><a  href="javascript:VentaRapida()"> <i class="fas fa-cash-register" style="margin-top: 10px; margin-left: 18px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Venta</p> </a></li>
 							<li id="Venta0"><a  href="javascript:imprimir()"> <i class="fas fa-print" style="margin-left: 18px;margin-top: 10px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Imprimir</p> </a></li>
 							<li id="Venta1"><a  href="javascript:Divisas()"> <i class="fas fa-money-bill-wave" style="margin-top: 10px; margin-left: 13px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Divisas</p> </a></li>
-							<li id="Venta2"><a  href="javascript:VentaRapida()"> <i class="fas fa-dolly" style="margin-top: 10px; margin-left: 13px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Traslado</p> </a></li>
 							<li id="Venta3"><a  href="javascript:VentaRapida()"> <i class="fas fa-cart-plus" style="margin-top: 10px; margin-left: 13px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Venta</p> </a></li>
 							<li id="Venta4"><a  href="javascript:VentaRapida()"> <i class="fas fa-cart-plus" style="margin-top: 10px; margin-left: 13px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Venta</p> </a></li>
 							<li id="Venta8"><a  href="javascript:VentaRapida()"> <i class="fas fa-cart-plus" style="margin-top: 10px; margin-left: 13px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Venta</p> </a></li>
@@ -56,7 +55,15 @@
 							<a class="dr-label">Virus System</a> 
 						</div>	
 						<ul>
-							<li id="primero" ><a  href="javascript:mostrarP()"> <i class="fas fa-cubes" style="margin-top: 10px; margin-left: 20px; font-size:2.0em;"></i> <p style="font-size:0.7em;">Inventario</p> </a></li>
+	
+							<li id="primero" >
+								<section class="oculto" >
+									<li id="Venta2"><a  href="javascript:Traslado()"> <i class="fas fa-dolly" style="margin-top: 10px; margin-left: 20px; font-size:1.4em;"></i> <p style="text-align: center;font-size:0.7em;">Tipo Traslado</p> </a></li>
+								</section>
+								<section style="margin-top: 70px;" class="oculto" >
+									<li id="Venta2"><a  href="javascript:Traslado()"> <i class="fas fa-dolly" style="margin-top: 10px; margin-left: 13px; font-size:2.0em;"></i> <p style="text-align: center;font-size:0.7em;">Traslado</p> </a></li>
+								</section>
+								<a  href="javascript:mostrarP()"> <i class="fas fa-cubes" style="margin-top: 10px; margin-left: 20px; font-size:2.0em;"></i> <p style="font-size:0.7em;">Inventario</p> </a></li>
 							<li id="liMarca"><a  href="javascript:mostrarM()"><i class="fas fa-cubes" style="margin-top: 10px; margin-left: 20px; font-size:2.0em;" ></i> <p style="font-size:0.7em;">Marca</p></a></li>
 							<li id="liCli" ><a href="javascript:mostrarC()"> <i class="fas fa-user" style="margin-top: 10px; margin-left: 22px; font-size:2.0em;" ></i><p style="font-size:0.7em;">Cliente</p></a></li>
 							<li id="liPro"><a href="javascript:mostrarProv()"><i class="fas fa-handshake" style="margin-top: 10px; margin-left: 17px; font-size:2.0em;"></i><p style="font-size:0.7em;">Proveedor</p></a></li>

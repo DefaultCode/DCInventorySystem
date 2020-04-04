@@ -96,7 +96,7 @@ function selectedRowToInput(){
 		};
 	}
 }
-    function addHTMLTableRow(){
+function addHTMLTableRow(){
         if (checkValuesEmpty() != true ) {
             var tables = document.getElementById("scroll_table1"),
             newRow = tables.insertRow(tables.length),
