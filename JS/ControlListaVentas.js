@@ -155,6 +155,7 @@ function selectedRowToInput(){
 	}
 
 }
+
 function editHtmlTableSelectedRow(){
 
 		var to,total, tables = document.getElementById("scroll_table"),
@@ -172,6 +173,7 @@ function editHtmlTableSelectedRow(){
 		tables.rows[rIndex].cells[5].innerHTML = total;
 
 }
+
 function removeHtmlTableSelectedReow(){
 	
 	var tables = document.getElementById("scroll_table");

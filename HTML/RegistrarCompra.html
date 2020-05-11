@@ -71,7 +71,7 @@
 				<button onclick="addHTMLTableRow()" class="boton" >Agregar</button>
 				<button onclick="editHtmlTableSelectedRow()" class="boton" >Editar</button>
 			</section>-->
-		<section style=" margin-top: 30px; display: flex; flex-direction: row; max-width:900px ;min-width:900px ;" >
+		<section style=" margin-top: 30px; display: flex; flex-direction: row; max-width:960px ;min-width:960px;" >
 			<section style="width: 800px" class="Contabla2"  >
 				<table  id="scroll_table" class="scroll_table" >
 					<thead>
@@ -80,27 +80,43 @@
 							<th class="thText">NOMBRE</th>
 							<th class="thText">PRESENTACION</th>
 							<th class="thCant">CANT</th>
-							<th class="thText">PRECIO U</th>
-							<th class="thText">PRECIO T</th>
+							<th class="thDin">PRECIO U</th>
+							<th class="thDin">MONTO</th>
+							<th class="thDin">PRECIO U Bs</th>
+							<th class="thDin">MONTO Bs</th>
 						</tr>
 					</thead>	
 					<tbody>
 						<tr title="inicio">
 							
 						</tr>
+										
 					</tbody>
-											
+			
+				</table>
+				<table style="margin-top: 30px;" class="scroll_table">
+					<thead >
+						<tr style="margin-left:480px;" >
+							<th class="thDin" >Total:</th>
+							<th id="total" class="thTotal" ></th>
+						</tr>
+						<tr>
+							<th class="thDin" >Total Bs:</th>
+							<th id="totalBs" class="thTotal" ></th>
+						</tr>
+					</thead>
 				</table>
 				
 			</section>	
-			<section style="margin-left: 10px; min-width: 60px;max-width: 60px; display: flex;flex-direction: column;">
-				<button  id="GenerarV" href="impfacturaventa.html" onclick="generar_factura()" class="guardar"><i style="font-size: 18px;" class="fas fa-print"></i></button>
-				<button id="CancelarP" class="cancelar"><i></i></button>
-			</section>
+
 
 		</section>	
-		
+
 	</section>
+	<section style="float: right; margin-left: 10px; margin-top: 20px; min-width: 60px;max-width: 60px; display: flex;flex-direction: column;">
+		<button  id="GenerarV" href="impfacturaventa.html" onclick="generar_factura()" class="guardar"><i style="font-size: 18px;" class="fas fa-print"></i></button>
+		<button id="CancelarP" class="cancelar"><i></i></button>
+	</section>		
 <!--<script type="text/javascript" src="/javascripts/awesomplete.js"></script>
 	<script type="text/javascript" src="/javascripts/Complete.js"></script>
 	
@@ -112,7 +128,7 @@
 	<script src="../JS/jquery-3.2.1.js"></script>
 	<script src="../CSS/jquery-3.4.1.js"></script>
 	<script defer src="../CSS/all.js"></script>
-	<script  type="text/javascript" src="../JS/ControlListaVentas.js"></script>
+	<script  type="text/javascript" src="../JS/ControlListaCompras.js"></script>
 	<script src="../JS/searchProveedor.js"></script>
 	<script src="../JS/searchproducto.js"></script>
 	<script src="../JS/sessionscontrol.js"></script>

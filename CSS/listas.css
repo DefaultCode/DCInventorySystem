@@ -138,6 +138,16 @@ tr:hover td{
 	text-align: center;
 }
 
+.trDin{
+	min-width: 120px;
+	text-align: right;
+}
+
+.thTotal{
+	min-width: 120px;
+	text-align: right;
+}
+
 section.botonera{
 	height: 10vh;
 	display: flex;
