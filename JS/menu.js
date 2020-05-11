@@ -94,8 +94,20 @@ function Divisas(){
   return false;
 }
 
+function tipoTraslado(){
+  $("#datos").html('<object type="text/html" data="../HTML/inventariotipotraslado.html" > </object>');
+  document.getElementById('datos').style.width = "100%";
+  return false;
+}
+
 function Traslado(){
   $("#datos").html('<object type="text/html" data="../HTML/inventariotraslado.html" > </object>');
+  document.getElementById('datos').style.width = "100%";
+  return false;
+}
+
+function registrarCompra(){
+  $("#datos").html('<object type="text/html" data="../HTML/RegistrarCompra.html" > </object>');
   document.getElementById('datos').style.width = "100%";
   return false;
 }

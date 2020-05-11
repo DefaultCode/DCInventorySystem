@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+    <title>Document</title>
+</head>
+<body>
+    <section  class="gen">
+		<section class="titulo"> 
+			<p>Tipos de Traslados</p>
+		</section>
+		<section class="Contabla" style="width: 460px" > 
+			<table  id="scroll_table" class="scroll_table">
+				<thead>
+					<tr>
+						<th class="thid" >ID</th>
+						<th class="thText">Nombre</th>
+						<th class="thid">Tipo</th>
+						<th class="thid">Clase</th>
+					</tr>
+				</thead>	
+				<tbody  id="scroll_table1">
+					<tr></tr>
+				
+				</tbody>
+										
+			</table>
+		</section>
+		<section class="content">
+		<section class="data" >	
+			<section class="data2" style="width:33%;" >
+				<section style="display: flex;">
+					<p style="width: 100%; align-items: center;font-size: 28px;">Datos</p>
+				</section>
+				<div style="display: inline;">
+					Nombre: <input style="margin-left:10px;margin-top: 15px;" type="text" id="NombreTraslado" class="Dato">
+				</div>
+                <div id="TipoS" class="selectboxF" style="display:inline;" >
+                    Tipo:<select style="margin-left: 40px;" id="tipoTraslado">
+                        <option value="+">Incorporar</option>
+                        <option value="-">Substraer</option>
+                    </select>
+                </div>
+                <div id="ClaseS" class="selectboxF" style="display:inline;" >
+                    Clase:<select style="margin-left: 28px;" id="claseTraslado">
+                        <option value="">Otras</option>
+                        <option value="F">Venta</option>
+                        <option value="C">Compra</option>
+                    </select>
+                </div>
+			</section>
+			<section class="data2"  style="width:50%;align-items: center;"  >
+				<section class="titulo" > 
+					<p style="font-size: 28px;">Movimientos Asociados</p>
+				</section>
+				<section  class="Contabla" style="width:390px;"> 
+					<table id="scroll_table3"  class="scroll_table">
+						<thead>
+							<tr>
+								<th class="thid" >Nombre</th>
+								<th class="thCant">Cantidad</th>
+								<th class="thFecha">Fecha</th>
+                                <th class="thFecha">Hora</th>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr>
+							</tr>
+						</tbody>					
+					</table>
+				</section>
+		   </section>
+			<section class="data2"  style="width:10%;"  >
+				<button id="guardarT" onclick="addHTMLTableRow()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-plus"></i> </button>		
+				<button id="EditT" onclick="editHtmlTableSelectedRow()" class="edit"> <i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-edit" ></i> </button>
+				<button id="SaveT" style="display: none;" onclick="SaveHTMLTableRow()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-save"></i> </button>
+				<button id="CancelarT" style="display: none;" onclick="SaveHTMLTableRow()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-reply"></i> </button>
+			</section>
+		</section>
+		</section>
+	</section  >
+	<script type="text/javascript" src="../JS/jquery.js" ></script>
+	<script src="../JS/sessionscontrol.js"></script>
+    <script defer src="../CSS/all.js"></script>
+	<script src="../JS/tipodetraslado.js"></script>
+	<script src="../JS/searchproducto.js"></script>
+	<script  type="text/javascript">
+		VerificarSessionOtherViews()
+    	chargeall();
+	</script>
+</body>
+</html>

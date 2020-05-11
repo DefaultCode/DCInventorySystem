@@ -123,6 +123,10 @@ tr:hover td{
 	min-width: 150px;
 	text-align: center;
 }
+.thDes{
+	min-width: 200px;
+	text-align: center;
+}
 
 .thFecha{
 	min-width: 100px;
@@ -364,3 +368,4 @@ button.Abrir:hover{
 	border-left: 2px solid black;
 	margin-top: 2px;
 }
+

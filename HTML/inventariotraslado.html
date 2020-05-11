@@ -4,89 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
-	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/listas.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/buscadorP.css">
     <title>Document</title>
 </head>
 <body>
     <section  class="gen">
 		<section class="titulo"> 
-			<p>Tipos de Traslados</p>
+			<p>Traslados</p>
 		</section>
-		<section class="Contabla" style="width: 460px" > 
+		<section class="Contabla" style="width: 865px" > 
 			<table  id="scroll_table" class="scroll_table">
 				<thead>
 					<tr>
 						<th class="thid" >ID</th>
-						<th class="thText">Nombre</th>
-						<th class="thid">Tipo</th>
-						<th class="thid">Clase</th>
+                        <th class="thid">IdTipo</th>
+                        <th class="thid">Producto</th>
+						<th class="thCant">Inicio</th>
+                        <th class="thCant">Final</th>
+                        <th class="thFecha">Fecha</th>
+						<th class="thFecha">Hora</th>
+						<th class="thDes">Descripcion</th>
 					</tr>
 				</thead>	
 				<tbody  id="scroll_table1">
 					<tr></tr>
-				
-				</tbody>
-										
+
+				</tbody>						
 			</table>
 		</section>
 		<section class="content">
 		<section class="data" >	
 			<section class="data2" style="width:33%;" >
-				<section style="display: flex;">
-					<p style="width: 100%; align-items: center;font-size: 28px;">Datos</p>
-				</section>
-				<div style="display: inline;">
-					Nombre: <input style="margin-left:10px;margin-top: 15px;" type="text" id="NombreCliente" class="Dato">
-				</div>
+                <p>Buscar Producto</p>
+                <section class="buscadorPro" id="buscadorPro">
+                    <button onclick="myFunctionPro2()"  class="bbuscar" ><i class="fa fa-search"></i></button>
+                    <section id="dropdownPro" class="dropdown-contentPro" >
+                        <input autocomplete="false" onkeyup="filterFunctionPro2()" id="ibuscarPro" class="buscar" placeholder="Search..."   type="text" ></input>
+                        <!--<a class="Aelemente" href="javascript:cargarPago()"> <i class="fas fa-file-invoice-dollar" style="float: left; font-size: 21px; margin-left:7px;margin-right:14px ;  " ></i>carlossss<p class="dato2" > Presentacion </p> </a>
+                        <a class="Aelemente" href="javascript:cargarV()"> <i class="fas fa-dollar-sign" style="float: left; font-size: 21px; margin-left:9px;margin-right:16px ; " ></i>carlossx <p class="dato2" > Presentacion </p> </a>-->
+                    </section>
+                </section>
+                <div style="display: inline;">
+					ID: <input style="margin-left:120px;margin-top: 15px;" type="number" id="IdProductoT" class="Dato" disabled>
+                </div>
+                <div style="display: inline;">
+					Nombre: <input style="margin-left:74px;margin-top: 15px;" type="text" id="NombreProducto" class="Dato" disabled>
+                </div>
+                <div style="display: inline;">
+					Cantidad Ex: <input  style="margin-left:40px;margin-top: 15px;" type="number" id="CantidadEx" class="Dato" disabled>
+                </div>
+                <div style="display: inline;">
+					Cantidad Mover: <input min="1" style="margin-left:10px;margin-top: 15px;" type="number" id="CantidadMo" class="Dato">
+                </div>
                 <div id="TipoS" class="selectboxF" style="display:inline;" >
-                    Tipo:<select style="margin-left: 40px;" id="tipo">
-                        <option value="+">Incorporar</option>
-                        <option value="-">Substraer</option>
+                    Tipo:<select style="margin-left: 104px;" id="tipoTrasladoF">
+                        <!-- insertar nombres de los tipos de traslado existentes exepto facturas de compra y venta -->
                     </select>
                 </div>
-                <div id="ClaseS" class="selectboxF" style="display:inline;" >
-                    Clase:<select style="margin-left: 28px;" id="clase">
-                        <option value="">Operacion</option>
-                        <option value="F">Facturacion</option>
-                        <option value="C">Compra</option>
-                    </select>
-                </div>
+
 			</section>
-			<section class="data2"  style="width:50%;align-items: center;"  >
-				<section class="titulo" > 
-					<p style="font-size: 28px;">Movimientos Asociados</p>
+			<section class="data2"  style="width:33%;align-items: center; margin-top: 75px;" >
+				<section style="display: flex; ">
+					<p style="font-size: 28px;">Descripción</p>
 				</section>
-				<section  class="Contabla" style="width:390px;"> 
-					<table id="scroll_table3"  class="scroll_table">
-						<thead>
-							<tr>
-								<th class="thid" >Nombre</th>
-								<th class="thCant">Cantidad</th>
-								<th class="thFecha">Fecha</th>
-                                <th class="thFecha">Hora</th>
-							</tr>
-						</thead>	
-						<tbody>
-							<tr>
-							</tr>
-						</tbody>					
-					</table>
-				</section>
-		   </section>
+				<textarea style="margin-top: 10px;" type="text" id="DescripcionT" class="Descripcion"></textarea>
+			</section>
 			<section class="data2"  style="width:10%;"  >
-				<button id="guardarP" onclick="addHTMLTableRow()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-save"></i> </button>
-				<button id="EditP" onclick="editHtmlTableSelectedRow()" class="edit"> <i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-edit" ></i> </button>
-		   </section>
+				<button id="guardarT" onclick="addHTMLTableRow()" class="guardar"><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-plus"></i> </button>	
+			</section>
 		</section>
 		</section>
 	</section  >
 	<script type="text/javascript" src="../JS/jquery.js" ></script>
 	<script src="../JS/sessionscontrol.js"></script>
     <script defer src="../CSS/all.js"></script>
-    <script src="../JS/tipodetraslado.js"></script>
+    <script src="../JS/searchproducto.js"></script>
+    <script src="../JS/controlTrasladoInventario.js"></script>
 	<script  type="text/javascript">
 		VerificarSessionOtherViews()
     	chargeall();
+		chargeSelect();
 	</script>
 </body>
 </html>

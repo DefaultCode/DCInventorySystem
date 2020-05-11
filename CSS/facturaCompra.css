@@ -1,0 +1,398 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+p{
+	color:black;
+	font-size: 1.0em;
+	text-align: center;
+}
+
+.gen{
+	height: 40vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.BusCli{
+	display: flex;
+	width: 100%;
+  	flex-direction: row;
+  	align-items: center;
+}
+
+.DatosCli {	
+	width: 100%;
+	margin-top: 5px ;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	
+}
+
+.DatosCli label{	
+	color:black;
+	font-size: 1.2em;
+}
+
+
+.datos2{
+	width: 50%;
+	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+}
+
+.datos2 label{
+	margin-bottom:18px;
+} 
+
+.datos3{
+	width: 30%;
+	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+}
+.datos3 input{
+	width: 90% !important;
+} 
+
+.BusPro{
+	width: 100%;
+	display: flex;
+  	flex-direction: column;
+	align-items: center;
+	margin-top: 5px;  
+  	border-bottom:1px solid black;
+	margin-bottom: 5px;
+	
+}
+.Contabla2{
+	height: 30vh;
+	margin-top: 10px;
+	display: block;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+.BusPro section {
+	width: 100%;
+	display: flex;
+  	flex-direction: row;
+  	align-items: center;	
+}
+ 
+.BusPro section .lab {
+ 	color:black;
+	font-size: 1.2em;
+	margin-bottom:18px
+} 
+
+
+section.botonera{ 
+	height: 10vh;
+	width:  98vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+}
+
+button.guardar{
+	width: 40%;
+	padding: 3px;
+	background-color: #4267b2;
+	color: white;
+	font-weight: bolder;
+	margin-top: 20px;
+	margin-right: 10px;
+	border: none;
+	border-radius: 1px;
+}
+button.cancelar{
+	width: 40%;
+	padding: 3px;
+	background-color: red;
+	color: white;
+	font-weight: bolder;
+	margin-top: 20px;
+	margin-right: 10px;
+	border: none;
+	border-radius: 1px;
+}
+
+.buscadorClie{
+	display: flex;
+	align-content: flex-start;
+	flex-direction: row;
+	width: 100%;
+	
+}
+.buscadorClie button.bbuscar{
+	min-height: 30px;
+	min-width: 30px;
+	background-color: #FF9900;
+	color: white;
+	position: relative;
+	align-items: center;
+	margin-top: 10px;
+	margin-left: 32px;
+	border-radius: 0px;
+	font-size: 20px;
+	cursor: pointer;
+	border-bottom: 2px solid gray;
+  
+}
+
+
+button.bbuscar:focus{
+	outline: none;
+	border: none;
+	background-color: white;
+	color: #FF9911;
+	border-bottom: 2px solid gray;
+}
+.dropdown-content input.buscar{
+	position: relative;
+	min-width:  250px;
+	max-width:  250px;
+	min-height: 29px;
+    max-height: 29px;
+    margin-top: 1px;
+	border-style: none;
+	font-size: 20px;
+	border: none;
+	border-bottom: 2px solid #FF9900;
+	font-family: "Font Awesome 5 Free", "";
+	
+}
+input:focus {
+	outline: none;
+	border: none;
+	background-color: #FF9900;
+	color: white;
+	border-bottom: 2px solid gray;
+	
+  }
+
+.dropdown-content {
+	display: flex;
+	flex-direction: column ;
+	position: absolute;
+	background-color: #f6f6f6;
+	min-width: 200px;
+	max-width: 300px;
+	max-height: 200px;
+	margin-left: 62px;
+	align-items: center;
+	margin-top: 10px;
+	overflow-y: scroll;
+	overflow-x: none;
+	z-index: 1;
+}
+
+
+
+
+.dropdown-content .Aelemente {
+	color: black;
+	display: flex;
+	width: 90%;
+	text-decoration: none;
+	position: relative;
+	font-size: 18px;
+	margin-top: 4px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #FF9900;
+}
+
+.dropdown-content .Aelemente:hover {
+	background-color: #FF9900;
+	border-bottom: 1px solid gray;
+	color: white ;
+}
+
+.dropdown-content a .dato2 {
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+.DatosCli input{
+	width: 50% !important;
+	background-color:white;
+	border-style: none;
+	font-size: 20px;
+	color: black;
+	text-align: center;
+	margin-top: 10px;
+	border: none;
+  	border-bottom: 2px solid #FF9900;
+}
+.DatosCli input:focus {
+	outline: none;
+	border: none;
+	color: white;
+	background-color: #FF9900;
+	border-bottom: 4px solid gray;
+}
+
+
+.buscadorPro{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.buscadorPro button.bbuscar{
+	min-height: 30px;
+	min-width: 30px;
+	max-height: 30px;
+	max-width: 30px;
+	background-color: #FF9900;
+	color: white;
+	position: relative;
+	align-items: center;
+	margin-top: 10px;
+	margin-left: 32px;
+	border-radius: 0px;
+	font-size: 20px;
+	cursor: pointer;
+	border-bottom: 2px solid gray;
+  
+}
+
+
+button.bbuscar:focus{
+	outline: none;
+	border: none;
+	background-color: white;
+	color: #FF9911;
+	border-bottom: 2px solid gray;
+}
+.dropdown-contentPro input.buscar{
+	position: relative;
+	min-width:  250px;
+	max-width:  250px;
+	min-height: 29px;
+    max-height: 29px;
+    margin-top: 1px;
+	border-style: none;
+	font-size: 20px;
+	border: none;
+	border-bottom: 2px solid #FF9900;
+	font-family: "Font Awesome 5 Free", "";
+	
+}
+input:focus {
+	outline: none;
+	border: none;
+	background-color: #FF9900;
+	color: white;
+	border-bottom: 2px solid gray;
+	
+  }
+
+.dropdown-contentPro {
+	display: flex;
+	flex-direction: column ;
+	position: absolute;
+	background-color: #f6f6f6;
+	min-width: 200px;
+    max-width: 260px;
+	max-height: 200px;
+	margin-left: 62px;
+	align-items: center;
+	margin-top: 10px;
+	overflow-y: scroll;
+	overflow-x: none;
+	z-index: 1;
+}
+
+.dropdown-contentPro .Aelemente {
+	color: black;
+	display: flex;
+	width: 90%;
+	text-decoration: none;
+	position: relative;
+	font-size: 18px;
+	margin-top: 4px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #FF9900;
+}
+
+.dropdown-contentPro .Aelemente:hover {
+	background-color: #FF9900;
+	border-bottom: 1px solid gray;
+	color: white ;
+}
+
+.dropdown-contentPro a .dato2 {
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 12px;
+}
+.Producdata{
+	min-width: 800px ;
+}
+
+.Producdata input{
+	min-width: 140px;
+	max-width: 140px;
+	background-color:white;
+	border-style: none;
+	font-size: 20px;
+	color: black;
+	text-align: center;
+	margin-top: 10px;
+	border: none;
+  	border-bottom: 2px solid #FF9900;
+}
+.Producdata input:focus {
+	outline: none;
+	border: none;
+	color: white;
+	background-color: #FF9900;
+	border-bottom: 4px solid gray;
+}
+
+
+button.guardar{
+	min-width: 57px;
+	min-height: 57px;
+	max-height: 57px;
+	max-width: 57px;
+	cursor: pointer;
+	background-color: rgb(61, 180, 50);
+	color: white;
+	font-weight: bolder;
+	font-size: 12px;
+	border: none;
+	border-radius: 50px;
+}
+
+button.cancelar{
+	min-width: 57px;
+	min-height: 57px;
+	max-height: 57px;
+	max-width: 57px;
+	cursor: pointer;
+	background-color: red;
+	color: white;
+	font-weight: bolder;
+	font-size: 12px;
+	margin-top: 5px;
+	border: none;
+	border-radius: 44px;
+}
+
+button:focus {
+	outline: none;
+	border: none;
+	border-bottom: 4px solid gray;
+  }

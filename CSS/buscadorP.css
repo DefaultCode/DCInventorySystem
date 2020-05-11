@@ -1,0 +1,95 @@
+.buscadorPro{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.buscadorPro button.bbuscar{
+	min-height: 30px;
+	min-width: 30px;
+	max-height: 30px;
+	max-width: 30px;
+	background-color: #FF9900;
+	color: white;
+	position: relative;
+	align-items: center;
+	margin-top: 10px;
+	margin-left: 32px;
+	border-radius: 0px;
+	font-size: 20px;
+	cursor: pointer;
+	border-bottom: 2px solid gray;
+  
+}
+
+
+button.bbuscar:focus{
+	outline: none;
+	border: none;
+	background-color: white;
+	color: #FF9911;
+	border-bottom: 2px solid gray;
+}
+.dropdown-contentPro input.buscar{
+	position: relative;
+	min-width:  250px;
+	max-width:  250px;
+	min-height: 29px;
+	max-height: 29px;
+	margin-top: 1px;
+	border-style: none;
+	font-size: 20px;
+	border: none;
+	border-bottom: 2px solid #FF9900;
+	font-family: "Font Awesome 5 Free", "";
+	
+}
+input:focus {
+	outline: none;
+	border: none;
+	background-color: #FF9900;
+	color: white;
+	border-bottom: 2px solid gray;
+	
+  }
+
+.dropdown-contentPro {
+	display: flex;
+	flex-direction: column ;
+	position: absolute;
+	background-color: #f6f6f6;
+	min-width: 200px;
+	max-width: 300px;
+	max-height: 200px;
+	margin-left: 62px;
+	align-items: center;
+	margin-top: 10px;
+	overflow-y: scroll;
+	overflow-x: none;
+	z-index: 1;
+}
+
+.dropdown-contentPro .Aelemente {
+	color: black;
+	display: flex;
+	width: 90%;
+	text-decoration: none;
+	position: relative;
+	font-size: 18px;
+	margin-top: 4px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #FF9900;
+}
+
+.dropdown-contentPro .Aelemente:hover {
+	background-color: #FF9900;
+	border-bottom: 1px solid gray;
+	color: white ;
+}
+
+.dropdown-contentPro a .dato2 {
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 12px;
+}

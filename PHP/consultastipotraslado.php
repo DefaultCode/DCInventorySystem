@@ -3,29 +3,28 @@
 
     switch ($consulta) {
         case "getall":
-            get_all();
+            get_all_Traslado();
             break;  
         case "get_all_history":
             get_all_history();
             break;
-        case "insert_Divisa":
-            insert_Divisa();
-            break;   
-        case "insert_Valor_Divisa":
-            insert_Valor_Divisa();
-            break;         
-        case "Divisa_Cambio":
-            Divisa_Cambio();
+        case "insert_Tipo_Traslado":
+            Insert_Tipo_Traslado();
+            break;     
+        case "Update_Tipo_Traslado":
+            Update_Tipo_Traslado();
             break;  
-        case "Search_Divisa":
-            search_Divisa();
-            break;      
-        case "update_Divisa":
-            update_Divisa();
-            break;                 
+        case "Search_Traslado":
+            search_Traslado();
+            break;        
+        case "search_Traslado_tipo_Select":
+            search_Traslado_tipo_Select();
+            break;        
+                
+           
     }
 
-    function get_all(){
+    function get_all_Traslado(){
         include 'dbconection.php';
         $sql = "SELECT * FROM tbltipomovimiento";
         $result = mysqli_query($conn,$sql);
@@ -40,7 +39,7 @@
     function get_all_history(){
         include 'dbconection.php';
         $id = $_GET['iddivisa']; 
-        $sql = "SELECT * FROM tbldivisadia WHERE (iddivisa = '$id' AND ultimadivisa = 0)";
+        $sql = "SELECT * FROM tblmovimientoinventario WHERE (iddivisa = '$id' AND ultimadivisa = 0)";
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) > 0) {
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
@@ -51,10 +50,10 @@
 
     } 
 
-    function search_Divisa(){
+    function search_Traslado(){
         include 'dbconection.php';
         $nombre = $_GET['nombre']; 
-        $sql = "SELECT * FROM tbldivisa WHERE nombre = '$nombre'";
+        $sql = "SELECT * FROM tbltipomovimiento WHERE nombre = '$nombre'";
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) > 0) {
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
@@ -65,32 +64,47 @@
 
     } 
 
-    function insert_Divisa(){
+    function search_Traslado_tipo_Select(){
+        include 'dbconection.php'; 
+        $sql = "SELECT * FROM tbltipomovimiento WHERE clase IS NULL ";
+        $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+            $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
+            echo json_encode($data);
+        }else{
+            echo("No Results");
+        }
+
+    } 
+
+    function Insert_Tipo_Traslado(){
         include 'dbconection.php';
         $nombre = $_GET['nombre'];
-        $sql = "INSERT INTO tbldivisa (nombre, estado) VALUES ('$nombre' , 1)";
+        $tipo = $_GET['tipo'];
+        $clase = $_GET['clase'];
+        if ($clase=="") {
+            $sql = "INSERT INTO tbltipomovimiento (nombre, tipo, clase) VALUES ('$nombre' , '$tipo', null)";
+        }else{
+            $sql = "INSERT INTO tbltipomovimiento (nombre, tipo, clase) VALUES ('$nombre' , '$tipo', '$clase')";
+        }
         $result = mysqli_query($conn,$sql);
         $afectados = mysqli_affected_rows($conn);
         echo $afectados;
     }
 
-    function insert_Valor_Divisa(){
-        include 'dbconection.php';
-        $id = $_GET['ids'];
-        $valor= $_GET['valor'];
-        $sql = "INSERT INTO tbldivisadia (fecha, iddivisa, valor, ultimadivisa) VALUES (now(), '$id', $valor, 1)";
-        $result = mysqli_query($conn,$sql);
-        $afectados = mysqli_affected_rows($conn);
-        echo $afectados;
-    }
 
-
-    function update_Divisa(){
+    function Update_Tipo_Traslado(){
         include 'dbconection.php';
         $id= $_GET['id'];
-        $valor= $_GET['valor'];
-        $fecha= $_GET['fecha'];
-        $sql = "UPDATE tbldivisadia SET  valor = $valor, ultimadivisa = 1 WHERE  (fecha = $fecha AND iddivisa = '$id')";
+        $nombre= $_GET['nombre'];
+        $clase= $_GET['clase'];
+        $tipo= $_GET['tipo'];
+        if ($clase == "") {
+            $sql = "UPDATE tbltipomovimiento SET  nombre = '$nombre', tipo = '$tipo', clase = '$clase' WHERE  (id = '$id')";
+        }else {
+            $sql = "UPDATE tbltipomovimiento SET  nombre = '$nombre', tipo = '$tipo', clase = null WHERE  (id = '$id')";
+        }
+       
         $result = mysqli_query($conn,$sql);
         $afectados = mysqli_affected_rows($conn);
         if ($afectados > 0) {
@@ -101,17 +115,4 @@
         }     
     }
 
-    function Divisa_Cambio(){
-        include 'dbconection.php';
-        $id= $_GET['id'];
-        $sql = "UPDATE tbldivisadia SET  ultimadivisa = 0 WHERE  ( iddivisa = '$id' AND ultimadivisa = 1)";
-        $result = mysqli_query($conn,$sql);
-        $afectados = mysqli_affected_rows($conn);
-        if ($afectados > 0) {
-            echo ($afectados);
-        }else{
-            echo("No Results");
-            
-        }     
-    }
 ?>

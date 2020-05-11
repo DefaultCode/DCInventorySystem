@@ -24,60 +24,6 @@ function checkValuesEmpty(){
 	return empty;
 }
 
-function chargeall(){
-	try {
-		$.ajax({
-			type: "GET",
-			url: "../PHP/ConsultasDivisas.php",
-			data: {
-                select:"getall"
-            },
-			contentType: "application/json; charset=utf-8",
-			dataType: 'json',                    
-			cache: false,                       
-			success: function(response) {    
-                var opciones ="";                    
-				$.each(response, function (i, item) {
-					try {
-						var tables = document.getElementById("scroll_table1");
-						var newRow = tables.insertRow(tables.length);
-                        var ID= newRow.insertCell(0);
-                        var NOMBRE= newRow.insertCell(1);
-                        var FECHA= newRow.insertCell(2);
-                        var VALOR= newRow.insertCell(3);
-                        opciones = opciones + "<option value='"+item.ID+"' style='font-size: 18px;'>"+item.nombre+"</option>";
-                        ID.innerHTML = item.ID;
-                        NOMBRE.innerHTML = item.nombre;
-                        FECHA.innerHTML = item.fecha;
-                        VALOR.innerHTML = item.valor;
-                        ID.className += "thid";
-                        NOMBRE.className += "thid";
-						FECHA.className += "thFecha";
-                        VALOR.className += "tdDin";
-                        selectedRowToInput();
-                        document.getElementById("NombreI").style.display = "none";
-                        document.getElementById("NombreS").style.display = "inline";
-					} catch (error) {
-						console.log(error);
-					}               
-                    });
-                    document.getElementById("NombresDivisas").innerHTML = opciones ;
-				},
-				error: function (e) {
-                    console.log(e);
-                    if (e.responseText == "No Results") {
-                        alert("Aun no existen Divisas Agregadas");
-                        document.getElementById("NombreI").style.display = "inline";
-                        document.getElementById("NombreS").style.display = "none";
-                        document.getElementById("NewD").style.display = "none";
-                    }
-				}
-            });
-
-	} catch (error) {
-		console.log(error);
-	}
-}
 
 function selectedRowToInput(){
 	var tables = document.getElementById("scroll_table1"); 
@@ -142,6 +88,63 @@ function clearlist1(){
 }
 
 // apartir de aqui estan todos los ajax
+
+function chargeall(){
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/ConsultasDivisas.php",
+			data: {
+                select:"getall"
+            },
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {    
+                var opciones ="";                    
+				$.each(response, function (i, item) {
+					try {
+						var tables = document.getElementById("scroll_table1");
+						var newRow = tables.insertRow(tables.length);
+                        var ID= newRow.insertCell(0);
+                        var NOMBRE= newRow.insertCell(1);
+                        var FECHA= newRow.insertCell(2);
+                        var VALOR= newRow.insertCell(3);
+                        opciones = opciones + "<option value='"+item.ID+"' style='font-size: 18px;'>"+item.nombre+"</option>";
+                        ID.innerHTML = item.ID;
+                        NOMBRE.innerHTML = item.nombre;
+                        FECHA.innerHTML = item.fecha;
+                        VALOR.innerHTML = item.valor;
+                        ID.className += "thid";
+                        NOMBRE.className += "thid";
+						FECHA.className += "thFecha";
+                        VALOR.className += "tdDin";
+                        selectedRowToInput();
+                        document.getElementById("NombreI").style.display = "none";
+                        document.getElementById("NombreS").style.display = "inline";
+					} catch (error) {
+						console.log(error);
+					}               
+                    });
+                    document.getElementById("NombresDivisas").innerHTML = opciones ;
+				},
+				error: function (e) {
+                    console.log(e);
+                    if (e.responseText == "No Results") {
+                        alert("Aun no existen Divisas Agregadas");
+                        document.getElementById("NombreI").style.display = "inline";
+                        document.getElementById("NombreS").style.display = "none";
+                        document.getElementById("NewD").style.display = "none";
+                    }
+				}
+            });
+
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+
 
 function ajaxInsert(NOMBRE, VALOR){
     try {
