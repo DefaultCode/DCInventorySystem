@@ -8,7 +8,7 @@
         case "getallfCP":
             get_all_facturac_pro();
             break;     
-        case "insertfv":
+        case "insertfc":
            // ultimafactura();
             insert_facturac();
             break;      
@@ -53,12 +53,13 @@
         include 'dbconection.php';
         $id = $_GET['id'];
         $idproveedor = $_GET['idproveedor'];
-        $fechaemision = $_GET['fechaemision'];
         $acotaciondolar =$_GET['acotaciondolar'];
-        $total = $_GET['total'];
+        $total=$_GET['total'];
         $tipopago = $_GET['tipopago'];
-        $sql = "INSERT INTO tblfacturacompra VALUES ('$id', '$idproveedor', '$fechaemision', now(), now(), $total, $tipopago, 1, $acotaciondolar, 1)";
-        $result = mysqli_query($conn, $sql);       
+        $sql = "INSERT INTO tblfacturacompra VALUES ('$id', '$idproveedor', now(), now(), now(), $total, $tipopago, 1, $acotaciondolar, 1)";
+        $result = mysqli_query($con, $sql);
+        $afectados = mysqli_affected_rows($conn);
+        echo $afectados;  
     }
     function estado_facturac(){
         include 'dbconection.php';
@@ -70,12 +71,23 @@
     function insert_articuloc(){
         include 'dbconection.php';
         $idfacturacompra = $_GET['idfacturacompra'];
-        $idproducto = $_GET['idproducto'];
-        $cantidad = $_GET['cantidad'];
-        $preciocompra = $_GET['preciocompra'];
-        $precioventa = $_GET['precioventa'];
-        $sql = "INSERT INTO tblarticulocompra VALUES ('$idfacturacompra', '$idproducto', $cantidad, $preciocompra, precioventa)";
+        $productos = $_GET['productos'];
+        $idproveedor = $_GET["idpoveedor"];
+        $i = 0;
+        foreach ($productos as $producto) {
+            $idproducto = $producto["idpro"];
+            $cantidad = (int)$producto["cantidad"];
+            $preciocompra = (int)$producto["precio_U"];
+            $sql = "INSERT INTO tblarticulocompra VALUES ('$idfacturacompra', '$idproducto', '$idproveedor', $cantidad, $preciocompra)";
+            if(mysqli_affected_rows($conn )===0){
+                $i  = 0  ;
+            }else {
+                $i = $i +1;
+            }
+        }      
         $result = mysqli_query($conn,$sql);
+        $afectados = mysqli_affected_rows($conn);
+        echo $afectados;
     }
     function get_all_articuloc(){
         include 'dbconection.php';

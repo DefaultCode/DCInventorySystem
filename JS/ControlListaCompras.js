@@ -229,39 +229,50 @@ function removeHtmlTableSelectedReow(){
 }
 
 function Guardar_facturaC(){
-	var idgenerado= document.getElementById("IDFactura").value;;
-	var idProveedor= document.getElementById("IDProveedor").value;
-	var tipopago=0;
-	var i =0;
+	var idgenerado= document.getElementById("IDFactura").value,
+	idProveedor= document.getElementById("IDProveedor").value,
+	totalft =  document.getElementById("totalBs").innerText;
+	var totalf = parseFloat( totalft.substring(0,totalft.length-2).replace('.','').replace('.','').replace('.',''));
+	var estadof = "pagado",
+	acotacionf = 170000,
+	tipopagof=1,
+	i =0;
 
-
+	console.log(totalf);
 	var tables = document.getElementById("scroll_table"); 
 	prod= [];
 	var x  = 0;
 	for (var i = 2; i <= tables.rows.length-1; i++) {
-		prod[x]= {"idpro":tables.rows[i].cells[0].innerText,"nombre":tables.rows[i].cells[1].innerText, "cantidad": tables.rows[i].cells[3].innerText , "precio":tables.rows[i].cells[5].innerText }; 
+		prod[x]= {"idpro":tables.rows[i].cells[0].innerText,"nombre":tables.rows[i].cells[1].innerText, "cantidad": tables.rows[i].cells[3].innerText , "precio_U":tables.rows[i].cells[4].innerText, "Costo":tables.rows[i].cells[5].innerText }; 
 		console.log(prod[x]);
 		var x  = x+1;
 	}
 	try {
 		$.ajax({
 			type: "GET",
-			url: "../PHP/consultasfacturaventa.php?select=insertfv&id="+idgenerado+"&idcomprador="+idComprador+"&total=50000&tipo_pago="+tipopago+"&iduser=1",
-			data: {},
+			url: "../PHP/consultasfacturacompra.php",
+			data: {
+				select : "insertfc",
+				id : idgenerado,
+				idproveedor : idProveedor,
+				total : totalf,
+				acotaciondolar : acotacionf,
+				tipopago : tipopagof,
+			},
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json',                    
 			cache: false,                       
-			success: function(response) {     
-				alert("Data Save: " + response);
-			},
-			error: function (e) {
-				if (e.responseText=="sussess") {
+			success: function(response) {   
+				console.log(response);  
+				if ( parseInt(response) >= 0) {
 					try {
 						$.ajax({
 							type: "GET",
-							url: "../PHP/consultasfacturaventa.php?select=insertav",
+							url: "../PHP/consultasfacturacompra.php",
 							data: {
+								select:insertac,
 								idfacturaventa: idgenerado,
+								idproveedor:idProveedor,
 								productos: prod,
 							},
 							contentType: "application/json; charset=utf-8",
@@ -288,6 +299,10 @@ function Guardar_facturaC(){
 				} else {
 					alert("error generando la factura");
 				}
+			},
+			error: function (e) {
+				console.log(e.responseText); 
+				alert("Error Creando la factura");
 			}
 			});
 		
@@ -296,7 +311,7 @@ function Guardar_facturaC(){
 			console.log(error);
 		}
 	console.log("salio de meter la factura en la db");
-    try {
+    /*try {
       $.ajax({
         type: "GET",
         url: "../PHP/serial.php",
@@ -325,5 +340,5 @@ function Guardar_facturaC(){
         }); 
     } catch (error) {
       console.log(error);
-    }
+    }*/
 }
