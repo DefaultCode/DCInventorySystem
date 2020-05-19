@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
     <link rel="stylesheet" type="text/css" href="../CSS/facturaCompra.css">
-    <link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/awesomplete.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title></title>
 </head>
 <body>
-	<p>Compra De Productos</p>
+	<p class="titulo">Compra De Productos</p>
+	<div style="display: inline;margin-left: 28px;">
+		Factura ID: <input style="margin-left:15px;max-width: 300px;" type="text" id="IDFactura" class="Dato">
+	</div>
 	<section class="gen">
-		<p>Datos del Proveedor</p>
-		<section class="buscadorClie" id="buscadorProveedor">
+		<p class="info" >Datos del Proveedor</p>
+
+		<section class="buscadorPro" id="buscadorProveedor">
 			<button onclick="myFunctionProveedor()"  class="bbuscar" ><i class="fa fa-search"></i></button>
 			<section id="dropdownProveedor" class="dropdown-content" >
 				<input autocomplete="false" onkeyup="filterFunctionProveedor()" id="ibuscarProveedor" class="buscar" placeholder="Search..."   type="text" ></input>
 				<!--<a class="Aelemente" href="javascript:cargarPago()"> <i class="fas fa-file-invoice-dollar" style="float: left; font-size: 21px; margin-left:7px;margin-right:14px ;  " ></i>carlossss<p class="dato2" > Presentacion </p> </a>
 				<a class="Aelemente" href="javascript:cargarV()"> <i class="fas fa-dollar-sign" style="float: left; font-size: 21px; margin-left:9px;margin-right:16px ; " ></i>carlossx <p class="dato2" > Presentacion </p> </a>-->
 			</section>
-			
+			<button onclick="newPro()"  class="newPro" ><i style="float: left; margin-top: 3px; font-size: 14px;" class="fa fa-plus"></i>New</button>
 		</section>
+		
 		<section class="DatosProveedor" style="display:flex;flex-direction: row;">
 			<section class="datos2"  >
 				<div style="display: inline;margin-left: 10px;">
-					ID: <input style="margin-left:65px;" type="text" id="IDProveedor" class="Dato">
+					ID: <input disabled style="margin-left:65px;" type="text" id="IDProveedor" class="Dato">
 				</div>
 				<div style="display: inline;margin-left: 10px;">
-					Nombre: <input style="margin-left:20px;margin-top: 15px;" type="text" id="NombreProveedor" class="Dato">
-				</div>
-				<div style="display: inline;margin-left: 10px;">
-					Direccion: <input style="margin-left:20px;margin-top: 15px;" type="text" id="DireccionProveedor" class="Dato">
+					Nombre: <input disabled style="margin-left:20px;margin-top: 15px;" type="text" id="NombreProveedor" class="Dato">
 				</div>
 			</section>
 			<section class="datos2" >
 				<div style="display: inline;margin-left: 10px;">
-					Telefono: <input style="margin-left:17px;margin-top: 15px;" type="text" id="TelefonoProveedor" class="Dato">
+					Direccion: <input disabled style="margin-left:20px;margin-top: 15px;" type="text" id="DireccionProveedor" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Telefono: <input disabled style="margin-left:17px;margin-top: 15px;" type="text" id="TelefonoProveedor" class="Dato">
 				</div>
 			</section>
 		</section>
-			<p>Insertar Productos</p>
+			<p class="titulo">Insertar Productos</p>
 			<section class="buscadorPro" id="buscadorPro">
 				<button onclick="myFunctionPro()"  class="bbuscar" ><i class="fa fa-search"></i></button>
 				<section id="dropdownPro" class="dropdown-contentPro" >
@@ -48,45 +52,51 @@
 					<!--<a class="Aelemente" href="javascript:cargarPago()"> <i class="fas fa-file-invoice-dollar" style="float: left; font-size: 21px; margin-left:7px;margin-right:14px ;  " ></i>carlossss<p class="dato2" > Presentacion </p> </a>
 					<a class="Aelemente" href="javascript:cargarV()"> <i class="fas fa-dollar-sign" style="float: left; font-size: 21px; margin-left:9px;margin-right:16px ; " ></i>carlossx <p class="dato2" > Presentacion </p> </a>-->
 				</section>
+				<button onclick="newProd()"  class="newProd" ><i style="float: left; margin-top: 3px; font-size: 14px;" class="fa fa-plus"></i>New</button>
 			</section>
 			<section class="Producdata" >
 				<div style="display: inline;margin-left: 10px;">
-					ID: <input style="margin-left:20px;margin-top: 15px;" type="text" id="IDProducto" class="Cant">
+					ID: <input disabled style="margin-left:20px;margin-top: 15px;" type="text" id="IDProducto" class="Cant">
 				</div>
 				<div style="display: inline;margin-left: 10px;">
-					Producto: <input style="margin-left:20px;margin-top: 15px;" type="text" id="NombreProducto" class="Cant">
+					Producto: <input disabled style="margin-left:20px;margin-top: 15px;" type="text" id="NombreProducto" class="Cant">
 				</div>
 				<div style="display: inline;margin-left: 10px;">
-					Cantidad: <input style="margin-left:20px;margin-top: 15px;" type="text" id="CantProducto" class="Cant">
+					Cantidad: <input style="margin-left:20px;margin-top: 15px;" type="number" id="CantProducto" class="Cant">
 				</div>
-				<div style="margin-top: 8px; margin-left: 10px; float: right; display: flex; flex-direction: row;">
-					<button onclick="addHTMLTableRow()" style="background-color: green; border-radius: 14px; min-width: 28px;max-width: 28px; min-height: 28px;max-height: 28px;" ><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-plus"></i></button>
-					<button onclick="editHtmlTableSelectedRow()" style="background-color: blue; border-radius: 14px; min-width: 28px;max-width: 28px; min-height: 28px;max-height: 28px;" ><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-minus"></i> </button>
-					<button onclick="deleteHtmlTableSelectedRow()" style="background-color:red; border-radius: 14px; min-width: 28px;max-width: 28px; min-height: 28px;max-height: 28px;" ><i style="margin-top: 1px;margin-left: 0.5px;" class="fas fa-minus"></i> </button>
-				</div>
+
 			</section>
-			
+			<section>
+				<div style="margin-top: 12px; display: flex; flex-direction: row;">
+					<button onclick="addHTMLTableRow()" style="border: 1px solid  #2F354D;cursor: pointer; background-color: rgb(26, 187, 11);  min-width: 130px;max-width:130px; min-height: 28px;max-height: 28px;" ><i style="float: left;margin-top: 2px;margin-left: 1px;" class="fas fa-plus"></i>Add</button>
+					<button onclick="editHtmlTableSelectedRow()" style="border: 1px solid  #2F354D;cursor: pointer;background-color: orange; border-left: 2px;  min-width: 130px;max-width: 130px; min-height: 28px;max-height: 28px;" ><i style="float: left;margin-top: 2px;margin-left: 1px;" class="fas fa-minus"></i>Subctrac</button>
+					<button onclick="deleteHtmlTableSelectedRow()" style="border: 1px solid  #2F354D;cursor: pointer;background-color:rgb(255, 72, 0);  min-width: 130px;max-width: 130px; min-height: 28px;max-height: 28px;" ><i style="float: left; margin-top: 2px;margin-left: 1px;" class="fas fa-trash"></i>Remove</button>
+				</div>
+			</section>			
 		<!--	<section>
 						onclick="addHTMLTableRow()"
 				<button onclick="addHTMLTableRow()" class="boton" >Agregar</button>
 				<button onclick="editHtmlTableSelectedRow()" class="boton" >Editar</button>
 			</section>-->
-		<section style=" margin-top: 30px; display: flex; flex-direction: row; max-width:960px ;min-width:960px;" >
-			<section style="width: 800px" class="Contabla2"  >
+		
+		<section style="display: flex; flex-direction: column; " >
+
+			<section style="max-width:970px ;min-width:970px;max-height: 150px;" class="Contabla"   >
+				
 				<table  id="scroll_table" class="scroll_table" >
 					<thead>
 						<tr>
-							<th class="thid"  >ID</th>
-							<th class="thText">NOMBRE</th>
-							<th class="thText">PRESENTACION</th>
-							<th class="thCant">CANT</th>
-							<th class="thDin">PRECIO U</th>
-							<th class="thDin">MONTO</th>
-							<th class="thDin">PRECIO U Bs</th>
-							<th class="thDin">MONTO Bs</th>
+							<th class="thid">ID</th>
+							<th class="thText">Nombre</th>
+							<th class="thText">Presentación</th>
+							<th class="thCant">Cant</th>
+							<th class="thDin">Precio U</th>
+							<th class="thDin">Monto</th>
+							<th class="thDin">Precio U Bs</th>
+							<th class="thDin">Precio Bs</th>
 						</tr>
 					</thead>	
-					<tbody>
+					<tbody  class="scroll_table2" >
 						<tr title="inicio">
 							
 						</tr>
@@ -94,29 +104,32 @@
 					</tbody>
 			
 				</table>
-				<table style="margin-top: 30px;" class="scroll_table">
-					<thead >
-						<tr style="margin-left:480px;" >
-							<th class="thDin" >Total:</th>
-							<th id="total" class="thTotal" ></th>
-						</tr>
-						<tr>
-							<th class="thDin" >Total Bs:</th>
-							<th id="totalBs" class="thTotal" ></th>
-						</tr>
-					</thead>
-				</table>
+
+
 				
 			</section>	
-
+			<table id="tablaresultados" style="float: left; margin-left: 440px; margin-top: 30px;" class="scroll_table">
+				<thead >
+					<tr >
+						<th class="thDin" >Total:</th>
+						<th id="total" class="thTotal" ></th>
+					</tr>
+					<tr>
+						<th class="thDin" >Total Bs:</th>
+						<th id="totalBs" class="thTotal" ></th>
+					</tr>
+				</thead>
+			</table>
 
 		</section>	
 
+		<section style=" margin-left: 10px;  display: flex;flex-direction: row;">
+			<button  id="GenerarV" onclick="Guardar_facturaC()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Generate</button>
+			<button id="CancelarP" class="cancelar"><i style="float: left; margin-top: 3px; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
+		</section>
 	</section>
-	<section style="float: right; margin-left: 10px; margin-top: 20px; min-width: 60px;max-width: 60px; display: flex;flex-direction: column;">
-		<button  id="GenerarV" href="impfacturaventa.html" onclick="generar_factura()" class="guardar"><i style="font-size: 18px;" class="fas fa-print"></i></button>
-		<button id="CancelarP" class="cancelar"><i></i></button>
-	</section>		
+
+		
 <!--<script type="text/javascript" src="/javascripts/awesomplete.js"></script>
 	<script type="text/javascript" src="/javascripts/Complete.js"></script>
 	

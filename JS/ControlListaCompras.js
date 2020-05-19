@@ -228,20 +228,13 @@ function removeHtmlTableSelectedReow(){
 
 }
 
-function generar_factura(){
-	var idgenerado="6";
-	var idComprador= document.getElementById("IDCliente").value;
-	var nombreComprador = document.getElementById("NombreCliente").value;
-	var apellidoComprador = document.getElementById("ApellidoCliente").value;
-	var direccionComprador = document.getElementById("DireccionCliente").value;
-	var telefonoComprador = document.getElementById("TelefonoCliente").value;
-	var fechaemision="18/12/2019";
+function Guardar_facturaC(){
+	var idgenerado= document.getElementById("IDFactura").value;;
+	var idProveedor= document.getElementById("IDProveedor").value;
 	var tipopago=0;
-	var estado = 1;
-	var t ;
 	var i =0;
 
-	console.log(document.getElementById("IDProducto").value);
+
 	var tables = document.getElementById("scroll_table"); 
 	prod= [];
 	var x  = 0;

@@ -30,7 +30,7 @@
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
             echo json_encode($data);
         } 
-    } 
+    }
     function get_all_facturac_pro(){
         include 'dbconection.php';
         $idproveedor = $_GET['idproveedor'];
