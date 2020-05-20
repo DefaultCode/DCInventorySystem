@@ -236,6 +236,7 @@ function Guardar_facturaC(){
 	var estadof = "pagado",
 	acotacionf = 170000,
 	tipopagof=1,
+	estadof =1,
 	i =0;
 
 	console.log(totalf);
@@ -243,7 +244,7 @@ function Guardar_facturaC(){
 	prod= [];
 	var x  = 0;
 	for (var i = 2; i <= tables.rows.length-1; i++) {
-		prod[x]= {"idpro":tables.rows[i].cells[0].innerText,"nombre":tables.rows[i].cells[1].innerText, "cantidad": tables.rows[i].cells[3].innerText , "precio_U":tables.rows[i].cells[4].innerText, "Costo":tables.rows[i].cells[5].innerText }; 
+		prod[x]= {"idpro":tables.rows[i].cells[0].innerText,"nombre":tables.rows[i].cells[1].innerText, "cantidad": tables.rows[i].cells[3].innerText , "precio_U":tables.rows[i].cells[4].innerText, "Costo":tables.rows[i].cells[5].innerText.substring(1).replace(",","") }; 
 		console.log(prod[x]);
 		var x  = x+1;
 	}
@@ -258,6 +259,7 @@ function Guardar_facturaC(){
 				total : totalf,
 				acotaciondolar : acotacionf,
 				tipopago : tipopagof,
+				estado:estadof,
 			},
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json',                    
@@ -270,8 +272,8 @@ function Guardar_facturaC(){
 							type: "GET",
 							url: "../PHP/consultasfacturacompra.php",
 							data: {
-								select:insertac,
-								idfacturaventa: idgenerado,
+								select:"insertac",
+								idfacturacompra: idgenerado,
 								idproveedor:idProveedor,
 								productos: prod,
 							},
