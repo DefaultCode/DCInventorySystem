@@ -1,0 +1,284 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: Helvetica, 'sans-serif';
+  }
+  .Titulo {
+      text-align: center;
+      height: 5vh;
+  }
+  
+  .Titulo p{
+      font-family: Helvetica, 'sans-serif';
+      color: black;
+      font-size: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  section.data {
+      margin-top: 3vh;
+      height: 60vh;
+      width:  100vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+  }
+  section.data2 {
+      margin-left: 1vh;
+      height: 45vh;
+      display: flex;
+      flex-direction: column;
+  }
+
+  section.botonera{
+    margin-top: 3vh;
+    height: 20vh;
+    width:  90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  section label {
+  
+      color: black;
+      margin-right: 50px;
+      font-size: 20px;
+      text-align: center;
+  }
+  
+  input{
+      width: 50% !important;
+      background-color:white;
+      border-style: none;
+      font-size: 20px;
+      color: black;
+      text-align: center;
+      margin-top: 10px;
+      border: none;
+        border-bottom: 2px solid #2F354D;
+  }
+  input:focus {
+      outline: none;
+      border: none;
+      color: #2F354D;
+      background-color: #A9D0F5;
+      border-bottom: 3px solid #2F354D;
+    }
+  
+  .Descripcion{
+      max-width: 90% !important;
+      min-width: 90% !important;
+      height: 200px;
+      max-height: 200px;
+      margin-top: 10px;
+      min-height: 100px;
+      border-style: none;
+      font-size: 20px;
+      text-align:start;
+      border-bottom: 2px solid #2F354D;
+      
+  }
+  .Descripcion:focus{
+      outline: none;
+      border: none;
+      background-color: #A9D0F5;
+      border-bottom: 3px solid #2F354D;
+  }
+  
+  .selectboxF{
+      margin-top: 15px ;
+      font-family: Arial;
+      border-style: none;
+      font-size: 20px;	
+  }
+  
+  .selectboxF select{
+      --radius: 0;
+      
+      --baseFg: black;
+      --baseBg: white;
+      --accentFg: black;
+      --accentBg: #2F354D;
+      width: 130px;
+  }
+  
+  .selectboxF select {
+      font-family: Arial;
+      -webkit-appearance: none;
+      appearance: none;
+      color: var(--baseFg);
+      border: none;
+      border-bottom: 2px solid #2F354D;
+      outline: 0;
+      height: 30px;
+      min-width: 165px;
+      max-width: 180px;
+      background-color: var(--baseBg);
+      background-image: linear-gradient(var(--baseFg), var(--baseFg)),
+        linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
+        linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
+        linear-gradient(var(--accentBg) 42%, white 42%);
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+      background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+      background-position: right 20px center, right bottom, right bottom, right bottom;   
+    }
+    
+  .selectboxF select:hover {
+      background-color: #A9D0F5; 
+      color: white;
+      background-image: linear-gradient(#A9D0F5, #A9D0F5),
+        linear-gradient(-135deg, transparent 50%, white 50%),
+        linear-gradient(-225deg, transparent 50%,white 50%),
+        linear-gradient(white 42%, #A9D0F5 42%);
+      
+    }
+    
+  .selectboxF select:active {
+      background-image: linear-gradient(#A9D0F5, #A9D0F5),
+        linear-gradient(-135deg, transparent 50%, white 50%),
+        linear-gradient(-225deg, transparent 50%, white 50%),
+        linear-gradient(white 42%, #A9D0F5 42%);
+      color: white;
+      border-color: gray;
+    }
+  
+  .selectboxF select option {
+      
+      background-color: #A9D0F5;
+      color:black;
+  }
+  
+  #selectboxF select option:hover {
+      background-color:  black;
+      color: white;
+  }
+  
+  button.guardar{
+      cursor: pointer;
+      background-color: rgb(61, 180, 50);
+      color: white;
+      font-weight: bolder;
+      font-size: 18px;
+      border: 2px solid rgb(201, 201, 201);
+
+  }
+  button.guardar:hover{
+      background-color: silver;
+      color: #2F354D;
+  }
+  button.edit{
+      cursor: pointer;
+      background-color: rgb(50, 111, 180);
+      color: white;
+      font-weight: bolder;
+      font-size: 18px;
+      border: 2px solid #2F354D;
+  }
+  button.edit:hover{
+      background-color: silver;
+      color: #2F354D;
+  }
+  
+  button.cancelar{
+      cursor: pointer;
+      background-color: red;
+      color: white;
+      font-weight: bolder;
+      margin-left: 10px;
+      border: 2px solid #2F354D;
+      
+  }
+  button.cancelar:hover{
+      background-color: silver;
+      color: #2F354D;
+  }
+  
+  button:focus {
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #2F354D;
+    }
+  
+  input::-webkit-calendar-picker-indicator {
+      opacity:0;
+    }
+    
+    input {
+      position:relative;  
+    }
+    
+    input:before {
+      content: "\f073";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position:absolute;
+      right:0;
+      top:50%;
+      transform:translateY(-50%);
+    }
+  
+  button.editSelect{
+      min-width: 37px;
+      min-height: 37px;
+      max-height: 37px;
+      max-width: 37px;
+      cursor: pointer;
+      background-color: rgb(50, 111, 180);
+      color: white;
+      font-weight: bolder;
+      font-size: 16px;
+      border: 2px solid #2F354D;
+      border-radius: 50px;
+  }
+  button.editSelect:hover{
+      background-color: silver;
+      color: #2F354D;
+  }
+  
+  button.SaveSelect{
+      min-width: 37px;
+      min-height: 37px;
+      max-height: 37px;
+      max-width: 37px;
+      cursor: pointer;
+      background-color: rgb(50, 111, 180);
+      color: white;
+      font-weight: bolder;
+      font-size: 16px;
+      border: 2px solid #2F354D;
+      border-radius: 50px;
+  }
+  button.SaveSelect:hover{
+      background-color: silver;
+      color: #2F354D;
+  }
+  
+  
+  button.addSelect{
+      min-width: 37px;
+      min-height: 37px;
+      max-height: 37px;
+      max-width: 37px;
+      cursor: pointer;
+      background-color: rgb(50, 111, 180);
+      color: white;
+      font-weight: bolder;
+      font-size: 16px;
+      border: 2px solid #2F354D;
+      border-radius: 50px;
+  }
+  button.addSelect:hover{
+      background-color: silver;
+      color: #2F354D;
+  }

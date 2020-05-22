@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<title>Agregar Proveedor</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/soloformulario.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 </head>
 <body>
 	<section class="content">
@@ -12,33 +13,46 @@
 		</section>
 		<section class="data" >	
 			<section class="data2" >
-				<label  >RIF</label>
-				<label  >Nombre</label>
-				<label  >Telefono</label>
-				<label  >Direccion</label>
-				<label  >Correo</label>
-				<label  >Nro Cuenta</label>
-		    </section>
-		    <section class="data2" >  
-				<input type="text" id="RIFProveedor" class="Dato">
-				<input type="text" id="NombreProvedor" class="Dato">
-				<input type="text" id="TelefonoProvedor" class="Dato">
-				<input type="text" id="DireccionProvedor" class="Dato">
-				<input type="text" id="CorreoProvedor" class="Dato">
-				<input type="text" id="CuentaProvedor" class="Dato">
-
+				<div style="display: inline;margin-left: 10px;">
+					RIF: <input style="margin-left:70px;" type="text" id="RIFProveedor" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Nombre:<input style="margin-left:40px;margin-top: 15px;" type="text" id="NombreProvedor" class="Dato">
+				</div>
+				<section style=" display: flex; flex-direction: row;">
+					<div style="display: inline;margin-left:10px;" class="selectboxF">
+						Telefono:<select style="margin-left:33px;" type="text" id="TelefonoProvedor"> 
+							
+						</select>
+						<input style="display:none; margin-left:111px;margin-top: 15px;" placeholder="New Number" type="text" id="numeroSelect" class="Dato">
+					</div>
+			</section>
+				<div style="display: inline;margin-left: 10px;">
+					Direccion:<input style="margin-left:31px;margin-top: 15px;" type="text" id="DireccionProvedor" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Correo:<input style="margin-left:52px;margin-top: 15px;" type="text" id="CorreoProveedor" class="Dato">
+				</div>
+				<div style="display: inline;margin-left: 10px;">
+					Nro Cuenta:<input style="margin-left:16px;margin-top: 15px;" type="text" id="CuentaProvedor" class="Dato">
+				</div>
 			</section>
 		</section>
 		<section class="botonera">
-			 <button id="guardarPro" class="guardar">Guardar</button>
-			 <button id="CancelarPro" class="cancelar">Cancelar</button>
+			<section style="display: inline;justify-content: center;align-items: center;">
+				<button id="GenerarV" style="width: 300px; height: 40px ;" onclick="Guardar_facturaC()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Save</button>
+				<button id="CancelarP" style="width: 300px; height: 40px ; " class="cancelar"><i style="float: left; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
+			</section>
 		</section>
+
 	</section>
+	<script src="../CSS/jquery-3.4.1.js"></script>
+	<script defer src="../CSS/all.js"></script>
 	<script src="../JS/agregarproveedor.js"></script>
 	<script src="../JS/sessionscontrol.js"></script>
 	<script>
 		
-		VerificarSessionOtherViews();
+	//	VerificarSessionOtherViews();
 	</script>
 
 </body>

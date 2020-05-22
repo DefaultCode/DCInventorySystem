@@ -56,7 +56,9 @@ function calcularMonto(tables,i,C1, C2) {
 }
 
 function newProveedor(){
-	if (document.getElementById("datosProve").style.display == "none") {
+	window.open("../HTML/AgregarProveedor.html?","New Proveedor","width=720,height=400,top=85,left=350");
+
+	/*if (document.getElementById("datosProve").style.display == "none") {
 		document.getElementById("IDProveedor").value = "";
 		document.getElementById("NombreProveedor").value = "";
 		document.getElementById("DireccionProveedor").value = "";
@@ -73,7 +75,7 @@ function newProveedor(){
 		document.getElementById("producto").style.marginTop = "70px";
 
 	}
-
+*/
 }
 
 function addHTMLTableRow(){
