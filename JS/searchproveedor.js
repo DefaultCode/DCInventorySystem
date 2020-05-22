@@ -17,11 +17,14 @@ function cargarProveedor(idP){
                 document.getElementById("NombreProveedor").value = item.nombre;
                 document.getElementById("DireccionProveedor").value = item.direccion;
                 document.getElementById("TelefonoProveedor").value = item.telefono;
+                document.getElementById("datosProve").style.display = "flex";
+                document.getElementById("producto").style.marginTop = "10px";
                 a=document.getElementsByTagName("a");
                 for (i = 0; i < a.length; i++) {
                     txtValue = a[i].textContent || a[i].innerText;
                     a[i].style.display = "none";
                 }
+                document.getElementById("IDProveedor").value = item.id;
             } catch (error) {
                 console.log(error);
             }

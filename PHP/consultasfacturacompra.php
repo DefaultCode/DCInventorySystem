@@ -82,18 +82,17 @@
             $cantidad = (int)$producto["cantidad"];
             $preciocompra = (int)$producto["precio_U"];
             $sql = "INSERT INTO tblarticulocompra VALUES ('$idfacturacompra', '$idproducto', '$idproveedor', $cantidad, $preciocompra)";
-            echo($sql);
             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
             if(mysqli_affected_rows($conn )===0){
-                $i  = 0  ;
+                $i  = 0;
             }else {
                 $i = $i +1;
             }
         }      
         $result = mysqli_query($conn,$sql);
-        $afectados = mysqli_affected_rows($conn);
-        echo $afectados;
+        echo ("$i");
     }
+    
     function get_all_articuloc(){
         include 'dbconection.php';
         $idfacturacompra = $_GET['idfacturacompra'];

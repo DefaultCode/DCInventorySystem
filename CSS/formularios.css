@@ -87,8 +87,7 @@ input:focus {
 	margin-top: 15px ;
 	font-family: Arial;
 	border-style: none;
-	font-size: 20px;
-	width:90%;	
+	font-size: 20px;	
 }
 
 .selectboxF select{
@@ -98,7 +97,7 @@ input:focus {
 	--baseBg: white;
 	--accentFg: black;
 	--accentBg: #2F354D;
-	width: 55% !important;
+	width: 130px;
 }
 
 .selectboxF select {
@@ -110,7 +109,7 @@ input:focus {
 	border-bottom: 2px solid #2F354D;
 	outline: 0;
 	height: 30px;
-	
+	width: 120px;
 	background-color: var(--baseBg);
 	background-image: linear-gradient(var(--baseFg), var(--baseFg)),
 	  linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),

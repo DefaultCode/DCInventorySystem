@@ -15,7 +15,6 @@
 	</div>
 	<section class="gen">
 		<p class="info" >Datos del Proveedor</p>
-
 		<section class="buscadorPro" id="buscadorProveedor">
 			<button onclick="myFunctionProveedor()"  class="bbuscar" ><i class="fa fa-search"></i></button>
 			<section id="dropdownProveedor" class="dropdown-content" >
@@ -23,10 +22,9 @@
 				<!--<a class="Aelemente" href="javascript:cargarPago()"> <i class="fas fa-file-invoice-dollar" style="float: left; font-size: 21px; margin-left:7px;margin-right:14px ;  " ></i>carlossss<p class="dato2" > Presentacion </p> </a>
 				<a class="Aelemente" href="javascript:cargarV()"> <i class="fas fa-dollar-sign" style="float: left; font-size: 21px; margin-left:9px;margin-right:16px ; " ></i>carlossx <p class="dato2" > Presentacion </p> </a>-->
 			</section>
-			<button onclick="newPro()"  class="newPro" ><i style="float: left; margin-top: 3px; font-size: 14px;" class="fa fa-plus"></i>New</button>
+			<button onclick="newProveedor()"  class="newPro" ><i style="float: left; margin-top: 3px; font-size: 14px;" class="fa fa-plus"></i>New</button>
 		</section>
-		
-		<section class="DatosProveedor" style="display:flex;flex-direction: row;">
+		<section id="datosProve" class="DatosProveedor" style="display:none;flex-direction: row;">
 			<section class="datos2"  >
 				<div style="display: inline;margin-left: 10px;">
 					ID: <input disabled style="margin-left:65px;" type="text" id="IDProveedor" class="Dato">
@@ -44,7 +42,7 @@
 				</div>
 			</section>
 		</section>
-			<p class="titulo">Insertar Productos</p>
+			<p id="producto" style="margin-top: 70px;" class="titulo">Insertar Productos</p>
 			<section class="buscadorPro" id="buscadorPro">
 				<button onclick="myFunctionPro()"  class="bbuscar" ><i class="fa fa-search"></i></button>
 				<section id="dropdownPro" class="dropdown-contentPro" >
@@ -107,25 +105,41 @@
 
 
 				
-			</section>	
-			<table id="tablaresultados" style="float: left; margin-left: 440px; margin-top: 30px;" class="scroll_table">
-				<thead >
-					<tr >
-						<th class="thDin" >Total:</th>
-						<th id="total" class="thTotal" ></th>
-					</tr>
-					<tr>
-						<th class="thDin" >Total Bs:</th>
-						<th id="totalBs" class="thTotal" ></th>
-					</tr>
-				</thead>
-			</table>
+			</section>
+			<div style="display: inline;" class="selectboxF">
+				<div style="display: inline;margin-left: -440px;  ">
+					Dolar: <input disabled style="max-width:120px; min-height: 31px; margin-top: 0px; " type="number" id="Divisadia" class="Cant">
+				</div>
+				<select style="width: 120px;" type="text" id="TipoP"> 
+				</select>
+
+				<select style="width: 120px;margin-left: 2px;" type="text" id="EstadoP"> 
+					<option value="0">Por Pagar</option>
+					<option value="1">Pagada</option>
+					<option value="2">Cancelada</option>
+				</select>
+
+				<table id="tablaresultados" style="float: left; margin-left: 440px; margin-top: 30px;" class="scroll_table">
+					<thead  >
+						<tr >
+							<th class="thDin" style="height: 30px;" >Total:</th>
+							<th id="total" class="thTotal" ></th>
+						</tr>
+						<tr>
+							<th class="thDin" style="height: 30px;" >Total Bs:</th>
+							<th id="totalBs" class="thTotal" ></th>
+						</tr>
+					</thead>
+				</table>
+			</div>	
+
+		
 
 		</section>	
 
 		<section style=" margin-left: 10px;  display: flex;flex-direction: row;">
-			<button  id="GenerarV" onclick="Guardar_facturaC()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Generate</button>
-			<button id="CancelarP" class="cancelar"><i style="float: left; margin-top: 3px; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
+			<button  id="GenerarV" style="width: 400px;" onclick="Guardar_facturaC()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Generate</button>
+			<button id="CancelarP" style="width: 400px; height: 40px ; " class="cancelar"><i style="float: left; margin-top: 3px; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
 		</section>
 	</section>
 
@@ -146,7 +160,9 @@
 	<script src="../JS/searchproducto.js"></script>
 	<script src="../JS/sessionscontrol.js"></script>
 	<script>
-		VerificarSessionOtherViews()
+		VerificarSessionOtherViews();
+		ajaxTiposPago();
+		ajaxAcotacion();
 	</script>
 </body>
 </html>
