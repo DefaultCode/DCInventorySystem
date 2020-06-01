@@ -37,11 +37,20 @@
 					Nro Cuenta:<input style="margin-left:16px;margin-top: 15px;" type="text" id="CuentaProvedor" class="Dato">
 				</div>
 			</section>
+			<section style=" align-items: center; display: flex; flex-direction: column;width:8%;margin-top:-105px;margin-left:-19px ;">
+				<p id="texto" style="margin-left:-2px; font-size: 11px; text-align: center;">telefono</p>
+				<button id="AddNSP"  style="" onclick="addNumber()" class="addSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-plus" ></i> </button>
+				<button id="EditNSP" style="display:none;" onclick="editNumber()" class="editSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-edit" ></i> </button>
+				<button id="saveNSP" style="display:none;" onclick="saveNumber()" class="SaveSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-save" ></i> </button>
+				<button id="DeleteNSP" style="display:none;" onclick="deleteNumber()" class="SaveSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-trash-alt" ></i> </button>		
+				<button id="CancelarNSP"  style="display:none;" onclick="cancelarNumber()" class="addSelect"> <i style="margin-top:1px;margin-left: 1px;" class="fas fa-reply" ></i> </button>
+			</section>
 		</section>
+	
 		<section class="botonera">
 			<section style="display: inline;justify-content: center;align-items: center;">
-				<button id="GenerarV" style="width: 300px; height: 40px ;" onclick="Guardar_facturaC()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Save</button>
-				<button id="CancelarP" style="width: 300px; height: 40px ; " class="cancelar"><i style="float: left; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
+				<button id="GenerarV" style="width: 300px; height: 40px ;" onclick="addHTMLTableRow()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Save</button>
+				<button id="CancelarP" style="width: 300px; height: 40px ; " onclick="Cancelar()" class="cancelar"><i style="float: left; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
 			</section>
 		</section>
 
@@ -52,7 +61,7 @@
 	<script src="../JS/sessionscontrol.js"></script>
 	<script>
 		
-	//	VerificarSessionOtherViews();
+		VerificarSessionOtherViews();
 	</script>
 
 </body>

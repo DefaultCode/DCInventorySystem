@@ -72,9 +72,14 @@ switch ($consultaG) {
         $idmarca = $_GET['idmarca'];
         $descripcion = $_GET['descripcion'];
         $tipo = $_GET['tipo'];
-        $sql = "INSERT INTO tblinventario VALUES ('$codigo', '$nombre', '$presentacion', $precio_venta, $precio_compra, $cantidad, '$idmarca', '$descripcion', '$tipo', 1)";
+        $sql = "INSERT INTO tblinventario VALUES ('$codigo', '$nombre', '$presentacion', $precio_venta, 0, $cantidad, '$idmarca', '$descripcion', '$tipo', 1)";
         $result = mysqli_query($conn, $sql);
-        echo $sql;
+        if (mysqli_affected_rows($conn) > 0) {
+            $afectados = mysqli_affected_rows($conn);
+            echo($afectados);
+        }else{
+            echo("No Results");
+        }
 
     }
     function update_art(){

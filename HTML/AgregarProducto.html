@@ -1,102 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Producto</title>
-	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<title>Agregar Producto</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/soloformulario.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
 	<section class="content">
+		<section class="Titulo">
+			<p>Agregar Producto</p>	
+		</section>
 		<section class="data" >	
-			<section  class="data2" style="width:40%;">  		
-				<section style="display: flex;">
-					<p style="width: 100%; text-align: center; font-size: 28px;">Datos del Producto</p>
-				</section>
+			
+			<section  class="data2" style="width:33%;">  		
+
 				<div style="display: inline;margin-left: 10px;">
 					ID: <input style="margin-left:90px;" type="text" id="IDProducto" class="Dato">
 				</div>
 				<div style="display: inline;margin-left: 10px;">
 					Nombre:<input style="margin-left:50px;margin-top: 15px;" type="text" id="NombreProducto" class="Dato">
 				</div>
-				<div style="display: inline;margin-left: 10px;">
-					Cantidad:<input style="margin-left:42px;margin-top: 15px;"type="text" id="CantidadP" class="Dato">
+				<div style="display: none;;margin-left: 10px;">
+					Cantidad:<input style="margin-left:42px;margin-top: 15px;" type="number" id="CantidadP" class="Dato">
 				</div>
 				<div style="display: inline;margin-left: 10px;">
 					Presentacion:<input style="margin-left:10px;margin-top: 15px;"type="text" id="PresentacionP" class="Dato">
 				</div>
-				<div style="display: inline;margin-left: 10px;">
-					Marca:<input style="margin-left:65px;margin-top: 15px;"type="text" id="MarcaP" class="Dato">
+
+				
+			</section>
+			<section  class="data2" style="width:33%;align-items: left;">
+				
+				<div style="display: inline;">
+					Precio V:<input min="0.01" step="0.01" style="margin-left:52px;"type="number" id="PrecioV" class="Dato">
 				</div>
-				<div style="display: inline;margin-left: 10px;" id="selectboxF">
-					Tipo:<select id="TipoP">
+				<div style="display: inline;">	
+					Precio V Bs:<input  min="0.01" step="0.01" style="margin-left:27px;margin-top: 15px;"type="number" id="PrecioC" class="Dato">
+				</div>
+				<div style="display: inline;" class="selectboxF">
+					Marca: <select style="margin-left: 59px;" id="MarcaP">
+					</select>
+				</div>
+				<div style="display: inline;" class="selectboxF">
+					Tipo:<select style="margin-left: 83px;max-width: 220px;" id="TipoP">
 					<option value="Telefono">Telefono</option>
 					<option value="Otros">Otros</option>
 				</select>
 				</div>
 				
+				<div id="Dolar" style="visibility:hidden; display: inline ;margin-left: 10px;">
+					Bolivares:<input style="margin-left:46px;margin-top: 15px;"type="number"  id="DolarD" class="Dato" disabled>
+				</div>
+				<div id="Porcentaje" style="visibility:hidden;display: inline;margin-left: 10px;">
+					% Aumento:<input style="margin-left:28px;margin-top: 15px;" type="number" id="PorcentajeD" class="Dato"  disabled><br>
+				</div>
+				<div id="Aumento" style="visibility:hidden;display: inline;margin-left: 10px;">
+					Aumento Neto:<input style="margin-left:5px;margin-top: 15px;" type="number" id="AumentoN" class="Dato"  disabled><br>
+				</div>
 			</section>
-			<section  class="data2" style="width:40%;align-items: center;">
-				<section style="display: flex;">
-					<p style="font-size: 28px;">Finansas</p>
+			<section class="data2"  style="width:33%;align-items: center;">
+				<section style="display: flex; ">
+					<p style="font-size: 28px;">Descripción</p>
 				</section>
-				<div style="display: inline;margin-left: 10px;">
-					Precio V:<input style="margin-left:32px;"type="text" id="PrecioV" class="Dato">
-				</div>
-				<div style="display: inline;margin-left: 10px;">
-					Precio C:<input style="margin-left:30px;margin-top: 15px;"type="text" id="PrecioC" class="Dato">
-				</div>
-				<div style="display: inline;margin-left: 10px;">
-					Dolar:<input style="margin-left:55px;margin-top: 15px;"type="text" id="DolarD" class="Dato">
-				</div>
-				<div style="display: inline;margin-left: 10px;">
-					Porcentaje:<input style="margin-left:12px;margin-top: 15px;"type="text" id="PorcentajeD" class="Dato"><br>
-				</div>
-			</section>
-			<section class="data2">
-				<button id="guardarP" class="guardar">Guardar</button>
-				<button id="CancelarP" class="cancelar">Cancelar</button>
-		   </section>
-		</section>
+				<textarea type="text" id="DescripcionP" class="Descripcion"></textarea>
+			</section>	
 
+		</section>
+		<section class="botonera">
+			<section style="display: inline;justify-content: center;align-items: center;">
+				<button id="GenerarV" style="width: 300px; height: 40px ;" onclick="addHTMLTableRow()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Save</button>
+				<button id="CancelarP" style="width: 300px; height: 40px ; " onclick="Cancelar()" class="cancelar"><i style="float: left; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
+			</section>
+		</section>
 	</section>
 	<script src="../CSS/jquery-3.4.1.js"></script>
-	<script >
+	<script defer src="../CSS/all.js"></script>
+	<script src="../JS/agregarproducto.js"></script>
+	<script src="../JS/sessionscontrol.js"></script>
+	<script>
+		chargeMarca();
+		//VerificarSessionOtherViews();
 		var url_string = window.location.href;
 		var url = new URL(url_string);
 		var c = url.searchParams.get("id");
 		console.log(c);
-		try {
-            $.ajax({
-                type: "GET",
-                url: "../PHP/consultasVentas.php?select=buscar&articulo="+c,
-                data: {},
-                contentType: "application/json; charset=utf-8",
-                dataType: 'json',                    
-                cache: false,         
-                success: function(response) {                 
-                    $.each(response, function (i, item) {
-                        try {
-							document.getElementById("IDProducto").value  = item.codigo;
-							document.getElementById("NombreProducto").value  = item.nombre;
-							document.getElementById("CantidadP").value  = item.cantidad;
-							document.getElementById("PresentacionP").value  = item.presentacion;
-							document.getElementById("PrecioV").value  = item.precio_venta;
-							document.getElementById("PrecioC").value  = item.precio_compra;
-							document.getElementById("MarcaP").value  = item.idmarca;
-							document.getElementById("selectboxF").value  = item.tipo;
-                        } catch (error) {
-                            console.log(error);
-                        }
-                
-                        });
-                    },
-                    error: function (e) {
-                        console.log(e);
-                    }
-                }); 
-        } catch (error) {
-            console.log(error);
-        }
+		if ( c!=null ) {
+			try {
+				$.ajax({
+					type: "GET",
+					url: "../PHP/consultasVentas.php?select=buscar&articulo="+c,
+					data: {},
+					contentType: "application/json; charset=utf-8",
+					dataType: 'json',                    
+					cache: false,         
+					success: function(response) {                 
+						$.each(response, function (i, item) {
+							try {
+								document.getElementById("IDProducto").value  = item.codigo;
+								document.getElementById("NombreProducto").value  = item.nombre;
+								document.getElementById("CantidadP").value  = item.cantidad;
+								document.getElementById("PresentacionP").value  = item.presentacion;
+								document.getElementById("PrecioV").value  = item.precio_venta;
+								document.getElementById("PrecioC").value  = item.precio_compra;
+								document.getElementById("MarcaP").value  = item.idmarca;
+								document.getElementById("selectboxF").value  = item.tipo;
+							} catch (error) {
+								console.log(error);
+							}
+					
+							});
+						},
+						error: function (e) {
+							console.log(e);
+						}
+					}); 
+			} catch (error) {
+				console.log(error);
+			}	
+		}
+		
 	</script>
 
 </body>

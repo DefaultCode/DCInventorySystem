@@ -132,7 +132,11 @@ function chargeall(){
 	} catch (error) {
 		console.log(error);
 	}
+	chargeMarca();					
 
+}
+
+function chargeMarca() {
 	try {
 		$.ajax({
 			type: "GET",
@@ -162,8 +166,6 @@ function chargeall(){
 	} catch (error) {
 		console.log(error);
 	}
-						
-
 }
 
 

@@ -5,12 +5,15 @@
     font-size: 18px;
     font-family: Helvetica, 'sans-serif';
   }
-  .Titulo {
-      text-align: center;
-      height: 5vh;
-  }
+.Titulo {
+    background-color: whitesmoke;
+    text-align: center;
+    min-height: 100px;
+
+}
   
   .Titulo p{
+      position: relative;
       font-family: Helvetica, 'sans-serif';
       color: black;
       font-size: 32px;
@@ -20,25 +23,23 @@
   }
   
   section.data {
-      margin-top: 3vh;
-      height: 60vh;
-      width:  100vw;
+      background-color: whitesmoke;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
   }
   section.data2 {
-      margin-left: 1vh;
-      height: 45vh;
+      position: relative;
+      min-height: 300px;
       display: flex;
       flex-direction: column;
   }
 
-  section.botonera{
-    margin-top: 3vh;
-    height: 20vh;
-    width:  90vw;
+section.botonera{
+    background-color: whitesmoke;
+    max-height: 100px;
+    min-height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -55,6 +56,7 @@
   
   input{
       width: 50% !important;
+      min-width: 120px;
       background-color:white;
       border-style: none;
       font-size: 20px;
@@ -73,8 +75,8 @@
     }
   
   .Descripcion{
-      max-width: 90% !important;
-      min-width: 90% !important;
+      max-width: 400px;
+      min-width: 200px;
       height: 200px;
       max-height: 200px;
       margin-top: 10px;

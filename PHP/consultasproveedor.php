@@ -52,6 +52,12 @@
         $correo=$GET['correo'];
         $sql = "INSERT INTO tblproveedor (id, nombre, direccion, telefono, correo, estado) VALUES ('$id', '$nombre', '$direccion', '$telefono', '$correo',  1)";
         $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($conn) > 0) {
+            $afectados = mysqli_num_rows($conn);
+            echo($afectados);
+        }else{
+            echo("No Results");
+        }
     }
     function update_prov(){
         include 'dbconection.php';
