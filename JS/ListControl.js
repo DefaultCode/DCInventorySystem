@@ -79,7 +79,29 @@ function chargeall(){
 						CANTIDAD.innerHTML = item.cantidad;
 						PRESENTACION.innerHTML = item.presentacion;
 						PRECIOV.innerHTML = item.precio_venta;
-						PRECIOC.innerHTML = item.precio_compra;	
+						try {
+							$.ajax({
+								type: "GET",
+								url: "../PHP/consultasfacturacompra.php?select=get_precio",
+								data: {
+									idProd : item.codigo,
+								},
+								contentType: "application/json; charset=utf-8",
+								dataType: 'json',                    
+								cache: false,                       
+								success: function(response) {                        
+									$.each(response, function (i, item) {
+										PRECIOC.innerHTML = item.precio;	 ;						
+									});
+								},
+								error: function (e) {
+									 
+								}
+							}); 
+						} catch (error) {
+							console.log(error);
+						}
+						
 							try {
 								$.ajax({
 									type: "GET",
@@ -136,7 +158,35 @@ function chargeall(){
 
 }
 
-function chargeMarca() {
+
+function chargeDescripcion() {	
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasVentas.php?select=buscar",
+			data: {
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {
+				                        
+				$.each(response, function (i, item) {
+					
+					
+				});
+
+			},
+			error: function (e) {
+								 
+			}
+		}); 
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function chargeMarca() {	
 	try {
 		$.ajax({
 			type: "GET",
@@ -266,12 +316,17 @@ function selectedRowToInput(){
 			document.getElementById("TipoP").value= this.cells[7].innerHTML;
 			document.getElementById("Dolar").style.visibility = "visible"  ;
 			document.getElementById("DolarD").value= parseInt(this.cells[4].innerHTML)*75000;
-			document.getElementById("Porcentaje").style.visibility = "visible"  ;
+			document.getElementById("Porcentaje").style.visibility = "visible";
 			document.getElementById("PorcentajeD").value= ((parseFloat(this.cells[4].innerHTML) - parseFloat(this.cells[5].innerHTML))/parseFloat(this.cells[5].innerHTML))*100;
 			// para verificar que el porcentaje esta correcta console.log( (((parseFloat(this.cells[4].innerHTML) - parseFloat(this.cells[5].innerHTML))/parseFloat(this.cells[5].innerHTML))) * parseFloat(this.cells[5].innerHTML )			
 			document.getElementById("Aumento").style.visibility = "visible"  ;
 			document.getElementById("AumentoN").value = (((parseFloat(this.cells[4].innerHTML) - parseFloat(this.cells[5].innerHTML))/parseFloat(this.cells[5].innerHTML)) * parseFloat(this.cells[5].innerHTML) );
 			document.getElementById("guardarP").disabled = true;
+			try {
+				
+			} catch (error) {
+				
+			}
 		};
 	}
 

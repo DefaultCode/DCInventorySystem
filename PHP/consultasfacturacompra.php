@@ -21,6 +21,9 @@
         case "getallac":   
             get_all_articuloc();
             break;
+        case "get_precio":   
+            get_precio();
+            break;
     }
     function get_all_facturac(){
         include 'dbconection.php';
@@ -96,7 +99,17 @@
     function get_all_articuloc(){
         include 'dbconection.php';
         $idfacturacompra = $_GET['idfacturacompra'];
-        $sql = "SELECT tblarticulocompra.idfacturacompra AS idfacturacompra, tblinventario.codigo AS codigo, tblinventario.nombre AS nombre, tblinventario.presentacion AS presentacion, tblarticulocompra.preciocompra AS preciocompra, tblarticulocompra.precioventa AS precioventa, tblarticulocompra.cantidad AS cantidad  FROM tblarticulocompra JOIN tblinventario ON tblarticulocompra.idproducto = tblinventario.codigo WHERE tblarticulocompra.idfacturacompra  = '$idfacturacompra'";
+        $sql = "SELECT tblarticulocompra.idfacturacompra AS idfacturacompra, tblinventario.codigo AS codigo, tblinventario.nombre AS nombre, tblinventario.presentacion AS presentacion, tblarticulocompra.precio_compra AS preciocompra, tblarticulocompra.cantidad AS cantidad  FROM tblarticulocompra JOIN tblinventario ON tblarticulocompra.idproducto = tblinventario.codigo WHERE tblarticulocompra.idfacturacompra  = '$idfacturacompra'";
+        $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+            $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
+            echo json_encode($data);
+        } 
+    }
+    function get_precio(){
+        include 'dbconection.php';
+        $idpro = $_GET['idProd'];
+        $sql = "SELECT precio_compra as precio FROM tblhistoricopreciocompra  WHERE idproducto  = '$idpro' ORDER BY fecha DESC LIMIT 1; ";
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) > 0) {
             $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;

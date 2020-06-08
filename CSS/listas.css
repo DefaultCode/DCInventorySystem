@@ -321,7 +321,7 @@ button.Abrir:hover{
 .dropdown-contentP {
 	display: none;
 	flex-direction: column ;
-	position: absolute;
+	position: fixed;
 	background-color: #f6f6f6;
 	min-width: 270px;
 	max-width: 270px;

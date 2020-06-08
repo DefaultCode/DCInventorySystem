@@ -232,11 +232,12 @@ function selectedRowToInput(){
 											
 										},
 										error: function (e) {
-											PRODUCTOS.innerHTML ="no tiene productos";			 
+											PRODUCTOS.innerHTML ="no tiene productos";	
+											console.log(e);		 
 										}
 									}); 
 								} catch (error) {
-			
+									console.log(error);
 								}
 								
 								

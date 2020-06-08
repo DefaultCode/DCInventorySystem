@@ -80,7 +80,7 @@ function newProveedor(){
 }
 
 function newProducto(){
-	window.open("../HTML/AgregarProducto.html","New Producto","width=680,height=520,top=85,left=350");
+	window.open("../HTML/AgregarProducto.html","New Producto","width=820,height=420,top=85,left=350");
 }
 
 function addHTMLTableRow(){
@@ -216,8 +216,8 @@ function ajaxAgregarProducto(){
 						NOMBRE.innerHTML = item.nombre;
 						CANTIDAD.innerHTML = document.getElementById("CantProducto").value;
 						PRESENTACION.innerHTML = item.presentacion;
-						PRECIOU.innerHTML = item.precio_venta;
-						var monetary_value = item.precio_venta * parseInt(document.getElementById("CantProducto").value); 
+						PRECIOU.innerHTML =  parseInt(document.getElementById("PrecioU").value);
+						var monetary_value =  parseInt(document.getElementById("PrecioU").value) * parseInt(document.getElementById("CantProducto").value); 
 						
 						var i = new Intl.NumberFormat('en-IN', { 
 							style: 'currency', 

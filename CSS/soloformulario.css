@@ -31,15 +31,16 @@
   }
   section.data2 {
       position: relative;
-      min-height: 300px;
+      min-height: 230px;
+      max-height: 230px;
       display: flex;
       flex-direction: column;
   }
 
 section.botonera{
     background-color: whitesmoke;
-    max-height: 100px;
-    min-height: 100px;
+    max-height: 60px;
+    min-height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -75,9 +76,9 @@ section.botonera{
     }
   
   .Descripcion{
-      max-width: 400px;
+      max-width: 200px;
       min-width: 200px;
-      height: 200px;
+      height: 150px;
       max-height: 200px;
       margin-top: 10px;
       min-height: 100px;

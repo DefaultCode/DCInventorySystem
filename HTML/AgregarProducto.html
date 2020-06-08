@@ -12,7 +12,7 @@
 		</section>
 		<section class="data" >	
 			
-			<section  class="data2" style="width:33%;">  		
+			<section  class="data2" style="min-width: 260px;">  		
 
 				<div style="display: inline;margin-left: 10px;">
 					ID: <input style="margin-left:90px;" type="text" id="IDProducto" class="Dato">
@@ -25,11 +25,9 @@
 				</div>
 				<div style="display: inline;margin-left: 10px;">
 					Presentacion:<input style="margin-left:10px;margin-top: 15px;"type="text" id="PresentacionP" class="Dato">
-				</div>
-
-				
+				</div>				
 			</section>
-			<section  class="data2" style="width:33%;align-items: left;">
+			<section  class="data2" style="min-width: 320px;">
 				
 				<div style="display: inline;">
 					Precio V:<input min="0.01" step="0.01" style="margin-left:52px;"type="number" id="PrecioV" class="Dato">
@@ -58,16 +56,16 @@
 					Aumento Neto:<input style="margin-left:5px;margin-top: 15px;" type="number" id="AumentoN" class="Dato"  disabled><br>
 				</div>
 			</section>
-			<section class="data2"  style="width:33%;align-items: center;">
+			<section class="data2"  style="min-width: 220px;align-items: center;">
 				<section style="display: flex; ">
-					<p style="font-size: 28px;">Descripción</p>
+					<p style="margin-top: -34px; font-size: 28px;">Descripción</p>
 				</section>
 				<textarea type="text" id="DescripcionP" class="Descripcion"></textarea>
 			</section>	
 
 		</section>
-		<section class="botonera">
-			<section style="display: inline;justify-content: center;align-items: center;">
+		<section class="botonera" style="margin-top: 1px;">
+			<section style="display: inline;justify-content: center; align-items: center;">
 				<button id="GenerarV" style="width: 300px; height: 40px ;" onclick="addHTMLTableRow()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Save</button>
 				<button id="CancelarP" style="width: 300px; height: 40px ; " onclick="Cancelar()" class="cancelar"><i style="float: left; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
 			</section>
@@ -76,7 +74,7 @@
 	<script src="../CSS/jquery-3.4.1.js"></script>
 	<script defer src="../CSS/all.js"></script>
 	<script src="../JS/agregarproducto.js"></script>
-	<script src="../JS/sessionscontrol.js"></script>
+	<!--<script src="../JS/sessionscontrol.js"></script>-->
 	<script>
 		chargeMarca();
 		//VerificarSessionOtherViews();
