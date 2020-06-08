@@ -90,17 +90,30 @@ function chargeall(){
 						RECEPCION.innerHTML = item.fecharecepcion;
 						HORA.innerHTML = item.horarecepcion;
 						TOTAL.innerHTML = item.total;
-						switch (item.tipopago) {
-							case "0":
-								TIPO.innerHTML = "Debito";			
-								break;
-							case "1":
-								TIPO.innerHTML = "Credito";			
-								break;
-							case "2":
-								TIPO.innerHTML = "Efectivo";			
-								break;
-						}
+							
+						try {
+							$.ajax({
+								type: "GET",
+								url: "../PHP/consultasfacturacompra.php",
+								data: {
+									select:"search_tipo",
+									id:item.idtipopago
+								},
+								contentType: "application/json; charset=utf-8",
+								dataType: 'json',                    
+								cache: false,                       
+								success: function(response) {                        
+									$.each(response, function (i, item) {
+										TIPO.innerHTML=item.nombre;	
+									});
+								},
+								error: function (e) {
+									console.log(e);									}
+							}); 
+						} catch (error) {
+							console.log(error);
+						} 
+						
 						switch (item.estado) {
 							case "0":
 								ESTADO.innerHTML = "Por Pagar";			

@@ -5,6 +5,9 @@
 	<link rel="stylesheet" type="text/css" href="../CSS/venta.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/listas.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/awesomplete.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/formularios.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/facturaCompra.css">
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title></title>
 </head>
@@ -72,17 +75,21 @@
 				<button onclick="addHTMLTableRow()" class="boton" >Agregar</button>
 				<button onclick="editHtmlTableSelectedRow()" class="boton" >Editar</button>
 			</section>-->
-		<section style="margin-top: 30px; display: flex; flex-direction: row; max-width:900px ;min-width:900px ;" >
-			<section style="width: 800px" class="Contabla2"  >
-				<table  id="scroll_table" class="scroll_table"  >
+			<section style="display: flex; flex-direction: column; " >
+
+				<section style="max-width:970px ;min-width:960px;max-height: 150px;" class="Contabla"   >
+					
+					<table  id="scroll_table" class="scroll_table" >
 					<thead>
 						<tr>
 							<th class="thid"  >ID</th>
 							<th class="thText">NOMBRE</th>
 							<th class="thText">PRESENTACION</th>
 							<th class="thCant">CANT</th>
-							<th class="thText">PRECIO U</th>
-							<th class="thText">PRECIO T</th>
+							<th class="thDin">Precio U</th>
+							<th class="thDin">Monto</th>
+							<th class="thDin">Precio U Bs</th>
+							<th class="thDin">Monto Bs</th>
 						</tr>
 					</thead>	
 					<tbody>
@@ -94,13 +101,41 @@
 				</table>
 				
 			</section>	
-			<section style="margin-left: 10px; min-width: 60px;max-width: 60px; display: flex;flex-direction: column;">
-				<button  id="GenerarV" href="impfacturaventa.html" onclick="generar_factura()" class="guardar"><i style="font-size: 18px;" class="fas fa-print"></i>Generar</button>
-				<button id="CancelarP" class="cancelar"><i></i> Cancelar</button>
-			</section>
+	
+			<div class="selectboxF" style="display:inline;" >
+				<div style="display: inline;margin-left: -440px;">
+					Dolar: <input disabled style="max-width:120px;min-width:120px; min-height: 31px; margin-top: 0px; " type="number" id="Divisadia" class="Cant">
+				</div>
+				<select style="width: 120px;" type="text" id="TipoP"> 
+				</select>
+
+				<select style="width: 120px;margin-left: 2px;" type="text" id="EstadoP"> 
+					<option value="0">Por Pagar</option>
+					<option value="1">Pagada</option>
+					<option value="2">Cancelada</option>
+				</select>
+				<table id="tablaresultados" style="float: left; margin-left: 1px;margin-left: 440px;  margin-top: 30px;" class="scroll_table">
+					<thead>
+						<tr>
+							<th class="thDin" style="height: 30px;" >Total:</th>
+							<th id="total" class="thTotal" ></th>
+						</tr>
+						<tr>
+							<th class="thDin" style="height: 30px;" >Total Bs:</th>
+							<th id="totalBs" class="thTotal" ></th>
+						</tr>
+					</thead>
+				</table>
+			
+			</div>	
+		
+	
 
 		</section>	
-		
+		<section style=" display: flex;flex-direction: row;">
+			<button  id="GenerarV" style="width: 400px;" onclick="generar_factura()" class="guardar"><i style="float: left; font-size: 22px;" class="fas fa-print"></i>Generate</button>
+			<button id="CancelarP" style="width: 400px;  height: 40px ; margin-top: 20px; " class="cancelar"><i style="float: left; margin-top: 3px; font-size: 22px;" class="fas fa-trash"></i>Cancel</button>
+		</section>
 	</section>
 <!--<script type="text/javascript" src="/javascripts/awesomplete.js"></script>
 	<script type="text/javascript" src="/javascripts/Complete.js"></script>
@@ -118,7 +153,7 @@
 	<script src="../JS/searchproducto.js"></script>
 	<script src="../JS/sessionscontrol.js"></script>
 	<script>
-		VerificarSessionOtherViews()
+		//VerificarSessionOtherViews()
 	</script>
 </body>
 </html>

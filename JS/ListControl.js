@@ -159,12 +159,13 @@ function chargeall(){
 }
 
 
-function chargeDescripcion() {	
+function chargeDescripcion(id) {	
 	try {
 		$.ajax({
 			type: "GET",
 			url: "../PHP/consultasVentas.php?select=buscar",
 			data: {
+				articulo:id 
 			},
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json',                    
@@ -173,7 +174,7 @@ function chargeDescripcion() {
 				                        
 				$.each(response, function (i, item) {
 					
-					
+					document.getElementById("DescripcionP").value = item.descripcion
 				});
 
 			},
@@ -322,11 +323,7 @@ function selectedRowToInput(){
 			document.getElementById("Aumento").style.visibility = "visible"  ;
 			document.getElementById("AumentoN").value = (((parseFloat(this.cells[4].innerHTML) - parseFloat(this.cells[5].innerHTML))/parseFloat(this.cells[5].innerHTML)) * parseFloat(this.cells[5].innerHTML) );
 			document.getElementById("guardarP").disabled = true;
-			try {
-				
-			} catch (error) {
-				
-			}
+			chargeDescripcion(this.cells[0].innerHTML);
 		};
 	}
 

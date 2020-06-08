@@ -194,16 +194,13 @@ function removeHtmlTableSelectedReow(){
 }
 
 function generar_factura(){
-	var idgenerado="6";
 	var idComprador= document.getElementById("IDCliente").value;
 	var nombreComprador = document.getElementById("NombreCliente").value;
 	var apellidoComprador = document.getElementById("ApellidoCliente").value;
 	var direccionComprador = document.getElementById("DireccionCliente").value;
 	var telefonoComprador = document.getElementById("TelefonoCliente").value;
-	var fechaemision="18/12/2019";
-	var tipopago=0;
-	var estado = 1;
-	var t ;
+	var tipopago= document.getElementById("TipoP").value;
+	var estado = document.getElementById("EstadoP").value;
 	var i =0;
 
 	console.log(document.getElementById("IDProducto").value);
@@ -215,58 +212,7 @@ function generar_factura(){
 		console.log(prod[x]);
 		var x  = x+1;
 	}
-	try {
-		$.ajax({
-			type: "GET",
-			url: "../PHP/consultasfacturaventa.php?select=insertfv&id="+idgenerado+"&idcomprador="+idComprador+"&total=50000&tipo_pago="+tipopago+"&iduser=1",
-			data: {},
-			contentType: "application/json; charset=utf-8",
-			dataType: 'json',                    
-			cache: false,                       
-			success: function(response) {     
-				alert("Data Save: " + response);
-			},
-			error: function (e) {
-				if (e.responseText=="sussess") {
-					try {
-						$.ajax({
-							type: "GET",
-							url: "../PHP/consultasfacturaventa.php?select=insertav",
-							data: {
-								idfacturaventa: idgenerado,
-								productos: prod,
-							},
-							contentType: "application/json; charset=utf-8",
-							dataType: 'json',            
-							cache: false,                
-							success: function(response) {                        
-								$.each(response, function (i, item) {
-									console.log(response);
-									console.log("se guardo el producto: "+factura.id);
-								});
-							},
-							error: function (e) {
-								console.log(e);
-								if (e.responseText=="sussess") {
-									alert("producto asociado "+prod.nombre); 
-								} else {
-									alert("error asociando producto"+prod.nombre);
-								}
-							}
-						});
-					} catch (error) {
-						console.log(error);
-					}
-				} else {
-					alert("error generando la factura");
-				}
-			}
-			});
-		
-			
-		}catch (error) {
-			console.log(error);
-		}
+	
 	console.log("salio de meter la factura en la db");
     try {
       $.ajax({
@@ -348,4 +294,127 @@ function generar_factura(){
 	printWindow = window.open("../HTML/impfacturaventa.html?3213444"+"&"+datos+"&Ali&24437593");
 	printWindow.print(); 
 */
+}
+
+function ajaxGuardarFactura(idComprador,totalf,tipopagof,estadof,prod){
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasfacturaventa.php?select=insertfv",
+			data: {
+				idcomprador:idComprador,
+				total:totalf,
+				tipo_pago:tipopagof,
+				iduser:1,
+				estado:estadof,
+				productos:prod
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {     
+				alert("Data Save: " + response);
+			},
+			error: function (e) {
+			
+			}
+			});
+		
+			
+		}catch (error) {
+			console.log(error);
+		}
+}
+
+function ajaxGuardarProductosFactura(idfactura,idComprador,prod) {
+		try {
+			$.ajax({
+				type: "GET",
+				url: "../PHP/consultasfacturaventa.php",
+				data: {
+					select:"insertav",
+					idfacturaventa: idfactura,
+					comprador:idComprador,
+					productos: prod,
+				},
+				contentType: "application/json; charset=utf-8",
+				dataType: 'json',            
+				cache: false,                
+				success: function(response) {                        
+					$.each(response, function (i, item) {
+						console.log(response);
+						console.log("se guardo el producto: "+factura.id);
+					});
+				},
+				error: function (e) {
+					console.log(e);
+					if (e.responseText=="sussess") {
+						alert("producto asociado "+prod.nombre); 
+					} else {
+						alert("error asociando producto"+prod.nombre);
+					}
+				}
+			});
+		} catch (error) {
+			console.log(error);
+		}
+}
+
+function ajaxTiposPago(){
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasTipoPago.php",
+			data: {
+				select : "selec_all",
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {   
+				var opciones ="";
+				$.each(response, function (i, item) {
+					opciones = opciones + "<option value='"+item.id+"' style='font-size: 18px;'>"+item.nombre+"</option>";
+				});
+				document.getElementById("TipoP").innerHTML = opciones ;
+			},
+			error: function (e) {
+				console.log(e.responseText); 
+				alert("Error cargando los tipos de pago");
+			}
+			});
+		
+			
+		}catch (error) {
+			console.log(error);
+		}
+}
+
+function ajaxAcotacion() {
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasDivisas.php",
+			data: {
+				select : "valorDivisaDia",
+				divisa: "26" //id del dolar XD
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {   
+				$.each(response, function (i, item) {
+					document.getElementById("Divisadia").value = item.valor ;
+				});
+			},
+			error: function (e) {
+				console.log(e.responseText); 
+				alert("Error cargando el valor de la divisa");
+			}
+			});
+		
+			
+		}catch (error) {
+			console.log(error);
+		}
 }

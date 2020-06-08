@@ -24,6 +24,9 @@
         case "get_precio":   
             get_precio();
             break;
+        case "search_tipo":   
+            get_tipo();
+            break;    
     }
     function get_all_facturac(){
         include 'dbconection.php';
@@ -116,4 +119,15 @@
             echo json_encode($data);
         } 
     }
+    function get_tipo(){
+        include 'dbconection.php';
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM tbltipopago  WHERE id  = '$id'";
+        $result = mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+            $data   =   mysqli_fetch_all($result,MYSQLI_ASSOC) ;
+            echo json_encode($data);
+        } 
+    }
+
 ?>
