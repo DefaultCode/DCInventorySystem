@@ -1,3 +1,61 @@
+var parseFloatWithCommas = function(val) {
+
+	if (typeof val === 'number') {
+		val = val.toString();
+	}
+	
+	var numberWithCommas = function(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	};
+
+	return numberWithCommas(parseFloat(val.replace(',', '')).toFixed(2));
+};
+
+
+function calcularTotal(tables){
+	total = 0;
+	for (var y = 2; y <= tables.rows.length-1; y++) {
+		total  = total + parseFloat (tables.rows[y].cells[5].innerText.substring(1).replace(',','').replace('.',','));    
+		console.log("entro: "+total)
+	}
+	console.log(total);
+	var monetary_value = total; 
+	var c = new Intl.NumberFormat('en-IN', { 
+		style: 'currency', 
+		currency: 'USD' 
+	}).format(monetary_value); 
+	document.getElementById("total").innerHTML=c.substring(2);
+
+	total = 0;
+	for (var x = 2; x <= tables.rows.length-1; x++) {
+		var totalr = tables.rows[x].cells[7].innerText;
+		total  = total + parseFloat(totalr.substring(0,totalr.length-3).replace('.','').replace('.','').replace('.',''));          
+	}
+	console.log("total bolivares "+total)
+	var monetary_value = total; 
+	c = new Intl.NumberFormat('es-ES', { 
+		style: 'currency', 
+		currency: 'BSF' 
+	}).format(monetary_value); 
+	document.getElementById("totalBs").innerHTML = c.substring(0, c.length-1);
+
+}
+
+function calcularMonto(tables,i,C1, C2) {
+	
+	var preciou  = parseFloat(tables.rows[i].cells[4].innerText);
+            
+	var monetary_value = (C1 + C2)*preciou ; 
+	var c = new Intl.NumberFormat('en-IN', {style: 'currency', currency: 'USD'}).format(monetary_value);
+
+	tables.rows[i].cells[5].innerHTML = c.substring(2);
+	valordolar = parseFloat(document.getElementById("Divisadia").value);
+	var monetary_value = ((C1 + C2)*preciou)* valordolar; 
+	var c = new Intl.NumberFormat('es-ES', {style: 'currency', currency: 'BSF'}).format(monetary_value);
+	tables.rows[i].cells[7].innerHTML = c.substring(0, c.length-1);
+}
+
+
 var factura=[];
 
 class articulfactura {
@@ -73,70 +131,24 @@ function addHTMLTableRow(){
 		if ( document.getElementById("IDProducto").value == b ) {
 			var C1  = parseInt(tables.rows[i].cells[3].innerText);
 			var C2 = parseInt(document.getElementById("CantProducto").value);
-			tables.rows[i].cells[3].innerHTML = C1 + C2; 
-			bandera = "existe";
+			if ((C1 + C2) > parseInt(tables.rows[i].cells[4].innerText )) {
+				alert ("no puede vender mas productos de los que posee en el inventario de este articulo posee "+tables.rows[i].cells[4].innerText );
+				bandera = "existe";
+			} else {
+				tables.rows[i].cells[3].innerHTML = C1 + C2; 
+				//calculo del total del producto por unidad
+				calcularMonto(tables,i,C1, C2);
+				
+				//calculo del total de la factura
+				calcularTotal(tables)
+			  
+				bandera = "existe";
+			}
+
 		} 
 	}
 	if (bandera=="no existe" ) {
-		try {
-			$.ajax({
-				type: "GET",
-				url: "../PHP/consultasVentas.php?select=buscar&articulo="+document.getElementById("IDProducto").value,
-				data: {},
-				contentType: "application/json; charset=utf-8",
-				dataType: 'json',                    
-				cache: false,                       
-				success: function(response) {                        
-					$.each(response, function (i, item) {
-						try {
-							var tables = document.getElementById("scroll_table"); 
-							var newRow = tables.insertRow(tables.length);
-							var ID= newRow.insertCell(0);
-							var NOMBRE= newRow.insertCell(1);
-							var PRESENTACION= newRow.insertCell(2);
-							var CANTIDAD= newRow.insertCell(3);
-							var PRECIOU = newRow.insertCell(4);
-							var TOTAL= newRow.insertCell(5);
-							
-							/*var singleObj = {};
-							singleObj['id'] = item.codigo;
-							singleObj['cantidad'] = document.getElementById("CantP").value ;
-							singleObj['preciou'] = item.precio_venta;
-							singleObj['totalp'] = item.precio_venta * parseInt(document.getElementById("CantP").value) ;
-							*/
-							articulo = new articulfactura(item.codigo, item.nombre , item.precio_venta, document.getElementById("CantProducto").value, item.precio_venta*parseInt(document.getElementById("CantP")) );
-							factura.push(articulo);
-							console.log(factura[0].idarticulo);
-							
-							//ID.innerHTML = "<p>"+item.codigo+"</p> " ;
-							ID.innerHTML = item.codigo;
-							NOMBRE.innerHTML = item.nombre;
-							CANTIDAD.innerHTML = document.getElementById("CantProducto").value;
-							PRESENTACION.innerHTML = item.presentacion;
-							PRECIOU.innerHTML = item.precio_venta;
-							TOTAL.innerHTML =  item.precio_venta * parseInt(document.getElementById("CantProducto").value);
-		
-							ID.title += item.codigo;
-							ID.className += "thid";
-							NOMBRE.className += "thText";
-							CANTIDAD.className += "thCant";
-							PRESENTACION.className += "thText";
-							PRECIOU.className += "thText";
-							TOTAL.className += "thText";
-							selectedRowToInput();
-						} catch (error) {
-							console.log(error);
-						}
-				
-						});
-					},
-					error: function (e) {
-						console.log(e);
-					}
-				}); 
-		} catch (error) {
-			console.log(error);
-		}
+		ajaxAgregarProducto();
 	}
 	
 
@@ -202,7 +214,6 @@ function generar_factura(){
 	var tipopago= document.getElementById("TipoP").value;
 	var estado = document.getElementById("EstadoP").value;
 	var i =0;
-
 	console.log(document.getElementById("IDProducto").value);
 	var tables = document.getElementById("scroll_table"); 
 	prod= [];
@@ -212,115 +223,140 @@ function generar_factura(){
 		console.log(prod[x]);
 		var x  = x+1;
 	}
+	total = document.getElementById("total");
+	var idempleado="1"; 
+	ajaxGuardarFactura(idComprador,idempleado,total,tipopago,estado,prod);
 	
-	console.log("salio de meter la factura en la db");
-    try {
-      $.ajax({
-        type: "GET",
-        url: "../PHP/serial.php",
-        data: {
-			rifCed: idComprador ,
-			nombreCliente : nombreComprador+apellidoComprador ,
-			ClitePhon : telefonoComprador,
-			ClienteDir: direccionComprador,
-			productos : prod,
-        },
-        contentType: "application/json; charset=utf-8",
-        dataType: 'json',                    
-        cache: false,                       
-        success: function(response) {                        
-          $.each(response, function (i, item) {
-            try {
-				alert("imprimiendo");
-            } catch (error) {
-              console.log(error);
-            }
-            });
-          },
-          error: function (e) {
-            console.log(e);
-          }
-        }); 
-    } catch (error) {
-      console.log(error);
-    }
 
-	/*
-	factura.map(function (articulo,i) {
-		t = t + articulo.total;
-	});
+}
 
-	console.log(t);
+function ajaxAgregarProducto() {
 	try {
 		$.ajax({
 			type: "GET",
-			url: "../PHP/consultasfacturaventa.php?select=insertfv&id="+idgenerado+"&idcomprador="+idComprador+"&total=50000&tipo_pago="+tipopago+"&iduser=1",
+			url: "../PHP/consultasVentas.php?select=buscar&articulo="+document.getElementById("IDProducto").value,
 			data: {},
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json',                    
 			cache: false,                       
-			success: function(response) {     
-				alert("Data Save: " + response);
-			},
+			success: function(response) {                        
+				$.each(response, function (i, item) {
+					try {
+						if (item.cantidad < parseInt( document.getElementById("CantProducto").value)) {
+							alert ("no puede vender mas productos de los que posee en el inventario de este articulo posee"+item.cantidad);
+						} else {
+							var tables = document.getElementById("scroll_table"); 
+							var newRow = tables.insertRow(tables.length);
+							var ID= newRow.insertCell(0);
+							var NOMBRE= newRow.insertCell(1);
+							var PRESENTACION= newRow.insertCell(2);
+							var CANTIDAD= newRow.insertCell(3);
+							var CANTIDADEX= newRow.insertCell(4);
+							var PRECIOU = newRow.insertCell(5);
+							var TOTAL= newRow.insertCell(6);
+							var PRECIOB= newRow.insertCell(7);
+							var TOTALBS= newRow.insertCell(8);
+
+							
+							ID.innerHTML = item.codigo;
+							NOMBRE.innerHTML = item.nombre;
+							CANTIDAD.innerHTML = document.getElementById("CantProducto").value;
+							CANTIDADEX.innerHTML = item.cantidad;
+							PRESENTACION.innerHTML = item.presentacion;
+							PRECIOU.innerHTML =  item.precio_venta;
+							var monetary_value =  item.precio_venta * parseInt(document.getElementById("CantProducto").value); 
+							
+							var i = new Intl.NumberFormat('en-IN', { 
+								style: 'currency', 
+								currency: 'USD' 
+							}).format(monetary_value); 
+							TOTAL.innerHTML = i.substring(2) ;						
+							total = 0;
+							for (var i = 2; i <= tables.rows.length-1; i++) {
+								var total  = total + parseFloat (tables.rows[i].cells[6].innerText.substring(1).replace(',','').replace('.',','));        
+							}
+							var monetary_value = total; 
+							var i = new Intl.NumberFormat('en-IN', { 
+								style: 'currency', 
+								currency: 'USD' 
+							}).format(monetary_value); 
+							document.getElementById("total").innerHTML=i.substring(2);
+
+							valordolar = parseFloat(document.getElementById("Divisadia").value);
+							var monetary_value = item.precio_venta*valordolar; 
+							var c = new Intl.NumberFormat('es-ES', {style: 'currency', currency: 'BSF'}).format(monetary_value);
+							PRECIOB.innerHTML = c.substring(0, c.length-1);
+							
+							var monetary_value = ((parseInt(document.getElementById("CantProducto").value)*item.precio_venta)* valordolar); 
+							var c = new Intl.NumberFormat('es-ES', {style: 'currency', currency: 'BSF'}).format(monetary_value);
+							TOTALBS.innerHTML = c.substring(0, c.length-1);
+
+							total = 0;
+							for (var i = 2; i <= tables.rows.length-1; i++) {
+								var totalr = tables.rows[i].cells[8].innerText;
+								var total  = total + parseFloat(totalr.substring(0,totalr.length-3).replace('.','').replace('.','').replace('.',''));          
+							}
+							var monetary_value = total; 
+							var i = new Intl.NumberFormat('es-ES', { 
+								style: 'currency', 
+								currency: 'BSF' 
+							}).format(monetary_value); 
+							document.getElementById("totalBs").innerHTML=i.substring(0, c.length-1);
+							
+							ID.title += item.codigo;
+							ID.className += "thid";
+							NOMBRE.className += "thText";
+							CANTIDAD.className += "thCant";
+							CANTIDADEX.className += "thCant";
+							PRESENTACION.className += "thText";
+							PRECIOU.className += "trDin";
+							TOTAL.className += "trDin";
+							PRECIOB.className += "trDin";
+							TOTALBS.className += "trDin";
+							selectedRowToInput();
+						}
+						
+					} catch (error) {
+						console.log(error);
+					}
+			
+					});
+				},
 				error: function (e) {
 					console.log(e);
 				}
-			});
-			factura.map(function(articulo, i){
-				$.ajax({
-					type: "GET",
-					url: "../PHP/consultasfacturaventa.php?select=insertav&idfacturaventa="+idgenerado+"&idproducto="+articulo.idarticulo+"&cantidad="+articulo.cantidad+"&preciounitario="+articulo.precio_unitario,
-					data: {},
-					contentType: "application/json; charset=utf-8",
-					dataType: 'json',            
-					cache: false,                
-					success: function(response) {                        
-						$.each(response, function (i, item) {
-							console.log(response);
-							console.log("se guardo el producto: "+factura.id);
-							});
-						},
-					error: function (e) {
-						console.log(e);
-					}
-				});
-			}
-			
-			 
-			)} catch (error) {
+			}); 
+	} catch (error) {
 		console.log(error);
 	}
-	var datos = JSON.stringify(factura);
-	printWindow = window.open("../HTML/impfacturaventa.html?3213444"+"&"+datos+"&Ali&24437593");
-	printWindow.print(); 
-*/
 }
 
-function ajaxGuardarFactura(idComprador,totalf,tipopagof,estadof,prod){
+function ajaxGuardarFactura(idComprador,idempleadof,totalf,tipopagof,estadof,prod){
 	try {
 		$.ajax({
 			type: "GET",
 			url: "../PHP/consultasfacturaventa.php?select=insertfv",
 			data: {
 				idcomprador:idComprador,
+				idempleado:idempleadof,
 				total:totalf,
 				tipo_pago:tipopagof,
-				iduser:1,
 				estado:estadof,
-				productos:prod
 			},
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json',                    
 			cache: false,                       
-			success: function(response) {     
-				alert("Data Save: " + response);
+			success: function(response) {    
+				console.log(response);
+				$.each(response, function (i, item) { 
+					ajaxGuardarProductosFactur(item.id,idComprador,prod);
+				});
 			},
 			error: function (e) {
-			
+				console.log(e);
+				alert("error agregando la factura");
 			}
 			});
-		
-			
 		}catch (error) {
 			console.log(error);
 		}
@@ -343,16 +379,12 @@ function ajaxGuardarProductosFactura(idfactura,idComprador,prod) {
 				success: function(response) {                        
 					$.each(response, function (i, item) {
 						console.log(response);
-						console.log("se guardo el producto: "+factura.id);
+						alert("productos guardados");
 					});
 				},
 				error: function (e) {
 					console.log(e);
-					if (e.responseText=="sussess") {
-						alert("producto asociado "+prod.nombre); 
-					} else {
-						alert("error asociando producto"+prod.nombre);
-					}
+					alert("error guardando los productos");
 				}
 			});
 		} catch (error) {
@@ -418,3 +450,83 @@ function ajaxAcotacion() {
 			console.log(error);
 		}
 }
+
+	/*console.log("salio de meter la factura en la db");
+    try {
+      $.ajax({
+        type: "GET",
+        url: "../PHP/serial.php",
+        data: {
+			rifCed: idComprador ,
+			nombreCliente : nombreComprador+apellidoComprador ,
+			ClitePhon : telefonoComprador,
+			ClienteDir: direccionComprador,
+			productos : prod,
+        },
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',                    
+        cache: false,                       
+        success: function(response) {                        
+          $.each(response, function (i, item) {
+            try {
+				alert("imprimiendo");
+            } catch (error) {
+              console.log(error);
+            }
+            });
+          },
+          error: function (e) {
+            console.log(e);
+          }
+        }); 
+    } catch (error) {
+      console.log(error);
+    }
+	factura.map(function (articulo,i) {
+		t = t + articulo.total;
+	});
+
+	console.log(t);
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasfacturaventa.php?select=insertfv&id="+idgenerado+"&idcomprador="+idComprador+"&total=50000&tipo_pago="+tipopago+"&iduser=1",
+			data: {},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {     
+				alert("Data Save: " + response);
+			},
+				error: function (e) {
+					console.log(e);
+				}
+			});
+			factura.map(function(articulo, i){
+				$.ajax({
+					type: "GET",
+					url: "../PHP/consultasfacturaventa.php?select=insertav&idfacturaventa="+idgenerado+"&idproducto="+articulo.idarticulo+"&cantidad="+articulo.cantidad+"&preciounitario="+articulo.precio_unitario,
+					data: {},
+					contentType: "application/json; charset=utf-8",
+					dataType: 'json',            
+					cache: false,                
+					success: function(response) {                        
+						$.each(response, function (i, item) {
+							console.log(response);
+							console.log("se guardo el producto: "+factura.id);
+							});
+						},
+					error: function (e) {
+						console.log(e);
+					}
+				});
+			}
+			
+			 
+			)} catch (error) {
+		console.log(error);
+	}
+	var datos = JSON.stringify(factura);
+	printWindow = window.open("../HTML/impfacturaventa.html?3213444"+"&"+datos+"&Ali&24437593");
+	printWindow.print(); 
+*/

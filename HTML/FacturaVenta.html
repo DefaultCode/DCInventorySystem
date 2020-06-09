@@ -77,15 +77,16 @@
 			</section>-->
 			<section style="display: flex; flex-direction: column; " >
 
-				<section style="max-width:970px ;min-width:960px;max-height: 150px;" class="Contabla"   >
+				<section style="max-width:970px ;min-width:990px;max-height: 150px;" class="Contabla"   >
 					
 					<table  id="scroll_table" class="scroll_table" >
 					<thead>
 						<tr>
 							<th class="thid"  >ID</th>
-							<th class="thText">NOMBRE</th>
-							<th class="thText">PRESENTACION</th>
-							<th class="thCant">CANT</th>
+							<th class="thText">Nombre</th>
+							<th class="thText">Presentacion</th>
+							<th class="thCant">Cant</th>
+							<th class="thCant">Cant ex</th>
 							<th class="thDin">Precio U</th>
 							<th class="thDin">Monto</th>
 							<th class="thDin">Precio U Bs</th>
@@ -114,7 +115,7 @@
 					<option value="1">Pagada</option>
 					<option value="2">Cancelada</option>
 				</select>
-				<table id="tablaresultados" style="float: left; margin-left: 1px;margin-left: 440px;  margin-top: 30px;" class="scroll_table">
+				<table id="tablaresultados" style="float: left; margin-left: 1px;margin-left: 500px;  margin-top: 30px;" class="scroll_table">
 					<thead>
 						<tr>
 							<th class="thDin" style="height: 30px;" >Total:</th>
@@ -154,6 +155,8 @@
 	<script src="../JS/sessionscontrol.js"></script>
 	<script>
 		//VerificarSessionOtherViews()
+		ajaxTiposPago();
+		ajaxAcotacion();
 	</script>
 </body>
 </html>
