@@ -15,7 +15,7 @@ var parseFloatWithCommas = function(val) {
 function calcularTotal(tables){
 	total = 0;
 	for (var y = 2; y <= tables.rows.length-1; y++) {
-		total  = total + parseFloat (tables.rows[y].cells[5].innerText.substring(1).replace(',','').replace('.',','));    
+		total  = total + parseFloat (tables.rows[y].cells[6].innerText.substring(1).replace(',','').replace('.',','));    
 		console.log("entro: "+total)
 	}
 	console.log(total);
@@ -28,7 +28,7 @@ function calcularTotal(tables){
 
 	total = 0;
 	for (var x = 2; x <= tables.rows.length-1; x++) {
-		var totalr = tables.rows[x].cells[7].innerText;
+		var totalr = tables.rows[x].cells[8].innerText;
 		total  = total + parseFloat(totalr.substring(0,totalr.length-3).replace('.','').replace('.','').replace('.',''));          
 	}
 	console.log("total bolivares "+total)
@@ -43,16 +43,16 @@ function calcularTotal(tables){
 
 function calcularMonto(tables,i,C1, C2) {
 	
-	var preciou  = parseFloat(tables.rows[i].cells[4].innerText);
+	var preciou  = parseFloat(tables.rows[i].cells[5].innerText);
             
 	var monetary_value = (C1 + C2)*preciou ; 
 	var c = new Intl.NumberFormat('en-IN', {style: 'currency', currency: 'USD'}).format(monetary_value);
 
-	tables.rows[i].cells[5].innerHTML = c.substring(2);
+	tables.rows[i].cells[6].innerHTML = c.substring(2);
 	valordolar = parseFloat(document.getElementById("Divisadia").value);
 	var monetary_value = ((C1 + C2)*preciou)* valordolar; 
 	var c = new Intl.NumberFormat('es-ES', {style: 'currency', currency: 'BSF'}).format(monetary_value);
-	tables.rows[i].cells[7].innerHTML = c.substring(0, c.length-1);
+	tables.rows[i].cells[8].innerHTML = c.substring(0, c.length-1);
 }
 
 
@@ -219,16 +219,91 @@ function generar_factura(){
 	prod= [];
 	var x  = 0;
 	for (var i = 2; i <= tables.rows.length-1; i++) {
-		prod[x]= {"idpro":tables.rows[i].cells[0].innerText,"nombre":tables.rows[i].cells[1].innerText, "cantidad": tables.rows[i].cells[3].innerText , "precio":tables.rows[i].cells[5].innerText }; 
+		prod[x]= {"idpro":tables.rows[i].cells[0].innerText,"nombre":tables.rows[i].cells[1].innerText, "cantidad": tables.rows[i].cells[3].innerText , "precio":tables.rows[i].cells[6].innerText }; 
 		console.log(prod[x]);
 		var x  = x+1;
+		console.log("1")
 	}
-	total = document.getElementById("total");
+	console.log(prod);
+	totalft =   document.getElementById("totalBs").innerText;
+	var total = parseFloat( totalft.substring(0,totalft.length-2).replace('.','').replace('.','').replace('.',''));
 	var idempleado="1"; 
-	ajaxGuardarFactura(idComprador,idempleado,total,tipopago,estado,prod);
-	
+	ajaxGuardarFacturaV(idComprador,idempleado,total,tipopago,estado,prod);
 
 }
+
+
+function ajaxGuardarFacturaV(idComprador,idempleadof,totalf,tipopagof,estadof,prod){
+	console.log("entro a ajax factura");
+	console.log(idComprador+" "+idempleadof+" "+totalf+" "+tipopagof+" "+estadof)
+	try {
+		$.ajax({
+			type: "GET",
+			url: "../PHP/consultasfacturaventa.php",
+			data: {
+				select:"insertfv",
+				idcomprador:idComprador,
+				idempleado:idempleadof,
+				total:totalf,
+				tipo_pago:tipopagof,
+				estado:estadof,
+			},
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',                    
+			cache: false,                       
+			success: function(response) {    
+				if (response == "error" ) {
+					alert("Error guardando la factura");
+					console.log(response);
+				} else {
+					console.log("se ejecuto ajax factura");
+					console.log("ultima factura "+response);
+					ajaxGuardarProductosFactura(response,idComprador,prod);
+					alert("factura guardada");
+				}
+				
+			},
+			error: function (e) {
+				console.log(e);
+				alert("error agregando la factura");
+			}
+			});
+			console.log("si entra al try");
+		}catch (error) {
+			console.log(error);
+		}
+}
+
+function ajaxGuardarProductosFactura(idfactura,idComprador,prod) {
+		try {
+			$.ajax({
+				type: "GET",
+				url: "../PHP/consultasfacturaventa.php",
+				data: {
+					select:"insertav",
+					idfacturaventa: idfactura,
+					comprador:idComprador,
+					productos: prod,
+				},
+				contentType: "application/json; charset=utf-8",
+				dataType: 'json',            
+				cache: false,                
+				success: function(response) {                        
+					$.each(response, function (i, item) {
+						console.log(response);
+						alert("productos guardados");
+					});
+				},
+				error: function (e) {
+					console.log(e);
+					alert("error guardando los productos");
+				}
+			});
+		} catch (error) {
+			console.log(error);
+		}
+}
+
 
 function ajaxAgregarProducto() {
 	try {
@@ -331,66 +406,6 @@ function ajaxAgregarProducto() {
 	}
 }
 
-function ajaxGuardarFactura(idComprador,idempleadof,totalf,tipopagof,estadof,prod){
-	try {
-		$.ajax({
-			type: "GET",
-			url: "../PHP/consultasfacturaventa.php?select=insertfv",
-			data: {
-				idcomprador:idComprador,
-				idempleado:idempleadof,
-				total:totalf,
-				tipo_pago:tipopagof,
-				estado:estadof,
-			},
-			contentType: "application/json; charset=utf-8",
-			dataType: 'json',                    
-			cache: false,                       
-			success: function(response) {    
-				console.log(response);
-				$.each(response, function (i, item) { 
-					ajaxGuardarProductosFactur(item.id,idComprador,prod);
-				});
-			},
-			error: function (e) {
-				console.log(e);
-				alert("error agregando la factura");
-			}
-			});
-		}catch (error) {
-			console.log(error);
-		}
-}
-
-function ajaxGuardarProductosFactura(idfactura,idComprador,prod) {
-		try {
-			$.ajax({
-				type: "GET",
-				url: "../PHP/consultasfacturaventa.php",
-				data: {
-					select:"insertav",
-					idfacturaventa: idfactura,
-					comprador:idComprador,
-					productos: prod,
-				},
-				contentType: "application/json; charset=utf-8",
-				dataType: 'json',            
-				cache: false,                
-				success: function(response) {                        
-					$.each(response, function (i, item) {
-						console.log(response);
-						alert("productos guardados");
-					});
-				},
-				error: function (e) {
-					console.log(e);
-					alert("error guardando los productos");
-				}
-			});
-		} catch (error) {
-			console.log(error);
-		}
-}
 
 function ajaxTiposPago(){
 	try {

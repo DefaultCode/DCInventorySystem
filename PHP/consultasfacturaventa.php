@@ -9,8 +9,8 @@
             get_all_facturav_cliente();
             break;              
         case "insertfv":
-           // ultimafactura();
-            insert_facturav();
+           //ultimafactura();
+            insert_facturava();
             break;      
         case "estadofv":
             estado_facturav();
@@ -22,6 +22,7 @@
             get_all_articulov();
             break;
     }
+
     function get_all_facturav(){
         include 'dbconection.php';
         $sql = "SELECT * FROM tblfacturaventa";
@@ -49,21 +50,22 @@
         mysqli_query($conn,$sql);
 
     }
-    function insert_facturav(){
+    function insert_facturava(){
         include 'dbconection.php';
         $idempleado = $_GET['idempleado'];
         $idcomprador = $_GET['idcomprador'];
         $total = $_GET['total'];
         $tipo_pago = $_GET['tipo_pago']; //date(Y/m/d)date(h:i:sa)
         $estado = $_GET['estado'];
-        $sql = "CALL insertarfacturaventa ($idcomprador, $idempleado, $total, now(), now(), $tipo_pago, $estado)";
+        $sql = "CALL insertarfacturaventa ($idcomprador, $idempleado,  now(), now(),$total, $tipo_pago, $estado)";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         if(mysqli_affected_rows($conn )===0){
             echo "error"    ;
         }else {
-            echo "sussess";
+            $sql = "SELECT id FROM tblfacturaventa WHERE ultimafactura = 1";
+            $result = mysqli_query($conn,$sql);
+            echo json_encode($result->fetch_object()->id);
         }
-        
     }
     function estado_facturav(){
         include 'dbconection.php';
