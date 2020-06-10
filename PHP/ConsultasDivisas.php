@@ -81,7 +81,7 @@
         include 'dbconection.php';
         $id = $_GET['ids'];
         $valor= $_GET['valor'];
-        $sql = "INSERT INTO tbldivisadia (fecha, iddivisa, valor, ultimadivisa) VALUES (now(), '$id', $valor, 1)";
+        $sql = "CALL insertardivisadia (now(), $id, $valor)";
         $result = mysqli_query($conn,$sql);
         $afectados = mysqli_affected_rows($conn);
         echo $afectados;

@@ -36,11 +36,11 @@
     }
     function insert_presupuesto(){
         include 'dbconection.php';
-        $id = $_GET['id'];
-        $iduser = $_GET['iduser'];
+        $estado = $_GET['estado'];
+        $idempleado = $_GET['idempleado'];
         $total = $_GET['total'];
         $tiempohabil = $_GET['tiempohabil'];
-        $sql = "INSERT INTO tblfacturaventa VALUES ('$id', '$userid', now(), $tiempohabil, $total, 1, 1)";
+        $sql = "CALL insertarpresupuesto ($idempleado, now(), $tiempohabil, $total, $estado)";
         $result = mysqli_query($conn, $sql);
     }
     function estado_presupuesto(){

@@ -51,12 +51,12 @@
     }
     function insert_facturav(){
         include 'dbconection.php';
-        $id = $_GET['id'];
+        $idempleado = $_GET['idempleado'];
         $idcomprador = $_GET['idcomprador'];
-        $iduser = $_GET['iduser'];
         $total = $_GET['total'];
         $tipo_pago = $_GET['tipo_pago']; //date(Y/m/d)date(h:i:sa)
-        $sql = "INSERT INTO tblfacturaventa VALUES ('$id', '$idcomprador', '$iduser', $total, now() , now(), $tipo_pago, 1, 1)";
+        $estado = $_GET['estado'];
+        $sql = "CALL insertarfacturaventa ($idcomprador, $idempleado, $total, now(), now(), $tipo_pago, $estado)";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         if(mysqli_affected_rows($conn )===0){
             echo "error"    ;
